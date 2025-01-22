@@ -1,2 +1,2 @@
-# DIT Blog
+# Contented Blog
 
