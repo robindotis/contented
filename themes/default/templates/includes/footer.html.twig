@@ -23,22 +23,6 @@
                 {% if metadata.gitHubRepo %}<span class="emojis"><a href="{{ metadata.gitHubRepo}}blob/master/{{ inputPath }}" title="Edit on GitHub"><img id="gh-icon" src="/assets/images/github-mark-small.png" alt="Edit on GitHub"/></a></span>{% endif %}
                 </p>
             </div>
-            <div>
-                <p>
-                <a href="https://xn--sr8hvo.ws/previous">« Previous</a>
-                an <a href="https://xn--sr8hvo.ws">IndieWeb</a> 🕸💍
-                <a href="https://xn--sr8hvo.ws/next">Next »</a>
-                </p>
-            </div>
-{#
-            <div>
-                <p>
-                <a href='https://webring.dinhe.net/prev/robin.is'>« Previous</a>
-                a <a href="https://webring.dinhe.net/">Retronaut</a> 🕸💍
-                <a href='https://webring.dinhe.net/next/robin.is'>Next »</a>
-                </p>
-            </div>
-#}
             <div class="badges">
                 <p>
                 <a href="https://www.anybrowser.org/campaign/"><img src="/assets/images/any-browser-button.png" alt="Viewable With Any Browser" width="80" height="15" loading="lazy"/></a>
@@ -54,11 +38,6 @@
                 <span class="thumbs">👍</span>{{ metadata.urlShort }} built on the {{ "now" | date("d/m/Y") }} at {{ "now" | date("H:m:s") }} in the flashiest of flashes.⚡
                 </p>
             </div>
-            <div class="euhosted">
-                <p>
-                <img src="/assets/images/eu-flag.png"/> {{ metadata.urlShort }} proudly hosted within the European Union using <a href="http://www.statichost.eu">www.statichost.eu</a>.
-                </p>
-            </div> 
             <div class="copyright">
                 <p>
                 &copy; {{ metadata.startYear }} - {{ "now" | date("Y") }} {{ metadata.author.name }}
