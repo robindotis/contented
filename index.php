@@ -23,8 +23,8 @@ echo $startMem .''.' MB';
 // Settings - could be user defined
 $sourceRoot = ".";
 $outputRoot = ".";
-$staticDirs = ['assets', 'old'];
-$staticFiles = ['CNAME','statichost.yml','robots.txt','feed/pretty-feed-v3.xsl','feed/.htaccess'];
+$staticDirs = ['assets'];
+$staticFiles = ['CNAME','robots.txt','feed/pretty-feed-v3.xsl','feed/.htaccess'];
 $sourceDirs = ['posts', 'pages', 'feed'];
 $outputDir = '_site';
 //ignores not needed because only processing folder in $sourceDirs
