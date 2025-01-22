@@ -1,0 +1,13 @@
+- name: header
+  items:
+    - title: About
+      link: /about/
+    - title: Blog
+      link: /archive/
+- name: footer
+  items:
+    - title: RSS
+      link: /feed/
+      class: ally-statement
+    - title: Accessibility
+      link: /accessible/

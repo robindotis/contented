@@ -1,0 +1,119 @@
+name: Process uploaded images
+
+# ===================================================================================================
+# Workflow:
+# ===================================================================================================
+# - Triggers on on files pushed to "UPLOAD_FOLDER".
+# - checks out the repo
+# - gets a list of changed files in the folder above
+# - use ImageMagick to
+#   - resizes them to be max size 800px
+#   - converts to WEBP format
+#   - step will simply fail if one the uploads is not an image or cannot be processed by ImageMagick
+#   - subsequent files will not be handled
+# - copies the generated file in a subfolder named after the current year in the IMAGES_FOLDER
+# - deletes the uploaded image from the "UPLOAD_FOLDER"
+# - commits all the changes back to the repo
+# ===================================================================================================
+# Based on:
+# ===================================================================================================
+# - https://gist.github.com/yeraydavidrodriguez/0184d22967dd5ef2de5cc0307706c8c3
+# ===================================================================================================
+# Helpful links:
+# ===================================================================================================
+# - https://medium.com/edataconsulting/management-of-image-assets-with-github-actions-6aa83a8dad75
+# - https://stackoverflow.com/questions/60942067/get-current-date-and-time-in-github-workflows
+# - https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#environment-files
+# - https://github.com/orgs/community/discussions/26671
+# ===================================================================================================
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - '_uploads/**'
+env:
+  UPLOAD_FOLDER: '_uploads/**' 
+  IMAGES_FOLDER: 'assets/images'
+  MAX_SIZE: 800
+
+jobs:
+  process:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    name: Process changed files
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
+          lfs: 'true'
+      
+      - name: Get changed files
+        id: changed-files
+        with:
+          files: ${{env.UPLOAD_FOLDER}}
+        uses: tj-actions/changed-files@v45
+      
+      - uses: mfinelli/setup-imagemagick@v1        
+      
+      - name: Process all modified files
+        env: 
+          ADDED_FILES: ${{ steps.changed-files.outputs.added_files }}          
+        run: |
+          sudo apt install libfuse2
+          destination_path="${{env.IMAGES_FOLDER}}/$(date +'%Y')"
+          echo -e "dest:  $destination_path"              
+          max_size=${{env.MAX_SIZE}}
+          modified_files_string="${{ steps.changed-files.outputs.all_changed_files }}";          
+          
+          echo -e "files: ${{env.UPLOAD_FOLDER}} ${ADDED_FILES}"           
+          #files_array
+          for file in ${ADDED_FILES}  
+          do
+              file_dir=$(dirname $file)
+              echo -e "- \e[97m$file\e[0m:"              
+
+              # Get image size and show it
+              width=$(magick identify -ping -format '%w' $file[0])
+              height=$(magick identify -ping -format '%w' $file[0])
+              echo -e "  $width x $height px"              
+                  
+              # Set destination filename, folder and format
+              name_ext=$(basename $file)
+              name=$(echo "$name_ext" | cut -f 1 -d '.') 
+              ext="${name_ext##*.}"                  
+              new_ext=".webp"
+              #folder="${file_dir/${{env.UPLOAD_FOLDER}}}/${{env.IMAGES_FOLDER}}/$(date +'%Y')"
+              folder=$destination_path
+              echo -e "  $folder"              
+
+              output_file="$folder/$name$new_ext"               
+              
+              # Actual image processing
+              mkdir -p $folder
+              if (( width > max_size || height > max_size )); then
+                  echo "  Must be processed as is bigger than $max_size"
+                  echo "  Converting to $output_file"
+                  geometry="${max_size}x${max_size}"
+                  magick convert $file[0] -resize $geometry $output_file
+                  echo "  Converted to $geometry in $output_file"
+              else              
+                  if [[ $(echo ".$ext" |  tr '[:lower:]' '[:upper:]' ) != $(echo "$new_ext" |  tr '[:lower:]' '[:upper:]' ) ]]; then
+                      echo "  Converting file format from $ext to $new_ext"
+                      magick convert $file[0] $output_file
+                  else
+                      echo "  Copying file to destination"
+                      cp $file $output_file
+                  fi                  
+              fi
+              rm $file
+              echo ""
+          done
+
+          echo "  Committing converted file"
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "Processed image to ${destination_path} and removed from ${{env.UPLOAD_FOLDER}}"
+          git push

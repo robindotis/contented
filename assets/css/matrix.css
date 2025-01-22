@@ -1,0 +1,83 @@
+:root {
+    --header-bg-color: #000; /*#009cd7;*/
+    --header-title-color: #36ba01; /*#fff;*/
+    --header-title-focus-color: #03a062; /*#B85F01;*/
+    --header-subtitle-color: #36ba01;
+    --header-navtext-color: #00ff2b;
+    --main-highlight-color: #03a062;
+    --main-bg-color: #000;
+    --main-text-color: #00ff2b;
+    --main-font-family: courier, 'Lucia Grande', Verdana, Helvetica, Arial, sans-serif, serif;
+    --postlist-navtext-color: var(--header-navtext-color);
+    --footer-bg-color: #000;
+    --footer-text-color: var(--header-navtext-color);
+    --footer-navtext-color: var(--header-navtext-color);
+    --link-color: #36ba01;
+    --link-focus-color: #000;
+    --link-focus-bg-color: #00ff2b;
+    --date-bg-color: var(--header-title-color); /*var(--header-bg-color);*/
+    --date-text-color: var(--header-bg-color); /*var(--header-title-color);*/
+    --body-color: #fff;        
+}
+
+body {
+    font-family: var(--main-font-family);
+    background-color: var(--body-bg-color);
+}
+
+a, details summary {
+    border: 2px solid;
+    border-color: rgba(3, 160, 98, 0);
+    color: var(--link-color);
+    text-decoration-color: var(--main-highlight-color);
+    text-decoration-thickness: 2px;
+}
+
+header.masthead nav a {
+    text-decoration: none;
+    text-decoration-thickness: 2px;
+    border: 2px solid;
+    border-color: #000;
+    border-radius: 5px;
+    padding: 2px 5px;
+
+}
+
+header nav.subtitle a.current {
+    border: 2px solid;
+    border-color: #000;
+    border-radius: 5px;
+    background-color: var(--header-title-color);
+    color: var(--header-bg-color);
+    text-decoration: none;
+    padding: 2px 5px;
+}
+
+hr {
+    height: 2px;
+    border: none;
+    background-color: #36ba01;
+}
+
+/*
+https://stackoverflow.com/questions/32413731/color-for-unicode-emoji
+*/
+span.thumbs {
+    color: transparent;  
+    text-shadow: 0 0 0 #00ff2b;
+}
+
+/*
+https://stackoverflow.com/questions/52237298/apply-a-filter-with-css-to-change-colors-of-a-picture
+*/
+header img.logo, .rss img {filter: grayscale(0); filter:hue-rotate(100deg);}
+
+img#gh-icon {
+    background-color: #00ff2b;
+}
+
+@media (min-width: 900px) {
+    main div.main-content {
+        border-right: #36ba01 solid 2px;
+    }
+}
