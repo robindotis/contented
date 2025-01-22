@@ -2,7 +2,6 @@
         <div class="footer-area">
             <div class="rss">
                 <p>
-                <img src="/assets/images/rss-logo.png" alt=""  width="15" height="15" loading="lazy">
                 {% for menu in menus %}
                     {% if menu.name == "footer" %}
                         {% for item in menu.items %}
@@ -14,28 +13,13 @@
             </div>
             <div>
                 <p>
-                <span class="thumbs">👍</span>{{ metadata.urlShort }} 100% Human and free of any artificial intelligence. 
-                </p>
-            </div>
-            <div>
-                <p>
-                <span class="thumbs">👍</span>{{ metadata.urlShort }} hand crafted using a custom PHP based static site generator. 
+                {{ metadata.urlShort }} hand crafted using the DIY Blog static site generator. 
                 {% if metadata.gitHubRepo %}<span class="emojis"><a href="{{ metadata.gitHubRepo}}blob/master/{{ inputPath }}" title="Edit on GitHub"><img id="gh-icon" src="/assets/images/github-mark-small.png" alt="Edit on GitHub"/></a></span>{% endif %}
-                </p>
-            </div>
-            <div class="badges">
-                <p>
-                <a href="https://www.anybrowser.org/campaign/"><img src="/assets/images/any-browser-button.png" alt="Viewable With Any Browser" width="80" height="15" loading="lazy"/></a>
-                <a href="https://indieweb.org/"><img src="/assets/images/indieweb-button.png" alt="IndieWeb" width="80" height="15" loading="lazy"/></a>
-                <a href="https://indiewebify.me/"><img src="/assets/images/indiewebified-button.png" alt="IndieWebified" width="80" height="15" loading="lazy"/></a>
-                <a href="http://microformats.org/"><img src="/assets/images/microformats-button.png" alt="microformats" width="80" height="15" loading="lazy"/></a>
-                <a href="https://html.spec.whatwg.org/"><img src="/assets/images/valid_html5_blue-button.png" alt="Valid HTML5" width="80" height="15" loading="lazy"/></a>
-                <a href="https://www.w3.org/Style/CSS/current-work"><img src="/assets/images/valid_css3_blue-button.png" alt="Valid CSS3" width="80" height="15" loading="lazy"/></a>
                 </p>
             </div>
             <div class="lastrun">
                 <p>
-                <span class="thumbs">👍</span>{{ metadata.urlShort }} built on the {{ "now" | date("d/m/Y") }} at {{ "now" | date("H:m:s") }} in the flashiest of flashes.⚡
+                Last updated on {{ "now" | date("d/m/Y") }} at {{ "now" | date("H:m:s") }}.
                 </p>
             </div>
             <div class="copyright">
