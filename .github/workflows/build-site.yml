@@ -58,6 +58,6 @@ jobs:
             personal_token: ${{ secrets.PERSONAL_TOKEN }}
             publish_dir: _site 
             publish_branch: main
-            external_repository: robindotis/robindotis.github.io
+            external_repository: robindotis/diyblogrobindotis.github.io
 #            github_token: ${{ secrets.GITHUB_TOKEN }}
 #            publish_dir: ./_site 
