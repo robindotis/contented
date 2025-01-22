@@ -1,4 +1,4 @@
-name: Build site using PHP
+name: Build site
 
 on:
   workflow_dispatch:
