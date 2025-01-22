@@ -30,7 +30,7 @@ name: Process uploaded images
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - '_uploads/**'
 env:
