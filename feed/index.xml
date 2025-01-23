@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/feed/pretty-feed-v3.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<title>DIY Blog</title>
+	<subtitle>A Do It Yourself Blog</subtitle>
+		<link href="https://diyblog.robin.is/feed/index.xml" rel="self"/>
+	<link href="https://diyblog.robin.is/" rel="alternate" type="text/html"/>
+	<updated></updated>
+	<id>https://diyblog.robin.is/</id>
+	<author>
+		<name>robindotis</name>
+		<email>admin@robin.is</email>
+	</author>
+			<entry>
+		<title>Post Four</title>
+		<link href="https://diyblog.robin.is/posts/drafts/post-four/"/>
+		<updated>2025-02-01 12:00:00</updated>
+		<id>https://diyblog.robin.is/posts/drafts/post-four/</id>
+		<content type="html">&lt;h2&gt;Post Four&lt;/h2&gt;
+&lt;p&gt;This is the fourth post on the blog&lt;/p&gt;
+</content>
+	</entry>
+			<entry>
+		<title>Post Three</title>
+		<link href="https://diyblog.robin.is/posts/post-three/"/>
+		<updated>2025-01-31 12:00:00</updated>
+		<id>https://diyblog.robin.is/posts/post-three/</id>
+		<content type="html">&lt;h2&gt;Post Thee&lt;/h2&gt;
+&lt;p&gt;This is the third post on the blog&lt;/p&gt;
+</content>
+	</entry>
+			<entry>
+		<title>Post Two</title>
+		<link href="https://diyblog.robin.is/posts/post-two/"/>
+		<updated>2025-01-29 12:00:00</updated>
+		<id>https://diyblog.robin.is/posts/post-two/</id>
+		<content type="html">&lt;h2&gt;Post Two&lt;/h2&gt;
+&lt;p&gt;This is the second post on the blog&lt;/p&gt;
+</content>
+	</entry>
+			<entry>
+		<title>Post One</title>
+		<link href="https://diyblog.robin.is/posts/post-one/"/>
+		<updated>2025-01-28 12:00:00</updated>
+		<id>https://diyblog.robin.is/posts/post-one/</id>
+		<content type="html">&lt;h2&gt;Post One&lt;/h2&gt;
+&lt;p&gt;This is the first post on the blog&lt;/p&gt;
+</content>
+	</entry>
+	</feed>

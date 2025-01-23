@@ -1,0 +1,750 @@
+Array
+(
+    [posts] => Array
+        (
+            [posts/drafts/post-four.md] => Array
+                (
+                    [template] => post.html.twig
+                    [tags] => Array
+                        (
+                            [0] => general
+                            [1] => post
+                            [2] => four
+                        )
+
+                    [title] => Post Four
+                    [date] => 2025-02-01 12:00:00
+                    [permalink] => /posts/drafts/post-four/
+                    [inputPath] => posts/drafts/post-four.md
+                    [content] => <h2>Post Four</h2>
+<p>This is the fourth post on the blog</p>
+
+                    [nextPagePermalink] => 
+                    [nextPageTitle] => 
+                    [prevPagePermalink] => /posts/post-three/
+                    [prevPageTitle] => Post Three
+                )
+
+            [posts/post-three.md] => Array
+                (
+                    [template] => post.html.twig
+                    [tags] => Array
+                        (
+                            [0] => general
+                            [1] => post
+                            [2] => three
+                        )
+
+                    [title] => Post Three
+                    [date] => 2025-01-31 12:00:00
+                    [permalink] => /posts/post-three/
+                    [inputPath] => posts/post-three.md
+                    [content] => <h2>Post Thee</h2>
+<p>This is the third post on the blog</p>
+
+                    [nextPagePermalink] => /posts/drafts/post-four/
+                    [nextPageTitle] => Post Four
+                    [prevPagePermalink] => /posts/post-two/
+                    [prevPageTitle] => Post Two
+                )
+
+            [posts/post-two.md] => Array
+                (
+                    [template] => post.html.twig
+                    [tags] => Array
+                        (
+                            [0] => general
+                            [1] => post
+                            [2] => two
+                        )
+
+                    [title] => Post Two
+                    [date] => 2025-01-29 12:00:00
+                    [permalink] => /posts/post-two/
+                    [inputPath] => posts/post-two.md
+                    [content] => <h2>Post Two</h2>
+<p>This is the second post on the blog</p>
+
+                    [nextPagePermalink] => /posts/post-three/
+                    [nextPageTitle] => Post Three
+                    [prevPagePermalink] => /posts/post-one/
+                    [prevPageTitle] => Post One
+                )
+
+            [posts/post-one.md] => Array
+                (
+                    [template] => post.html.twig
+                    [tags] => Array
+                        (
+                            [0] => general
+                            [1] => post
+                            [2] => one
+                        )
+
+                    [title] => Post One
+                    [date] => 2025-01-28 12:00:00
+                    [permalink] => /posts/post-one/
+                    [inputPath] => posts/post-one.md
+                    [content] => <h2>Post One</h2>
+<p>This is the first post on the blog</p>
+
+                    [nextPagePermalink] => /posts/post-two/
+                    [nextPageTitle] => Post Two
+                )
+
+        )
+
+    [tags] => Array
+        (
+            [general] => Array
+                (
+                    [posts/drafts/post-four.md] => Array
+                        (
+                            [template] => post.html.twig
+                            [title] => Post Four
+                            [date] => 2025-02-01 12:00:00
+                            [permalink] => /posts/drafts/post-four/
+                            [inputPath] => posts/drafts/post-four.md
+                        )
+
+                    [posts/post-three.md] => Array
+                        (
+                            [template] => post.html.twig
+                            [title] => Post Three
+                            [date] => 2025-01-31 12:00:00
+                            [permalink] => /posts/post-three/
+                            [inputPath] => posts/post-three.md
+                        )
+
+                    [posts/post-two.md] => Array
+                        (
+                            [template] => post.html.twig
+                            [title] => Post Two
+                            [date] => 2025-01-29 12:00:00
+                            [permalink] => /posts/post-two/
+                            [inputPath] => posts/post-two.md
+                        )
+
+                    [posts/post-one.md] => Array
+                        (
+                            [template] => post.html.twig
+                            [title] => Post One
+                            [date] => 2025-01-28 12:00:00
+                            [permalink] => /posts/post-one/
+                            [inputPath] => posts/post-one.md
+                        )
+
+                )
+
+            [post] => Array
+                (
+                    [posts/drafts/post-four.md] => Array
+                        (
+                            [template] => post.html.twig
+                            [title] => Post Four
+                            [date] => 2025-02-01 12:00:00
+                            [permalink] => /posts/drafts/post-four/
+                            [inputPath] => posts/drafts/post-four.md
+                        )
+
+                    [posts/post-three.md] => Array
+                        (
+                            [template] => post.html.twig
+                            [title] => Post Three
+                            [date] => 2025-01-31 12:00:00
+                            [permalink] => /posts/post-three/
+                            [inputPath] => posts/post-three.md
+                        )
+
+                    [posts/post-two.md] => Array
+                        (
+                            [template] => post.html.twig
+                            [title] => Post Two
+                            [date] => 2025-01-29 12:00:00
+                            [permalink] => /posts/post-two/
+                            [inputPath] => posts/post-two.md
+                        )
+
+                    [posts/post-one.md] => Array
+                        (
+                            [template] => post.html.twig
+                            [title] => Post One
+                            [date] => 2025-01-28 12:00:00
+                            [permalink] => /posts/post-one/
+                            [inputPath] => posts/post-one.md
+                        )
+
+                )
+
+            [two] => Array
+                (
+                    [posts/post-two.md] => Array
+                        (
+                            [template] => post.html.twig
+                            [title] => Post Two
+                            [date] => 2025-01-29 12:00:00
+                            [permalink] => /posts/post-two/
+                            [inputPath] => posts/post-two.md
+                        )
+
+                )
+
+            [one] => Array
+                (
+                    [posts/post-one.md] => Array
+                        (
+                            [template] => post.html.twig
+                            [title] => Post One
+                            [date] => 2025-01-28 12:00:00
+                            [permalink] => /posts/post-one/
+                            [inputPath] => posts/post-one.md
+                        )
+
+                )
+
+            [four] => Array
+                (
+                    [posts/drafts/post-four.md] => Array
+                        (
+                            [template] => post.html.twig
+                            [title] => Post Four
+                            [date] => 2025-02-01 12:00:00
+                            [permalink] => /posts/drafts/post-four/
+                            [inputPath] => posts/drafts/post-four.md
+                        )
+
+                )
+
+            [three] => Array
+                (
+                    [posts/post-three.md] => Array
+                        (
+                            [template] => post.html.twig
+                            [title] => Post Three
+                            [date] => 2025-01-31 12:00:00
+                            [permalink] => /posts/post-three/
+                            [inputPath] => posts/post-three.md
+                        )
+
+                )
+
+        )
+
+    [pages] => Array
+        (
+            [pages/home.md] => Array
+                (
+                    [template] => home.html.twig
+                    [permalink] => /
+                    [title] => Home
+                    [inputPath] => pages/home.md
+                    [date] => 253402300799
+                    [content] => <article class="welcome" id="skip-content-target">
+  <h1>👋 Welcome to the Do It Yourself Blog!</h1>
+  <p>This is the home page of your blog!</p>
+</article>
+
+                    [nextPagePermalink] => 
+                    [nextPageTitle] => 
+                    [prevPagePermalink] => /404.html
+                    [prevPageTitle] => 404
+                )
+
+            [pages/404.md] => Array
+                (
+                    [template] => page.html.twig
+                    [permalink] => /404.html
+                    [title] => 404
+                    [inputPath] => pages/404.md
+                    [date] => 253402300799
+                    [content] => <h1>Content not found.</h1>
+<p>Visit the <a href="/">homepage</a>.</p>
+
+                    [nextPagePermalink] => /
+                    [nextPageTitle] => Home
+                    [prevPagePermalink] => /sitemap.xml
+                    [prevPageTitle] => [MISSING TITLE]
+                )
+
+            [pages/sitemap.md] => Array
+                (
+                    [template] => sitemap.html.twig
+                    [permalink] => /sitemap.xml
+                    [inputPath] => pages/sitemap.md
+                    [title] => [MISSING TITLE]
+                    [date] => 253402300799
+                    [content] => 
+                    [nextPagePermalink] => /404.html
+                    [nextPageTitle] => 404
+                    [prevPagePermalink] => /tagging/
+                    [prevPageTitle] => Tags
+                )
+
+            [pages/tagging.md] => Array
+                (
+                    [template] => tagging.html.twig
+                    [permalink] => /tagging/
+                    [title] => Tags
+                    [inputPath] => pages/tagging.md
+                    [date] => 253402300799
+                    [content] => <p>Here are all the tags</p>
+
+                    [nextPagePermalink] => /sitemap.xml
+                    [nextPageTitle] => [MISSING TITLE]
+                    [prevPagePermalink] => /archive/
+                    [prevPageTitle] => Archiving
+                )
+
+            [pages/archive.md] => Array
+                (
+                    [template] => archive.html.twig
+                    [permalink] => /archive/
+                    [title] => Archiving
+                    [pagination] => Array
+                        (
+                            [data] => post
+                            [size] => 9999999
+                        )
+
+                    [inputPath] => pages/archive.md
+                    [date] => 253402300799
+                    [content] => <p>These are all the posts, listed in reverse chronological order. You can also browse posts <a href="/tagging/">by tag</a>.</p>
+
+                    [nextPagePermalink] => /tagging/
+                    [nextPageTitle] => Tags
+                    [prevPagePermalink] => /tagging/{{ tag | slug }}/
+                    [prevPageTitle] => Posts tagged “{{ tag }}”
+                )
+
+            [pages/tagged.md] => Array
+                (
+                    [template] => page.html.twig
+                    [permalink] => /tagging/{{ tag | slug }}/
+                    [title] => Posts tagged “{{ tag }}”
+                    [pagination] => Array
+                        (
+                            [data] => tag
+                            [size] => 1
+                            [filter] => Array
+                                (
+                                    [0] => all
+                                    [1] => nav
+                                    [2] => post
+                                    [3] => posts
+                                    [4] => tagList
+                                )
+
+                            [addAllPagesToCollections] => 1
+                        )
+
+                    [inputPath] => pages/tagged.md
+                    [date] => 253402300799
+                    [content] => <p>Posts for tag...</p>
+
+                    [nextPagePermalink] => /archive/
+                    [nextPageTitle] => Archiving
+                    [prevPagePermalink] => /about/
+                    [prevPageTitle] => About Me
+                )
+
+            [pages/about.md] => Array
+                (
+                    [template] => page.html.twig
+                    [permalink] => /about/
+                    [title] => About Me
+                    [date] => 2025-01-31 12:00:00
+                    [inputPath] => pages/about.md
+                    [content] => <h2>Introduction</h2>
+<p>This is an example page on which you can introduce yourself.</p>
+
+                    [nextPagePermalink] => /tagging/{{ tag | slug }}/
+                    [nextPageTitle] => Posts tagged “{{ tag }}”
+                    [prevPagePermalink] => /accessible/
+                    [prevPageTitle] => Accessibility Statement
+                )
+
+            [pages/accessible.md] => Array
+                (
+                    [template] => page.html.twig
+                    [permalink] => /accessible/
+                    [title] => Accessibility Statement
+                    [date] => 2025-01-31 12:00:00
+                    [inputPath] => pages/accessible.md
+                    [content] => <p>This is an example accessibility statement. DIY Blog is designed to be accessible.</p>
+<h2>Compliance status</h2>
+<p>This website is fully compliant with <a href="https://www.w3.org/TR/WCAG2/">WCAG 2 Level AA</a> when using the <strong>default</strong> or <strong>high contrast</strong> themes. Other themes may have accessibility issues, usually due to insufficient contrast.</p>
+<h3>Explanation</h3>
+<p>No web accessibiltiy law directly applies to this site. Nevertheless, since I live in the European Union, I try to ensure the site meets the relevant requirements of these two pieces of European Union legislation.</p>
+<ul>
+<li>The <a href="https://ec.europa.eu/digital-single-market/en/web-accessibility">Web Accessibiliy Directive</a> - (<a href="https://eur-lex.europa.eu/eli/dir/2016/2102/oj">Directive (EU) 2016/2102</a>).</li>
+<li>The <a href="https://ec.europa.eu/social/main.jsp?catId=1202">European Accessibility Act</a> - (<a href="https://eur-lex.europa.eu/eli/dir/2019/882/oj">Directive (EU) 2019/882</a>).</li>
+</ul>
+<p>Both these directives rely on the harmonised European standard <a href="https://www.etsi.org/deliver/etsi_en/301500_301599/301549/03.02.01_60/en_301549v030201p.pdf">EN 301 549 v3.2.1 on the &quot;Accessibility requirements for ICT products and services&quot;</a> as a way of developing websites that meet the requirements of the legisation.</p>
+<p>For the purposes of a basic website such as this one, the requirements of that standard are the same as those of the Web Content Accessibility Guidelines published by the <a href="https://www.w3.org/WAI/">W3C's Web Accessibility Initiative</a>.</p>
+<h2>Non-accessible content</h2>
+<p>There is no non-accessible content on this website.</p>
+<h2>Preparation of this accessibility statement</h2>
+<p>This statement was prepared on 1st January 2021 using automated and manual accessibility checkers done by the authors of the content.</p>
+<p>It was last reviewed on 1st January 2025. No changes were needed, but further explanations were added to the compliance status section above.</p>
+<p>The next review is scheduled for January 2026.</p>
+<h2>Feedback and contact information</h2>
+<p>Since this is a personal blog, I do not wish to publish my contact details on the web. A short google search might bring up some useful ways of contacting me about this site or anything really.</p>
+<h2>Enforcement procedure</h2>
+<p>Since I am not a public sector body, I do not provide an enforcement procedure. The content on this website is provided &quot;as is&quot; for information only.  It is not to be used as legal advice or as a definitive source for creating accessible web content.</p>
+
+                    [nextPagePermalink] => /about/
+                    [nextPageTitle] => About Me
+                    [prevPagePermalink] => /docs/
+                    [prevPageTitle] => Contented Docs
+                )
+
+            [pages/docs.md] => Array
+                (
+                    [template] => page.html.twig
+                    [permalink] => /docs/
+                    [title] => Contented Docs
+                    [date] => 2025-01-19 12:00:00
+                    [inputPath] => pages/docs.md
+                    [content] => <h2>Documentation for Contented</h2>
+<p>Base on this: <a href="https://docs.bearblog.dev/">https://docs.bearblog.dev/</a></p>
+<h3>Why Contented?</h3>
+<blockquote>
+<p>Let a hundred blogging tools bloom; let a hundred schools of thought blog.</p>
+<p>-- With apologies to <cite><a href="https://en.wikipedia.org/wiki/Hundred_Flowers_Campaign">Mao Zedong</a></cite></p>
+</blockquote>
+<p>The idea behind Contented is to encourage building, hosting and managing independent blogs over the use one of the common blogging services.</p>
+<p>Why yet another blogging tool? Because the more independent tools, the more means of expression there is are and the more ways of thinking are encouraged.</p>
+<p>Contented is not a service. It is an imperfect blogging tool. It is not intended for those who want to get started wrriting content right now. Rather it is designed for those who are willing to get their hands a little bit dirty. No coding knowledge is needed to start using Contented. The setup instructions are easy to follow and a new blog can be online in a couple of minutes.</p>
+<p>A good dose of patience mixed with sprinkle of perseverance will go a long way to in helping you personalise your blog. Things might go wrong, but you will fix problems in no time.</p>
+<p>If this is you, <a href="#table-of-contents">keep reading</a>, if not, these alternative independent online blogging services are highly recommended:</p>
+<ul>
+<li><a href="https://bearblog.dev/">Bear Blog</a></li>
+<li><a href="https://pika.page/">PIKA</a></li>
+<li><a href="https://micro.blog/">micro.blog</a></li>
+</ul>
+<h2>Table of Contents</h2>
+<ol>
+<li><a href="#installation-guide">Installation Guide</a>
+<ol>
+<li><a href="#getting-started">Getting started</a></li>
+</ol>
+</li>
+<li><a href="#user-guide">User Guide</a>
+<ol>
+<li><a href="#site-tructure">Site structure</a>
+<ol>
+<li><a href="#folders">Folders</a></li>
+<li><a href="#files">Files</a></li>
+</ol>
+</li>
+<li><a href="#file-processing">File processing</a></li>
+<li><a href="#file-structure">File structure</a>
+<ol>
+<li><a href="#front-matter">Front Matter</a></li>
+<li><a href="#content">Content</a></li>
+</ol>
+</li>
+<li><a href="#menus">Menus</a></li>
+<li><a href="#metadata">Metadata</a></li>
+</ol>
+</li>
+<li><a href="#references">References</a></li>
+</ol>
+<h2>Installation Guide</h2>
+<h3>Getting started</h3>
+<p>To use Contented a <a href="https://github.com/">GitHub</a> account is needed. Everything is done in GitHub: writing content, generating the site and publishing the pages. No other tool is needed other than a browser.</p>
+<p>First of all sign up for a <a href="https://github.com/signup">GitHub account</a> and then login to GitHub.</p>
+<p>Next make a copy of the DC code by forking the DC repository.</p>
+<p>Notes:</p>
+<ul>
+<li>Start with simple setup of public rep names username.github.io and using branches for the deployment.</li>
+<li>have advanced instructions on how to setup to run with private repos and external hosting.</li>
+</ul>
+<p>Now explore GitHub a little. The <a href="https://docs.github.com/en/get-started">GitHub docs</a> are very comprehensive. Being comfortable writing content and editing configuration files will be helpful, but this can also be learned. The <a href="https://docs.github.com/en/get-started/writing-on-github">GitHub Writing guide</a> is maybe a good place to start for those new to GitHub.</p>
+<h3>GitHub Pages</h3>
+<p>Pay attention to remove CNAME if the site is not loading properly. It should be removed if running under username.github.io. It should only be add if running under a custom domain name.</p>
+<h2>User Guide</h2>
+<h3>Site tructure</h3>
+<h4>Folders</h4>
+<table>
+<thead>
+<tr>
+<th>Folder</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>posts</td>
+<td>Contains the blog posts in <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github">GitHub's Markdown</a> format. Subfolders are allowed to help find the posts (eg by year), but it won't affect how the posts are processedin GitHub's Markdown format.</td>
+</tr>
+<tr>
+<td>pages</td>
+<td>Contains the site pages. These are standalone pages that will not be processed as posts and therefore won't appear in your feed.</td>
+</tr>
+<tr>
+<td>assets</td>
+<td>Contains static files, such as images, styling (<a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a>) and scripting (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a>). Folder will be copied as is to your website.</td>
+</tr>
+<tr>
+<td>feed</td>
+<td><strong>DON'T TOUCH</strong> Contains code to generate the <a href="https://en.wikipedia.org/wiki/RSS">RSS feed</a>.</td>
+</tr>
+<tr>
+<td>archive</td>
+<td>Contains pages to display the lists of posts.</td>
+</tr>
+<tr>
+<td>_data</td>
+<td>Contains configuration files, in <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> format.</td>
+</tr>
+<tr>
+<td>_uploads</td>
+<td>Folder into which to upload images to process them into the <a href="https://en.wikipedia.org/wiki/WebP">WEBP</a> image format.</td>
+</tr>
+<tr>
+<td>themes</td>
+<td>Contains template for the site design, using the <a href="https://docs.github.com/en/get-started/writing-on-github">Twig</a> templating system.</td>
+</tr>
+</tbody>
+</table>
+<h4>Files</h4>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>index.php</td>
+<td><strong>DON'T TOUCH</strong> Processes the markdown files and generates the static site.</td>
+</tr>
+<tr>
+<td>robots.txt</td>
+<td>Tell search engines how to index the site. See <a href="https://developers.google.com/search/docs/crawling-indexing/robots/intro">Google for further information on robots.txt</a>. Modify only if needed.</td>
+</tr>
+<tr>
+<td>CNAME</td>
+<td>Needed by GitHub Pages to read your custom domain if used.</td>
+</tr>
+<tr>
+<td>pages/home.md</td>
+<td><strong>DON'T RENAME</strong> Content to display on the home page.</td>
+</tr>
+<tr>
+<td>pages/404.md</td>
+<td><strong>DON'T RENAME</strong> Content to display when a page is not found.</td>
+</tr>
+<tr>
+<td>pages/sitemap.md</td>
+<td><strong>DON'T TOUCH</strong> Need in order to generate a <a href="https://www.sitemaps.org/protocol.html">sitemap.xml file</a> used by <a href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap">search engines to index the site</a>.</td>
+</tr>
+</tbody>
+</table>
+<h3>File processing</h3>
+<p>All content is stored in Markdown file, such as home.md.  Only files with the extension .md are processed by the engine. All other file types are ignored unless they are static simply files to be copied.</p>
+<p>Each .md file is converted to an index.html file. This file is placed in a folder with the same path and name as the .md file, unless specified otherwise in the Front Matter configuration for the file using the &quot;permalink&quot; attribute.</p>
+<p>For example the file:</p>
+<pre><code>/posts/2023/summmer.md
+</code></pre>
+<p>would generated a file:</p>
+<pre><code>/posts/2023/summmer/index.html
+</code></pre>
+<p>which would be accessible using the URL:</p>
+<pre><code>/posts/2023/summmer/
+</code></pre>
+<p>And a file:</p>
+<pre><code>/pages/home.md
+</code></pre>
+<p>With the following front matter attribute:</p>
+<pre><code>permalink: /
+</code></pre>
+<p>Would generate file a here:</p>
+<pre><code>/index.html
+</code></pre>
+<p>Which would be accessible using this URL:</p>
+<pre><code>/
+</code></pre>
+<p>TO DO: explain slug &quot;permalink&quot;: &quot;/{{ page.fileSlug }}/&quot; as in pages.json.</p>
+<h3>File structure</h3>
+<p>All Markdown files, whether posts or pages have two main parts.</p>
+<p>Firstly, a Front Matter part, which contains the configuration details for the file and is always at the beginning of the file.</p>
+<p>Secondly, the rest of the file which contains the content.</p>
+<h4>Front Matter</h4>
+<p>The Front Matter section of the file has a specific structure which <strong>must</strong> be followed.</p>
+<p>Firstly it always starts and ends with the line: <code>---</code>.</p>
+<p>Secondly it contains attribute / value pairs, one per line, eg: <code>title: Welcome to my blog</code>. The order of the attributes within the Front Matter is not important.</p>
+<p>If the attribute contains a list of values, it would be spread over multiple lines, eg:</p>
+<pre><code>tags:
+- post
+- travel
+- photo 
+</code></pre>
+<p>The Front Matter of a typical post might therefore look something like this:</p>
+<pre><code>---
+title: Happy New Year
+date: 2025-01-01 08:00:00
+tags:
+- celebration
+- new year
+- photo
+---
+</code></pre>
+<p>DC understands the following Front Matter attributes. Any other attributes will be ignored.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>Free text</td>
+</tr>
+<tr>
+<td>date</td>
+<td>ISO format YYYY-MM-DD hh:mm:ss eg &quot;2025-01-01 08:00:00&quot;</td>
+</tr>
+<tr>
+<td>permalink</td>
+<td>Any valid URL path, eg &quot;/about/&quot;</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>Free text list of tags, one per line</td>
+</tr>
+<tr>
+<td>prefix</td>
+<td>Free text to add before the page name in the title bar</td>
+</tr>
+<tr>
+<td>others?</td>
+<td>TBD</td>
+</tr>
+</tbody>
+</table>
+<p>Note: you do not need to enclose the value in quotes in the Front Matter section.</p>
+<h3>Content</h3>
+<p>In DC all content is written using <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax">GitHub's implementation of Markdown</a>.</p>
+<p>Note that Markdown can also contain HTML. So any tags for which there is no Markdown equivalent can be written in HTML.</p>
+<p>A typical Markdown content file might therefore look something like this:</p>
+<pre><code>---
+title: Happy New Year
+date: 2025-01-01 08:00:00
+tags:
+- celebration
+- new year
+- photo
+---
+
+## Welcome
+
+This is first blog post, I hope you enjoy this site.
+
+&lt;blockquote&gt;Doing It Yourself Rocks!&lt;/blockquote&gt;
+
+</code></pre>
+<h3>Archives</h3>
+<p>Archives are lists of all the posts matching a specific tag.</p>
+<p>They use the following Front Matter.</p>
+<pre><code>---
+title: Coding 
+pagination:
+  data: web
+  alias: posts
+
+---
+</code></pre>
+<p>data is tag name to include in the archive.</p>
+<h3>Menus</h3>
+<p>Menus can be defined for the header and footer. This is done in the file &quot;_data/menus.yaml&quot;. The syntax of this file is a little more complicated as it is written in YAML.</p>
+<p><a href="https://www.yaml.info/learn/index.html">Learn more about the YAML syntax here</a>.</p>
+<p>As an example this file menus.yaml file for a site with two menus. A header and a footer menu:</p>
+<pre><code>- name: header
+  items:
+    - title: Home
+      link: /home/
+    - title: About
+      link: /about/
+    - title: Blog
+      link: /blog/
+    - title: /walking
+      link: /walking/
+      pre: 'and '
+    - title: dog 🐕‍🦺
+      link: /tagging/angie/
+      pre: 'the '
+      post: '. '
+- name: footer
+  items:
+    - title: RSS
+      link: /feed/
+      class: ally-statement
+    - title: Accessibility
+      link: /accessibility/
+    - title: Site info
+      link: /my-site/
+</code></pre>
+<h3>Metadata</h3>
+<p>Metadata for the site can be defined and is stored in the file &quot;_data/metadata.yaml&quot;.</p>
+<p>This is an example the metadata.yaml file for a basic site:</p>
+<pre><code>title: Robin's
+url: https://www.robin.is/
+urlShort: robin.is
+language: en
+description: Setup and host your own independent blog
+startYear: 2025
+relMe: https://github.com/robindotis/
+gitHubRepo: https://github.com/robindotis/robin.is/
+theme: sky
+feed:
+  subtitle: Setup and host your own independent blog
+  filename: index.xml
+  path: /feed/index.xml
+  id: https://www.robin.is/
+author:
+  name: robindotis
+  email: admin@robin.is
+  url: https://www.robin.is/about/
+  webmention: https://github.com/robindotis/
+</code></pre>
+<h2>References</h2>
+<p>Below are some excellent links to further technical information and documentation on the technologies used for this site generator.</p>
+<ul>
+<li>Writing the content with <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax">Markdown</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a>.</li>
+<li>Styling the site with (<a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a>).</li>
+<li>Scripting functionality with (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a>).</li>
+<li>Modifying the sites structure using the <a href="https://twig.symfony.com/">Twig template language</a>.</li>
+<li>For the really adventurous: adapting the site generation engine using <a href="https://www.w3schools.com/php/">PHP</a>.</li>
+<li>Webhooks eg for EU hosting</li>
+<li>GitHub Pages</li>
+<li>RSS, sitemap, SEO etc</li>
+</ul>
+
+                    [nextPagePermalink] => /accessible/
+                    [nextPageTitle] => Accessibility Statement
+                )
+
+        )
+
+    [feed] => Array
+        (
+            [feed/index.md] => Array
+                (
+                    [permalink] => /feed/index.xml
+                    [template] => feed.html.twig
+                    [inputPath] => feed/index.md
+                    [title] => [MISSING TITLE]
+                    [date] => 253402300799
+                    [content] => 
+                    [nextPagePermalink] => 
+                    [nextPageTitle] => 
+                )
+
+        )
+
+)
