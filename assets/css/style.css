@@ -342,9 +342,11 @@ main div article.custom-running table tr td:last-child {
     }
 }
 
+/*
 @media (min-width: 900px) { 
     main div.main-content {
         border-left: #eeeeee solid 2px;
         border-right: #eeeeee solid 2px;
     }
 }
+*/
