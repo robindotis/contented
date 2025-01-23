@@ -334,7 +334,7 @@ main div article.custom-running table tr td:last-child {
 
 @media (min-width: 700px) { 
     main {
-        font-size: 1.6em;
+        font-size: 1.2em;
     }
 
     header div.sitetitle {
