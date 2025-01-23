@@ -1,25 +1,27 @@
 ---
-title: DIY CMS Docs
+title: Contented Docs
 date: 2025-01-19 12:00:00
 ---
 
-## Documentation for DC
+## Documentation for Contented
 
 Base on this: https://docs.bearblog.dev/
 
-### Why DC?
+### Why Contented?
 
 > Let a hundred blogging tools bloom; let a hundred schools of thought blog.
 >
 > -- With apologies to <cite>[Mao Zedong](https://en.wikipedia.org/wiki/Hundred_Flowers_Campaign)</cite>
 
-The idea behind DC is encourage you to build, host and manage your own blog rather use one of the common free or paid for blogging services. In addition if it breaks your dependence on the big social media companies, all the better. 
+The idea behind Contented is to encourage building, hosting and managing independent blogs over the use one of the common blogging services. 
 
-Why yet another blogging tool? Because the more independent tools the more freedom of expression there is and the more ways of thinking are encouraged. 
+Why yet another blogging tool? Because the more independent tools, the more means of expression there is are and the more ways of thinking are encouraged. 
 
-DC is not a service. It is an imperfect blogging tool. It is not intended for those who want to get started with their blog right now. Rather it is designed for those who are willing to get their hands covered in cyber dirt. You don't need to have any coding knowledge to use this blogging software. If you follow the manual, it will work. You will though need a good dose of patience mixed with dollop of perseverance. Things will go wrong and you will have to figure out how.
+Contented is not a service. It is an imperfect blogging tool. It is not intended for those who want to get started wrriting content right now. Rather it is designed for those who are willing to get their hands a little bit dirty. No coding knowledge is needed to start using Contented. The setup instructions are easy to follow and a new blog can be online in a couple of minutes.
 
-If this is not you, perhaps you should try one of these alternative independent online blogging services:
+A good dose of patience mixed with sprinkle of perseverance will go a long way to in helping you personalise your blog. Things might go wrong, but you will fix problems in no time.
+
+If this is you, [keep reading](#table-of-contents), if not, these alternative independent online blogging services are highly recommended:
 
 * [Bear Blog](https://bearblog.dev/)
 * [PIKA](https://pika.page/)
@@ -45,15 +47,15 @@ If this is not you, perhaps you should try one of these alternative independent 
 
 ### Getting started
 
-This tutorial is intended to set up a new blog with as little fuss as possible. It does so by making full use of [GitHub](https://github.com/). This includes hosting your site on [GitHub Pages](https://pages.github.com/), under a custom domain name if desired. 
+To use Contented a [GitHub](https://github.com/) account is needed. Everything is done in GitHub: writing content, generating the site and publishing the pages. No other tool is needed other than a browser.
 
-First of all sign up for a [GitHub account](https://github.com/signup).
+First of all sign up for a [GitHub account](https://github.com/signup) and then login to GitHub.
 
 Next make a copy of the DC code by forking the DC repository.
 
 Now explore GitHub a little. The [GitHub docs](https://docs.github.com/en/get-started) are very comprehensive. Being comfortable writing content and editing configuration files will be helpful, but this can also be learned. The [GitHub Writing guide](https://docs.github.com/en/get-started/writing-on-github) is maybe a good place to start for those new to GitHub.
 
-### GitHub Page
+### GitHub Pages
 
 Pay attention to remove CNAME if the site is not loading properly. It should be removed if running under username.github.io. It should only be add if running under a custom domain name.
 
