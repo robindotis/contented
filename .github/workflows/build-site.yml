@@ -53,11 +53,11 @@ jobs:
           
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
-#        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main'
         with:
-            personal_token: ${{ secrets.PERSONAL_TOKEN }}
-            publish_dir: _site 
-            publish_branch: main
-            external_repository: robindotis/robindotis.github.io
-#            github_token: ${{ secrets.GITHUB_TOKEN }}
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            publish_dir: ./_site 
+#            personal_token: ${{ secrets.PERSONAL_TOKEN }}
 #            publish_dir: ./_site 
+#            publish_branch: main
+#            external_repository: robindotis/robindotis.github.io
