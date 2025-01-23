@@ -53,6 +53,11 @@ First of all sign up for a [GitHub account](https://github.com/signup) and then 
 
 Next make a copy of the DC code by forking the DC repository.
 
+Notes:
+* Start with simple setup of public rep names username.github.io and using branches for the deployment.
+* have advanced instructions on how to setup to run with private repos and external hosting. 
+
+
 Now explore GitHub a little. The [GitHub docs](https://docs.github.com/en/get-started) are very comprehensive. Being comfortable writing content and editing configuration files will be helpful, but this can also be learned. The [GitHub Writing guide](https://docs.github.com/en/get-started/writing-on-github) is maybe a good place to start for those new to GitHub.
 
 ### GitHub Pages
