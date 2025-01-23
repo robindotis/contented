@@ -176,6 +176,19 @@ Array
 
                 )
 
+            [four] => Array
+                (
+                    [posts/drafts/post-four.md] => Array
+                        (
+                            [template] => post.html.twig
+                            [title] => Post Four
+                            [date] => 2025-02-01 12:00:00
+                            [permalink] => /posts/drafts/post-four/
+                            [inputPath] => posts/drafts/post-four.md
+                        )
+
+                )
+
             [two] => Array
                 (
                     [posts/post-two.md] => Array
@@ -198,19 +211,6 @@ Array
                             [date] => 2025-01-28 12:00:00
                             [permalink] => /posts/post-one/
                             [inputPath] => posts/post-one.md
-                        )
-
-                )
-
-            [four] => Array
-                (
-                    [posts/drafts/post-four.md] => Array
-                        (
-                            [template] => post.html.twig
-                            [title] => Post Four
-                            [date] => 2025-02-01 12:00:00
-                            [permalink] => /posts/drafts/post-four/
-                            [inputPath] => posts/drafts/post-four.md
                         )
 
                 )
