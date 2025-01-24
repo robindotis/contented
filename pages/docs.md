@@ -309,4 +309,5 @@ Below are some excellent links to further technical information and documentatio
 * Webhooks eg for EU hosting
 * GitHub Pages
 * RSS, sitemap, SEO etc
+* https://stefanbohacek.com/blog/resources-for-keeping-the-web-free-open-and-poetic/ 
 
