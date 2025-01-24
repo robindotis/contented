@@ -49,9 +49,16 @@ If this is you, [keep reading](#table-of-contents), if not, these alternative in
 
 To use Contented a [GitHub](https://github.com/) account is needed. Everything is done in GitHub: writing content, generating the site and publishing the pages. No other tool is needed other than a browser.
 
-First of all sign up for a [GitHub account](https://github.com/signup) and then login to GitHub.
+1. First of all sign up for a [GitHub account](https://github.com/signup) and then login to GitHub.
+2. Next make a fork of the contented by forking the contented repository. Name the fork username.github.io
+3. Allow the actions to run.
+4. Run the "Build site" action.
+5. Settings -> Pages -> Deploy from Branch -> gh-pages -> Save
+6. Wait one minute, reload the page, follow the link
+7. Blog is live.
 
-Next make a copy of the DC code by forking the DC repository.
+(see contentedweb as an example)
+
 
 Notes:
 * Start with simple setup of public rep names username.github.io and using branches for the deployment.
