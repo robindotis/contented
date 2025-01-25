@@ -12,6 +12,7 @@ use League\CommonMark\Extension\GithubFlavoredMarkdownExtension;
 use League\CommonMark\Extension\FrontMatter\Output\RenderedContentWithFrontMatter;
 use League\CommonMark\MarkdownConverter;
 use Twig\Environment as TwigEnv;
+use Twig\Loader\ArrayLoader;
 use Twig\Loader\FilesystemLoader;
 use Twig\Extra\String\StringExtension;
 
@@ -27,8 +28,6 @@ $staticDirs = ['assets'];
 $staticFiles = ['CNAME','robots.txt','feed/pretty-feed-v3.xsl','feed/.htaccess'];
 $sourceDirs = ['posts', 'pages', 'feed'];
 $outputDir = '_site';
-//ignores not needed because only processing folder in $sourceDirs
-//$ignores = ['vendor'];
 $templatesDir = __DIR__ . '/themes/default/templates';
 
 if (isset($argv[1])) {
@@ -48,7 +47,7 @@ $environment->addExtension(new GithubFlavoredMarkdownExtension());
 $environment->addExtension(new FrontMatterExtension());
 $converter = new MarkdownConverter($environment);
 
-// SETTING UP Twig 
+// SETTING UP Twig for file loading
 $loader = new FilesystemLoader($templatesDir);
 $twig = new TwigEnv($loader);
 $twig->addExtension(new StringExtension());
@@ -81,17 +80,9 @@ foreach($staticFiles as $file) {
 }
 echo "\n\nStatic copied in " . (microtime(true) - $start) . " seconds";
 
-/*
-//JSON content - read
-$metaJson = file_get_contents($sourceRoot. '/_data/metadata.json');
-$metadata = json_decode($metaJson, true);
-$menuJson = file_get_contents($sourceRoot . '/_data/menus.json');
-$menus = json_decode($menuJson, true);
-*/
-
 //YAML content - read
-$metadata = Yaml::parseFile($sourceRoot. '/_data/metadata.yaml');
-$menus = Yaml::parseFile($sourceRoot. '/_data/menus.yaml');
+$metadata = Yaml::parseFile($sourceRoot. '/data/metadata.yaml');
+$menus = Yaml::parseFile($sourceRoot. '/data/menus.yaml');
 
 $collections = [];
 //MARKDOWN - read files in source directories
@@ -128,7 +119,7 @@ foreach($collections['tags'] as $key => $collection) {
 
 // then loop through each source collection to determine prev/next
 foreach($collections as $key => $collection) {
-    if($key != "tags") {
+    if($key != "tags" && $key != "pages") {
         //TODO determinePrevNext();
         $prevPagePermalink = "";
         $prevPageTitle = "";
@@ -202,9 +193,10 @@ function mergeJsonFilesAsStrings($jsonFiles){
     // create basic JSON string array with path as the key
     $jsonStrings = [];
     foreach($jsonFiles as $file){
-        $jsonStrings[$file->getPath()] = file_get_contents($file->getPathname());
+        $jsonStrings[str_replace('\\','/',$file->getPath())] = file_get_contents($file->getPathname());
+        //echo $jsonStrings[$file->getPath()] . "\n";
     }
-
+     
     //loop through json strings array
     //create merged array where merge lower level (closer to the root) json files into higher level (closer to the leaf) 
     $mergedJsonStrings = [];
@@ -276,24 +268,7 @@ function readMarkdownFiles($sourceRoot, $sourceDir, $outputDir, $converter, $mer
                 }, ARRAY_FILTER_USE_KEY);
                 //then pop off the last value and convert to object 
                 $json = json_decode(array_pop($result), true);
-                
                 $frontMatter = array_merge($json,$frontMatter);
-                //get any permalink path from the json info
-                if(array_key_exists("permalink",$frontMatter)){
-                    if (str_contains($frontMatter['permalink'],"page.fileSlug")) {
-                        $permalink = str_replace(' ', '', $frontMatter["permalink"]);
-                        $frontMatter["permalink"] = str_replace("{{page.fileSlug}}", $file->getBasename('.' . $file->getExtension()), $permalink);
-                        $permalink =$frontMatter["permalink"];
-                    }
-                    else {
-                        $permalink = $frontMatter["permalink"];
-                    }
-                } 
-                else if (array_key_exists("permalink", $json)){
-                    $permalink = str_replace(' ', '', $json["permalink"]);
-                    $permalink = str_replace("{{page.fileSlug}}", $file->getBasename('.' . $file->getExtension()), $permalink);
-                    $frontMatter["permalink"] = $permalink;
-                }
 
                 //merge any tags from json files into frontmatter
                 if(array_key_exists('tags',$json)){
@@ -317,30 +292,39 @@ function readMarkdownFiles($sourceRoot, $sourceDir, $outputDir, $converter, $mer
                 }
                 $frontMatter['template'] = $template;
             }
-            else if(array_key_exists("permalink",$frontMatter)){
-                if (str_contains($frontMatter['permalink'],"page.fileSlug")) {
-                    $permalink = str_replace(' ', '', $frontMatter["permalink"]);
-                    $frontMatter["permalink"] = str_replace("{{page.fileSlug}}", $file->getBasename('.' . $file->getExtension()), $permalink);
-                    $permalink =$frontMatter["permalink"];
-                }
-                else {
-                    $permalink = $frontMatter["permalink"];
-                }
+
+            if(array_key_exists("permalink",$frontMatter)){
+                $permalink = $frontMatter["permalink"];
             } 
+            
             $frontMatter['template'] = $frontMatter['template'] . '.html.twig';
             
-            //page.url contains the URL as it should be from the path and filename
-            //permalink is the actual URL of the page, taking into account any frontmatter settings
-            $page = [];
+            //if not permalink set in fronmatter 
+            //then make the permalink the actual path to the page
             $relativePath = str_replace($sourceDir, '', $path);
             $pageUrl = '/' . $sourceDir . str_replace('.md', '', $relativePath) . '/';
             if(strlen($permalink) > 0){
                 $pageUrl = $permalink;
             }
-            $page['url'] = str_replace("\\", "/", $pageUrl);
-            if(!array_key_exists("permalink",$frontMatter) || strlen($frontMatter['permalink'])){
-                $frontMatter["permalink"] = $page['url'];
+            $pageUrl = str_replace("\\", "/", $pageUrl);
+            if(!array_key_exists("permalink",$frontMatter)) { 
+                $frontMatter["permalink"] = $pageUrl;
             }
+
+            //check permalink is not a file
+            //it should not have an html or xml extension
+            if(!(substr($frontMatter["permalink"],-5) == ".html") 
+                || (substr($frontMatter["permalink"],-4) == ".htm")
+                || (substr($frontMatter["permalink"],-4) == ".xml")){
+                //ensure permalink starts and ends with a slash
+                if(substr($frontMatter["permalink"],0,1) != "/"){
+                    $frontMatter["permalink"] = "/" . $frontMatter["permalink"];
+                }
+                if(substr($frontMatter["permalink"],-1) != "/"){
+                    $frontMatter["permalink"] = $frontMatter["permalink"] . "/";
+                }
+            }
+
             $frontMatter['inputPath'] = $path;
 
             //check title provided, if not add missing title
@@ -349,8 +333,6 @@ function readMarkdownFiles($sourceRoot, $sourceDir, $outputDir, $converter, $mer
                 $frontMatter['title'] = "[MISSING TITLE]";
             }
 
-            //echo "\n";
-            //echo $frontMatter['date'];
             /*
             ****************************
             ** NOT WORKING ON GITHUB
@@ -372,69 +354,21 @@ function readMarkdownFiles($sourceRoot, $sourceDir, $outputDir, $converter, $mer
                 //So need to cope with both situations.
                 //check if string can be converted to date
                 //if not put the date in the future
-                //echo "\n";
-                //echo $frontMatter['date'];
-                //echo "\n";
-                //echo strtotime($frontMatter['date']);
-                //echo "\n";
-                //echo (date('Y-m-d H:i:s', strtotime($frontMatter['date'])));
-                //echo "\n";
-                //echo (date('Y-m-d H:i:s Z', strtotime($frontMatter['date'])));
-                //2025-02-31 22:10:00 Z
-                //1741039800
-                //2025-03-03 22:10:00
-                //2025-03-03 22:10:00 0
-                // ! 
                 // See this SO answer: https://stackoverflow.com/a/11029851
                 // Should not have Z in the date. It should be 0
 
                 // remove timzone from frontmatter date
                 $thedate = substr($frontMatter['date'],0,19);
-                //echo "\n";
-                //echo "========================================================================";
-                //echo "\n";
-                //echo $frontMatter['title'];
-                //echo "\n";
-                //echo $thedate;
-                //echo "\n";
-                //echo "strtotime: " . strtotime($thedate);
-                //echo "\n";
-                //echo "converted to date string, NO timezone in pattern: " . date('Y-m-d H:i:s', strtotime($thedate));
-                //echo "\n";
-                //echo "converted to date string, timezone in pattern: " . date('Y-m-d H:i:s Z', strtotime($frontMatter['date']));
-                //echo "\n";
-                //echo "frontmatter date type: " . gettype($frontMatter['date']);
-                //echo "\n";
-                //echo (date('Y-m-d H:i:s', strtotime($frontMatter['date'])) == $frontMatter['date']);
-                //echo "\n";
-                //echo (date('Y-m-d H:i:s Z', strtotime($frontMatter['date'])) == $frontMatter['date']);
-                //echo "\n";
-                //echo gettype(date('Y-m-d H:i:s', strtotime($frontMatter['date'])));
-                //echo "\n";
-                //echo gettype((date('Y-m-d H:i:s', strtotime($frontMatter['date'])) == $frontMatter['date']));
-                //echo "\n";
-                //echo strval(((date('Y-m-d H:i:s', strtotime($frontMatter['date'])) == $frontMatter['date'])));
-                //echo "\n";
-                //echo gettype((date('Y-m-d H:i:s Z', strtotime($frontMatter['date'])) == $frontMatter['date']));
-                //echo "\n";
-                //echo strval(gettype((date('Y-m-d H:i:s Z', strtotime($frontMatter['date'])) == $frontMatter['date'])));
-                //echo "\n";
-                //echo "========================================================================";
-                //echo "\n";
-                //***********************************************************************************************************
                 if (!(date('Y-m-d H:i:s', strtotime($thedate)) == $thedate)
                     && !(date('Y-m-d H:i:s Z', strtotime($thedate)) == $thedate)) {
-                    //echo "\n";
-                    //echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
                     $frontMatter['date'] = strtotime("9999-12-31 23:59:59");
                 }
             }
-            /****************************
-            ****************************
-            */
             
             $tmplVars = $frontMatter;
             $tmplVars['content'] = $htmlContent;
+            // this variable is needed so the {{ filename }} command can be used in the permalink value eg in pages.json
+            $tmplVars['filename'] = $file->getBasename('.' . $file->getExtension());
 
             $isDraft = false;
             if(array_key_exists('draft',$frontMatter)){
@@ -463,6 +397,19 @@ function readMarkdownFiles($sourceRoot, $sourceDir, $outputDir, $converter, $mer
 }
 
 function renderTwig($twig, $outputRoot, $outputDir, $tmplVars){
+    // Process Twig statements inside tmplVars
+    foreach ($tmplVars as $key => $value) 
+    {
+        if (is_string($value)) {
+            $arrayLoader = new \Twig\Loader\ArrayLoader([
+                'index' => $value,
+            ]);
+            $arrayTwig = new \Twig\Environment($arrayLoader);
+            $arrayTwig->addExtension(new StringExtension());
+            $arrayTwig->addExtension(new \Twig\Extension\DebugExtension());
+            $tmplVars[$key] = $arrayTwig->render('index', $tmplVars);
+        }
+    }
     $outputPath =  $outputRoot . '/' . $outputDir . '/' . $tmplVars['permalink'];
 
     //if output path includes an extention (ie a ".") simply create it, don't create index.html in subfolder
@@ -491,14 +438,21 @@ function processPagination($twig, $outputRoot, $outputDir, $tmplVars, $completeC
         $alias = $tmplVars['pagination']['alias'];
     }
     */
-    $size = 0; //default to all on one page
+    $size = 0; //Fix to all on one page
+    $tmplVars['pagination']['total'] = count($completeCollection['tags'][$data]);
+    $tmplVars[$alias] = $completeCollection['tags'][$data];
+    $tmplVars['pagination']['pages'] = 1;
+    $tmplVars['pagination']['current'] = 1;
+    renderTwig($twig, $outputRoot, $outputDir, $tmplVars);
+    
+    /* Uncomment this if want proper paging
+     * And comment out the above code
     if(array_key_exists('size',$tmplVars['pagination']) && $tmplVars['pagination']['size'] && strlen($tmplVars['pagination']['size']) > 0){
         $size = $tmplVars['pagination']['size'];
     }
-    $tmplVars['pagination']['total'] = count($completeCollection['tags'][$data]);
 
-    //$size = 10; //testing
     if($size == 0 || $size > count($completeCollection['tags'][$data])){
+        //echo $tmplVars['title'] . " - processPagination - no paging \n";
         //no pages
         $tmplVars[$alias] = $completeCollection['tags'][$data];
         $tmplVars['pagination']['pages'] = 1;
@@ -515,6 +469,7 @@ function processPagination($twig, $outputRoot, $outputDir, $tmplVars, $completeC
         $tmplVars['pagination']['pages'] = count($chunks);
 
         foreach($chunks as $chunk){
+            //echo $tmplVars['title'] . " - processPagination - chunk - $page \n";
             $tmplVars[$alias] = $chunk;
             $realPermalink = $tmplVars["permalink"];  
             $tmplVars["permalink"] = $tmplVars["permalink"] . $page . "/";
@@ -527,13 +482,12 @@ function processPagination($twig, $outputRoot, $outputDir, $tmplVars, $completeC
             $page++;
         }
     }
+    */
 }
 
 function processMarkdown($outputRoot, $outputDir, $converter, $twig, $metadata, $menus, $completeCollection) {
     //sort tags array by key
     ksort($completeCollection['tags'],SORT_NATURAL | SORT_FLAG_CASE);
-    
-    //var_dump($completeCollection);
     
     foreach($completeCollection as $srcKey => $src) {
         foreach($src as $key => $item) {
