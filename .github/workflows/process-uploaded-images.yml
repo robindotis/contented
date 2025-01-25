@@ -32,9 +32,9 @@ on:
     branches:
       - main
     paths:
-      - '_uploads/**'
+      - 'uploads/**'
 env:
-  UPLOAD_FOLDER: '_uploads/**' 
+  UPLOAD_FOLDER: 'uploads/**' 
   IMAGES_FOLDER: 'assets/images'
   MAX_SIZE: 800
 
