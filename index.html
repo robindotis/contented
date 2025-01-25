@@ -4,17 +4,17 @@
         <meta charset="UTF-8">
     <!-- See: https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett">    <title>DIY Blog Contented Docs</title>
+    <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett">    <title>Contented Home</title>
 
     <meta name="description" content="A Do It Yourself Blog">
     
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 
-    <link rel="canonical" href="https://diyblog.robin.is///">
+    <link rel="canonical" href="https://robindotis.github.io//">
     <link rel="me" href="https://github.com/robindotis/">
-    <link rel="alternate" type="application/rss+xml" title="DIY Blog RSS" href="/feed/">
-    <link rel="alternate" href="/feed/index.xml" type="application/atom+xml" title="DIY Blog">
-    <link rel="alternate" href="" type="application/json" title="DIY Blog">
+    <link rel="alternate" type="application/rss+xml" title="Contented RSS" href="/feed/">
+    <link rel="alternate" href="/feed/index.xml" type="application/atom+xml" title="Contented">
+    <link rel="alternate" href="" type="application/json" title="Contented">
     <link rel="icon" href="/assets/images/cw.jpg" type="image/jpeg" sizes="50x50">
 
     <link rel="preload" href="/assets/fonts/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
@@ -34,18 +34,22 @@
             <div class="header-title">
             <hr class="nodisplay" aria-hidden="true">
             <span class="sitetitle">
-                <img class="logo u-logo u-photo" src="/assets/images/logo.jpg" alt="" width="50" height="50">                <a href="/" class="u-url p-name">DIY Blog</a>
+                <img class="logo u-logo u-photo" src="/assets/images/logo.jpg" alt="" width="50" height="50">                <a href="/" class="u-url p-name">Contented</a>
             </span>
             <nav class="subtitle p-note" aria-label="Main">
                 <ul>
 
                                 <li>
                         
-                                                <a href="/about/" class=" ">About</a>
+                                                <a href="/" class="current ">Home</a>
                     </li>
                             <li>
                         
-                                                <a href="/archive/" class=" ">Blog</a>
+                                                <a href="/docs/" class=" ">Docs</a>
+                    </li>
+                            <li>
+                        
+                                                <a href="/news/" class=" ">News</a>
                     </li>
                 
                 </ul>
@@ -53,351 +57,72 @@
             </div>
         </div>
     </header>
-    <main id="site-content"  class="tmpl-page">
+    <main id="site-content"  class="tmpl-home">
         <hr class="nodisplay" aria-hidden="true">
         <div class="main-content">
-          <article class="custom-" id="skip-content-target">
-    <header>
-      <h1>Contented Docs</h1> 
-    </header>
-    <h2>Documentation for Contented</h2>
-<p>Base on this: <a href="https://docs.bearblog.dev/">https://docs.bearblog.dev/</a></p>
-<h3>Why Contented?</h3>
-<blockquote>
-<p>Let a hundred blogging tools bloom; let a hundred schools of thought blog.</p>
-<p>-- With apologies to <cite><a href="https://en.wikipedia.org/wiki/Hundred_Flowers_Campaign">Mao Zedong</a></cite></p>
-</blockquote>
-<p>The idea behind Contented is to encourage building, hosting and managing independent blogs over the use one of the common blogging services.</p>
-<p>Why yet another blogging tool? Because the more independent tools, the more means of expression there is are and the more ways of thinking are encouraged.</p>
-<p>Contented is not a service. It is an imperfect blogging tool. It is not intended for those who want to get started wrriting content right now. Rather it is designed for those who are willing to get their hands a little bit dirty. No coding knowledge is needed to start using Contented. The setup instructions are easy to follow and a new blog can be online in a couple of minutes.</p>
-<p>A good dose of patience mixed with sprinkle of perseverance will go a long way to in helping you personalise your blog. Things might go wrong, but you will fix problems in no time.</p>
-<p>If this is you, <a href="#table-of-contents">keep reading</a>, if not, these alternative independent online blogging services are highly recommended:</p>
-<ul>
-<li><a href="https://bearblog.dev/">Bear Blog</a></li>
-<li><a href="https://pika.page/">PIKA</a></li>
-<li><a href="https://micro.blog/">micro.blog</a></li>
-</ul>
-<h2>Table of Contents</h2>
-<ol>
-<li><a href="#installation-guide">Installation Guide</a>
-<ol>
-<li><a href="#getting-started">Getting started</a></li>
-</ol>
-</li>
-<li><a href="#user-guide">User Guide</a>
-<ol>
-<li><a href="#site-tructure">Site structure</a>
-<ol>
-<li><a href="#folders">Folders</a></li>
-<li><a href="#files">Files</a></li>
-</ol>
-</li>
-<li><a href="#file-processing">File processing</a></li>
-<li><a href="#file-structure">File structure</a>
-<ol>
-<li><a href="#front-matter">Front Matter</a></li>
-<li><a href="#content">Content</a></li>
-</ol>
-</li>
-<li><a href="#menus">Menus</a></li>
-<li><a href="#metadata">Metadata</a></li>
-</ol>
-</li>
-<li><a href="#references">References</a></li>
-</ol>
-<h2>Installation Guide</h2>
-<h3>Getting started</h3>
-<p>To use Contented a <a href="https://github.com/">GitHub</a> account is needed. Everything is done in GitHub: writing content, generating the site and publishing the pages. No other tool is needed other than a browser.</p>
-<ol>
-<li>First of all sign up for a <a href="https://github.com/signup">GitHub account</a> and then login to GitHub.</li>
-<li>Next make a fork of the contented by forking the contented repository. Name the fork username.github.io</li>
-<li>Allow the actions to run.</li>
-<li>Run the &quot;Build site&quot; action.</li>
-<li>Settings -&gt; Pages -&gt; Deploy from Branch -&gt; gh-pages -&gt; Save</li>
-<li>Wait one minute, reload the page, follow the link</li>
-<li>Blog is live.</li>
-</ol>
-<p>(see contentedweb as an example)</p>
-<p>Notes:</p>
-<ul>
-<li>Start with simple setup of public rep names username.github.io and using branches for the deployment.</li>
-<li>have advanced instructions on how to setup to run with private repos and external hosting.</li>
-</ul>
-<p>Now explore GitHub a little. The <a href="https://docs.github.com/en/get-started">GitHub docs</a> are very comprehensive. Being comfortable writing content and editing configuration files will be helpful, but this can also be learned. The <a href="https://docs.github.com/en/get-started/writing-on-github">GitHub Writing guide</a> is maybe a good place to start for those new to GitHub.</p>
-<h3>GitHub Pages</h3>
-<p>Pay attention to remove CNAME if the site is not loading properly. It should be removed if running under username.github.io. It should only be add if running under a custom domain name.</p>
-<h2>User Guide</h2>
-<h3>Site tructure</h3>
-<h4>Folders</h4>
-<table>
-<thead>
-<tr>
-<th>Folder</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>posts</td>
-<td>Contains the blog posts in <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github">GitHub's Markdown</a> format. Subfolders are allowed to help find the posts (eg by year), but it won't affect how the posts are processedin GitHub's Markdown format.</td>
-</tr>
-<tr>
-<td>pages</td>
-<td>Contains the site pages. These are standalone pages that will not be processed as posts and therefore won't appear in your feed.</td>
-</tr>
-<tr>
-<td>assets</td>
-<td>Contains static files, such as images, styling (<a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a>) and scripting (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a>). Folder will be copied as is to your website.</td>
-</tr>
-<tr>
-<td>feed</td>
-<td><strong>DON'T TOUCH</strong> Contains code to generate the <a href="https://en.wikipedia.org/wiki/RSS">RSS feed</a>.</td>
-</tr>
-<tr>
-<td>archive</td>
-<td>Contains pages to display the lists of posts.</td>
-</tr>
-<tr>
-<td>_data</td>
-<td>Contains configuration files, in <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> format.</td>
-</tr>
-<tr>
-<td>_uploads</td>
-<td>Folder into which to upload images to process them into the <a href="https://en.wikipedia.org/wiki/WebP">WEBP</a> image format.</td>
-</tr>
-<tr>
-<td>themes</td>
-<td>Contains template for the site design, using the <a href="https://docs.github.com/en/get-started/writing-on-github">Twig</a> templating system.</td>
-</tr>
-</tbody>
-</table>
-<h4>Files</h4>
-<table>
-<thead>
-<tr>
-<th>Page</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>index.php</td>
-<td><strong>DON'T TOUCH</strong> Processes the markdown files and generates the static site.</td>
-</tr>
-<tr>
-<td>robots.txt</td>
-<td>Tell search engines how to index the site. See <a href="https://developers.google.com/search/docs/crawling-indexing/robots/intro">Google for further information on robots.txt</a>. Modify only if needed.</td>
-</tr>
-<tr>
-<td>CNAME</td>
-<td>Needed by GitHub Pages to read your custom domain if used.</td>
-</tr>
-<tr>
-<td>pages/home.md</td>
-<td><strong>DON'T RENAME</strong> Content to display on the home page.</td>
-</tr>
-<tr>
-<td>pages/404.md</td>
-<td><strong>DON'T RENAME</strong> Content to display when a page is not found.</td>
-</tr>
-<tr>
-<td>pages/sitemap.md</td>
-<td><strong>DON'T TOUCH</strong> Need in order to generate a <a href="https://www.sitemaps.org/protocol.html">sitemap.xml file</a> used by <a href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap">search engines to index the site</a>.</td>
-</tr>
-</tbody>
-</table>
-<h3>File processing</h3>
-<p>All content is stored in Markdown file, such as home.md.  Only files with the extension .md are processed by the engine. All other file types are ignored unless they are static simply files to be copied.</p>
-<p>Each .md file is converted to an index.html file. This file is placed in a folder with the same path and name as the .md file, unless specified otherwise in the Front Matter configuration for the file using the &quot;permalink&quot; attribute.</p>
-<p>For example the file:</p>
-<pre><code>/posts/2023/summmer.md
-</code></pre>
-<p>would generated a file:</p>
-<pre><code>/posts/2023/summmer/index.html
-</code></pre>
-<p>which would be accessible using the URL:</p>
-<pre><code>/posts/2023/summmer/
-</code></pre>
-<p>And a file:</p>
-<pre><code>/pages/home.md
-</code></pre>
-<p>With the following front matter attribute:</p>
-<pre><code>permalink: /
-</code></pre>
-<p>Would generate file a here:</p>
-<pre><code>/index.html
-</code></pre>
-<p>Which would be accessible using this URL:</p>
-<pre><code>/
-</code></pre>
-<p>TO DO: explain slug &quot;permalink&quot;: &quot;//&quot; as in pages.json.</p>
-<h3>File structure</h3>
-<p>All Markdown files, whether posts or pages have two main parts.</p>
-<p>Firstly, a Front Matter part, which contains the configuration details for the file and is always at the beginning of the file.</p>
-<p>Secondly, the rest of the file which contains the content.</p>
-<h4>Front Matter</h4>
-<p>The Front Matter section of the file has a specific structure which <strong>must</strong> be followed.</p>
-<p>Firstly it always starts and ends with the line: <code>---</code>.</p>
-<p>Secondly it contains attribute / value pairs, one per line, eg: <code>title: Welcome to my blog</code>. The order of the attributes within the Front Matter is not important.</p>
-<p>If the attribute contains a list of values, it would be spread over multiple lines, eg:</p>
-<pre><code>tags:
-- post
-- travel
-- photo 
-</code></pre>
-<p>The Front Matter of a typical post might therefore look something like this:</p>
-<pre><code>---
-title: Happy New Year
-date: 2025-01-01 08:00:00
-tags:
-- celebration
-- new year
-- photo
----
-</code></pre>
-<p>DC understands the following Front Matter attributes. Any other attributes will be ignored.</p>
-<table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>title</td>
-<td>Free text</td>
-</tr>
-<tr>
-<td>date</td>
-<td>ISO format YYYY-MM-DD hh:mm:ss eg &quot;2025-01-01 08:00:00&quot;</td>
-</tr>
-<tr>
-<td>permalink</td>
-<td>Any valid URL path, eg &quot;/about/&quot;</td>
-</tr>
-<tr>
-<td>tags</td>
-<td>Free text list of tags, one per line</td>
-</tr>
-<tr>
-<td>prefix</td>
-<td>Free text to add before the page name in the title bar</td>
-</tr>
-<tr>
-<td>others?</td>
-<td>TBD</td>
-</tr>
-</tbody>
-</table>
-<p>Note: you do not need to enclose the value in quotes in the Front Matter section.</p>
-<h3>Content</h3>
-<p>In DC all content is written using <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax">GitHub's implementation of Markdown</a>.</p>
-<p>Note that Markdown can also contain HTML. So any tags for which there is no Markdown equivalent can be written in HTML.</p>
-<p>A typical Markdown content file might therefore look something like this:</p>
-<pre><code>---
-title: Happy New Year
-date: 2025-01-01 08:00:00
-tags:
-- celebration
-- new year
-- photo
----
+          <article class="welcome" id="skip-content-target">
+  <h1>👋 Welcome to the Do It Yourself Blog!</h1>
+  <p>This is the home page of your blog!</p>
+</article>
 
-## Welcome
+  <div class="posts-list">
+                  <hr aria-hidden="true">
+        <article class="custom- h-entry">
+          <header>
+            <h2 class="p-name"><a href="/posts/drafts/post-four/" class="u-url">Post Four</a></h2>
+                                  <time datetime="February 1, 2025 12:00" class="dt-published">
+            <span class="date-day">01</span> 
+            <span class="date-month">February</span>, 
+            <span class="date-year">2025</span>
+          </time>
+          </header>
+          <div class="e-content">
+            <h2>Post Four</h2>
+<p>This is the fourth post on the blog</p>
 
-This is first blog post, I hope you enjoy this site.
-
-&lt;blockquote&gt;Doing It Yourself Rocks!&lt;/blockquote&gt;
-
-</code></pre>
-<h3>Archives</h3>
-<p>Archives are lists of all the posts matching a specific tag.</p>
-<p>They use the following Front Matter.</p>
-<pre><code>---
-title: Coding 
-pagination:
-  data: web
-  alias: posts
-
----
-</code></pre>
-<p>data is tag name to include in the archive.</p>
-<h3>Menus</h3>
-<p>Menus can be defined for the header and footer. This is done in the file &quot;_data/menus.yaml&quot;. The syntax of this file is a little more complicated as it is written in YAML.</p>
-<p><a href="https://www.yaml.info/learn/index.html">Learn more about the YAML syntax here</a>.</p>
-<p>As an example this file menus.yaml file for a site with two menus. A header and a footer menu:</p>
-<pre><code>- name: header
-  items:
-    - title: Home
-      link: /home/
-    - title: About
-      link: /about/
-    - title: Blog
-      link: /blog/
-    - title: /walking
-      link: /walking/
-      pre: 'and '
-    - title: dog 🐕‍🦺
-      link: /tagging/angie/
-      pre: 'the '
-      post: '. '
-- name: footer
-  items:
-    - title: RSS
-      link: /feed/
-      class: ally-statement
-    - title: Accessibility
-      link: /accessibility/
-    - title: Site info
-      link: /my-site/
-</code></pre>
-<h3>Metadata</h3>
-<p>Metadata for the site can be defined and is stored in the file &quot;_data/metadata.yaml&quot;.</p>
-<p>This is an example the metadata.yaml file for a basic site:</p>
-<pre><code>title: Robin's
-url: https://www.robin.is/
-urlShort: robin.is
-language: en
-description: Setup and host your own independent blog
-startYear: 2025
-relMe: https://github.com/robindotis/
-gitHubRepo: https://github.com/robindotis/robin.is/
-theme: sky
-feed:
-  subtitle: Setup and host your own independent blog
-  filename: index.xml
-  path: /feed/index.xml
-  id: https://www.robin.is/
-author:
-  name: robindotis
-  email: admin@robin.is
-  url: https://www.robin.is/about/
-  webmention: https://github.com/robindotis/
-</code></pre>
-<h2>References</h2>
-<p>Below are some excellent links to further technical information and documentation on the technologies used for this site generator.</p>
-<ul>
-<li>Writing the content with <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax">Markdown</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a>.</li>
-<li>Styling the site with (<a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a>).</li>
-<li>Scripting functionality with (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a>).</li>
-<li>Modifying the sites structure using the <a href="https://twig.symfony.com/">Twig template language</a>.</li>
-<li>For the really adventurous: adapting the site generation engine using <a href="https://www.w3schools.com/php/">PHP</a>.</li>
-<li>Webhooks eg for EU hosting</li>
-<li>GitHub Pages</li>
-<li>RSS, sitemap, SEO etc</li>
-<li><a href="https://stefanbohacek.com/blog/resources-for-keeping-the-web-free-open-and-poetic/">https://stefanbohacek.com/blog/resources-for-keeping-the-web-free-open-and-poetic/</a></li>
-</ul>
-
-    <footer>
-            Created on:           <time datetime="January 19, 2025 12:00" class="dt-published">
-            <span class="date-day">19</span> 
+          </div>
+                      <div class="tagged"><strong>Tagged: </strong><a href="/tagging/general/" class="post-tag" rel="tag">general</a> &nbsp;<a href="/tagging/post/" class="post-tag" rel="tag">post</a> &nbsp;<a href="/tagging/four/" class="post-tag" rel="tag">four</a> &nbsp;  </div>
+        </article>
+                        <hr aria-hidden="true">
+        <article class="custom- h-entry">
+          <header>
+            <h2 class="p-name"><a href="/posts/post-three/" class="u-url">Post Three</a></h2>
+                                  <time datetime="January 31, 2025 12:00" class="dt-published">
+            <span class="date-day">31</span> 
             <span class="date-month">January</span>, 
             <span class="date-year">2025</span>
           </time>
- 
-          </footer>
-  </article>
+          </header>
+          <div class="e-content">
+            <h2>Post Thee</h2>
+<p>This is the third post on the blog</p>
+
+          </div>
+                      <div class="tagged"><strong>Tagged: </strong><a href="/tagging/general/" class="post-tag" rel="tag">general</a> &nbsp;<a href="/tagging/post/" class="post-tag" rel="tag">post</a> &nbsp;<a href="/tagging/three/" class="post-tag" rel="tag">three</a> &nbsp;  </div>
+        </article>
+                        <hr aria-hidden="true">
+        <article class="custom- h-entry">
+          <header>
+            <h2 class="p-name"><a href="/posts/post-two/" class="u-url">Post Two</a></h2>
+                                  <time datetime="January 29, 2025 12:00" class="dt-published">
+            <span class="date-day">29</span> 
+            <span class="date-month">January</span>, 
+            <span class="date-year">2025</span>
+          </time>
+          </header>
+          <div class="e-content">
+            <h2>Post Two</h2>
+<p>This is the second post on the blog</p>
+
+          </div>
+                      <div class="tagged"><strong>Tagged: </strong><a href="/tagging/general/" class="post-tag" rel="tag">general</a> &nbsp;<a href="/tagging/post/" class="post-tag" rel="tag">post</a> &nbsp;<a href="/tagging/two/" class="post-tag" rel="tag">two</a> &nbsp;  </div>
+        </article>
+                      
+  </div> 
+  <hr aria-hidden="true">
+  <div class="see-all-posts">
+    <a href="/archive/">See all the posts</a>
+  </div>
         </div> 
     </main>
         <footer>
@@ -410,12 +135,12 @@ author:
             </div>
             <div>
                 <p>
-                diyblog.robin.is is a ***contented*** blog. 
-                <span class="emojis"><a href="https://github.com/robindotis/robin.is/blob/master/pages/docs.md" title="Edit on GitHub"><img id="gh-icon" src="/assets/images/github-mark-small.png" alt="Edit on GitHub"/></a></span>                </p>
+                robindotis.github.io is a <em><strong>contented</strong></em> blog. 
+                <span class="emojis"><a href="https://github.com/robindotis/robin.is/blob/master/pages/home.md" title="Edit on GitHub"><img id="gh-icon" src="/assets/images/github-mark-small.png" alt="Edit on GitHub"/></a></span>                </p>
             </div>
             <div class="lastrun">
                 <p>
-                Last updated on 25/01/2025 at 07:01:45.
+                Last updated on 25/01/2025 at 09:01:24.
                 </p>
             </div>
             <div class="copyright">
@@ -425,6 +150,6 @@ author:
             </div>
         </div>
     </footer>
-    <!-- Current page: // -->
+    <!-- Current page: / -->
   </body>
 </html>

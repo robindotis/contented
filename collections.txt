@@ -290,7 +290,7 @@ Array
             [pages/tagging.md] => Array
                 (
                     [template] => tagging.html.twig
-                    [permalink] => /{{ page.fileSlug }}/
+                    [permalink] => /{{ filename }}/
                     [title] => Tags
                     [inputPath] => pages/tagging.md
                     [date] => 253402300799
@@ -302,8 +302,8 @@ Array
             [pages/archive.md] => Array
                 (
                     [template] => archive.html.twig
-                    [permalink] => /{{ page.fileSlug }}/
-                    [title] => Archiving
+                    [permalink] => /news/
+                    [title] => News
                     [pagination] => Array
                         (
                             [data] => post
@@ -348,7 +348,7 @@ Array
             [pages/about.md] => Array
                 (
                     [template] => page.html.twig
-                    [permalink] => /{{ page.fileSlug }}/
+                    [permalink] => /{{ filename }}/
                     [title] => About Me
                     [date] => 2025-01-31 12:00:00
                     [inputPath] => pages/about.md
@@ -361,7 +361,7 @@ Array
             [pages/accessible.md] => Array
                 (
                     [template] => page.html.twig
-                    [permalink] => /{{ page.fileSlug }}/
+                    [permalink] => /{{ filename }}/
                     [title] => Accessibility Statement
                     [date] => 2025-01-31 12:00:00
                     [inputPath] => pages/accessible.md
@@ -393,22 +393,20 @@ Array
             [pages/docs.md] => Array
                 (
                     [template] => page.html.twig
-                    [permalink] => /{{ page.fileSlug }}/
-                    [title] => Contented Docs
-                    [date] => 2025-01-19 12:00:00
+                    [permalink] => /{{ filename }}/
+                    [title] => Documentation
+                    [date] => 2025-01-25 12:00:00
                     [inputPath] => pages/docs.md
-                    [content] => <h2>Documentation for Contented</h2>
-<p>Base on this: <a href="https://docs.bearblog.dev/">https://docs.bearblog.dev/</a></p>
-<h3>Why Contented?</h3>
+                    [content] => <h2>Why Contented?</h2>
+<p>Note: Base on this: <a href="https://docs.bearblog.dev/">https://docs.bearblog.dev/</a></p>
 <blockquote>
 <p>Let a hundred blogging tools bloom; let a hundred schools of thought blog.</p>
 <p>-- With apologies to <cite><a href="https://en.wikipedia.org/wiki/Hundred_Flowers_Campaign">Mao Zedong</a></cite></p>
 </blockquote>
-<p>The idea behind Contented is to encourage building, hosting and managing independent blogs over the use one of the common blogging services.</p>
+<p>The idea behind <em><strong>Contented</strong></em> is to encourage building, hosting and managing independent blogs over the use one of the common blogging services.</p>
 <p>Why yet another blogging tool? Because the more independent tools, the more means of expression there is are and the more ways of thinking are encouraged.</p>
-<p>Contented is not a service. It is an imperfect blogging tool. It is not intended for those who want to get started wrriting content right now. Rather it is designed for those who are willing to get their hands a little bit dirty. No coding knowledge is needed to start using Contented. The setup instructions are easy to follow and a new blog can be online in a couple of minutes.</p>
-<p>A good dose of patience mixed with sprinkle of perseverance will go a long way to in helping you personalise your blog. Things might go wrong, but you will fix problems in no time.</p>
-<p>If this is you, <a href="#table-of-contents">keep reading</a>, if not, these alternative independent online blogging services are highly recommended:</p>
+<p><em><strong>Contented</strong></em> is not a service. It is a straightforward tool for creating a website. Whilst it is not a one click tool, no coding knowledge is needed to start using <em><strong>Contented</strong></em>. There is a basic procedure to follow, using GitHub, in order to get started. Instructions are provided and are aimed at those with no prior experience of creating websites or using GitHub. A new website can be online in a couple of minutes following the instructions.</p>
+<p>It helps if you are willing to play around a bit and explore the tool. If this is you, <a href="#table-of-contents">keep reading</a>, if not, these alternative independent online blogging services are highly recommended:</p>
 <ul>
 <li><a href="https://bearblog.dev/">Bear Blog</a></li>
 <li><a href="https://pika.page/">PIKA</a></li>
@@ -444,10 +442,10 @@ Array
 </ol>
 <h2>Installation Guide</h2>
 <h3>Getting started</h3>
-<p>To use Contented a <a href="https://github.com/">GitHub</a> account is needed. Everything is done in GitHub: writing content, generating the site and publishing the pages. No other tool is needed other than a browser.</p>
+<p>To use <em><strong>Contented</strong></em> a <a href="https://github.com/">GitHub</a> account is needed. Everything is done in GitHub: writing content, generating the site and publishing the pages. No other tool is needed other than a browser.</p>
 <ol>
 <li>First of all sign up for a <a href="https://github.com/signup">GitHub account</a> and then login to GitHub.</li>
-<li>Next make a fork of the contented by forking the contented repository. Name the fork username.github.io</li>
+<li>Next make a fork of <em><strong>Contented</strong></em> by forking the <em><strong>Contented</strong></em> repository. Name the fork username.github.io</li>
 <li>Allow the actions to run.</li>
 <li>Run the &quot;Build site&quot; action.</li>
 <li>Settings -&gt; Pages -&gt; Deploy from Branch -&gt; gh-pages -&gt; Save</li>
@@ -475,39 +473,36 @@ Array
 </thead>
 <tbody>
 <tr>
-<td>posts</td>
-<td>Contains the blog posts in <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github">GitHub's Markdown</a> format. Subfolders are allowed to help find the posts (eg by year), but it won't affect how the posts are processedin GitHub's Markdown format.</td>
+<td>assets</td>
+<td>Contains static files, such as images, styling (<a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a>) and scripting (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a>). Folder will be copied as is to your website.</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Contains configuration files, in <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> format.</td>
+</tr>
+<tr>
+<td>feed</td>
+<td>Contains code to generate the <a href="https://en.wikipedia.org/wiki/RSS">RSS feed</a>.</td>
 </tr>
 <tr>
 <td>pages</td>
 <td>Contains the site pages. These are standalone pages that will not be processed as posts and therefore won't appear in your feed.</td>
 </tr>
 <tr>
-<td>assets</td>
-<td>Contains static files, such as images, styling (<a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a>) and scripting (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a>). Folder will be copied as is to your website.</td>
-</tr>
-<tr>
-<td>feed</td>
-<td><strong>DON'T TOUCH</strong> Contains code to generate the <a href="https://en.wikipedia.org/wiki/RSS">RSS feed</a>.</td>
-</tr>
-<tr>
-<td>archive</td>
-<td>Contains pages to display the lists of posts.</td>
-</tr>
-<tr>
-<td>_data</td>
-<td>Contains configuration files, in <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> format.</td>
-</tr>
-<tr>
-<td>_uploads</td>
-<td>Folder into which to upload images to process them into the <a href="https://en.wikipedia.org/wiki/WebP">WEBP</a> image format.</td>
+<td>posts</td>
+<td>Contains the blog posts in <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github">GitHub's Markdown</a> format. Subfolders are allowed to help find the posts (eg by year), but it won't affect how the posts are processed in GitHub's Markdown format.</td>
 </tr>
 <tr>
 <td>themes</td>
 <td>Contains template for the site design, using the <a href="https://docs.github.com/en/get-started/writing-on-github">Twig</a> templating system.</td>
 </tr>
+<tr>
+<td>uploads</td>
+<td>Folder into which to upload images to process them into the <a href="https://en.wikipedia.org/wiki/WebP">WEBP</a> image format.</td>
+</tr>
 </tbody>
 </table>
+<p>Only touch the <strong>.github</strong> folder if you know what you are doing. This contains the code that generates and publishes the website.</p>
 <h4>Files</h4>
 <table>
 <thead>
@@ -518,34 +513,35 @@ Array
 </thead>
 <tbody>
 <tr>
-<td>index.php</td>
-<td><strong>DON'T TOUCH</strong> Processes the markdown files and generates the static site.</td>
-</tr>
-<tr>
 <td>robots.txt</td>
-<td>Tell search engines how to index the site. See <a href="https://developers.google.com/search/docs/crawling-indexing/robots/intro">Google for further information on robots.txt</a>. Modify only if needed.</td>
+<td>Defines how search engines index the site. See <a href="https://developers.google.com/search/docs/crawling-indexing/robots/intro">Google for further information on robots.txt</a>. Modify only if needed.</td>
 </tr>
 <tr>
-<td>CNAME</td>
-<td>Needed by GitHub Pages to read your custom domain if used.</td>
+<td>_CNAME</td>
+<td>Contains the custom domain if there is one. Rename it to &quot;CNAME&quot; if using a custom domain name with GitHub Pages. Otherwise ignore.</td>
 </tr>
 <tr>
 <td>pages/home.md</td>
-<td><strong>DON'T RENAME</strong> Content to display on the home page.</td>
+<td>Content for the homepage. The homepage markdown file should have the permalink front matter attribute defined as: <code>permalink: /</code>. One page, and only one page, should have this set otherwise the site will not have a homepage and visiting the base URL will return a page not found.</td>
 </tr>
 <tr>
 <td>pages/404.md</td>
-<td><strong>DON'T RENAME</strong> Content to display when a page is not found.</td>
+<td>Content to display when a page is not found. The page not found markdown file should have the permalink front matter attribute defined as: <code>permalink: /404.html</code>.</td>
+</tr>
+<tr>
+<td>feed/index.md</td>
+<td>Generates the RSS feed in Atom format.</td>
 </tr>
 <tr>
 <td>pages/sitemap.md</td>
-<td><strong>DON'T TOUCH</strong> Need in order to generate a <a href="https://www.sitemaps.org/protocol.html">sitemap.xml file</a> used by <a href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap">search engines to index the site</a>.</td>
+<td>Generate a <a href="https://www.sitemaps.org/protocol.html">sitemap.xml file</a> used by <a href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap">search engines to index the site</a>. Remove if a sitemap is not needed (not recommended).</td>
 </tr>
 </tbody>
 </table>
+<p>Only touch the <strong>index.php</strong> file if you know what you are doing. This contains the code that processes the markdown files to generate the static HTML files.</p>
 <h3>File processing</h3>
-<p>All content is stored in Markdown file, such as home.md.  Only files with the extension .md are processed by the engine. All other file types are ignored unless they are static simply files to be copied.</p>
-<p>Each .md file is converted to an index.html file. This file is placed in a folder with the same path and name as the .md file, unless specified otherwise in the Front Matter configuration for the file using the &quot;permalink&quot; attribute.</p>
+<p>All content is stored in Markdown file, such as home.md.  Only files with the extension .md are processed onverted to HTML files. All other file types are ignored unless they are files in the assets folder, which are then simply copied.</p>
+<p>Each markdown file, those with extension .md, is converted to an index.html file. This file is placed in a folder with the same path and name as the markdown file, unless specified otherwise in the Front Matter configuration for the file using the &quot;permalink&quot; attribute.</p>
 <p>For example the file:</p>
 <pre><code>/posts/2023/summmer.md
 </code></pre>
@@ -567,7 +563,7 @@ Array
 <p>Which would be accessible using this URL:</p>
 <pre><code>/
 </code></pre>
-<p>TO DO: explain slug &quot;permalink&quot;: &quot;/{{ page.fileSlug }}/&quot; as in pages.json.</p>
+<p>TO DO: explain slug &quot;permalink&quot;: &quot;/{{ filename }}/&quot; as in pages.json.</p>
 <h3>File structure</h3>
 <p>All Markdown files, whether posts or pages have two main parts.</p>
 <p>Firstly, a Front Matter part, which contains the configuration details for the file and is always at the beginning of the file.</p>
@@ -592,7 +588,7 @@ tags:
 - photo
 ---
 </code></pre>
-<p>DC understands the following Front Matter attributes. Any other attributes will be ignored.</p>
+<p><em><strong>Contented</strong></em> understands the following Front Matter attributes. Any other attributes will be ignored.</p>
 <table>
 <thead>
 <tr>
@@ -629,7 +625,7 @@ tags:
 </table>
 <p>Note: you do not need to enclose the value in quotes in the Front Matter section.</p>
 <h3>Content</h3>
-<p>In DC all content is written using <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax">GitHub's implementation of Markdown</a>.</p>
+<p>In <em><strong>Contented</strong></em>. all content is written using <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax">GitHub's implementation of Markdown</a>.</p>
 <p>Note that Markdown can also contain HTML. So any tags for which there is no Markdown equivalent can be written in HTML.</p>
 <p>A typical Markdown content file might therefore look something like this:</p>
 <pre><code>---
