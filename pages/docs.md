@@ -79,14 +79,15 @@ Pay attention to remove CNAME if the site is not loading properly. It should be 
 
 | Folder | Description |
 | --- | --- |
-| posts | Contains the blog posts in [GitHub's Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github) format. Subfolders are allowed to help find the posts (eg by year), but it won't affect how the posts are processedin GitHub's Markdown format. |
+| assets | Contains static files, such as images, styling ([CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)) and scripting ([JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)). Folder will be copied as is to your website. |
+| data | Contains configuration files, in [JSON](https://en.wikipedia.org/wiki/JSON) format. |
+| feed | Contains code to generate the [RSS feed](https://en.wikipedia.org/wiki/RSS). |
 | pages | Contains the site pages. These are standalone pages that will not be processed as posts and therefore won't appear in your feed. |
-|  assets | Contains static files, such as images, styling ([CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)) and scripting ([JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)). Folder will be copied as is to your website. |
-|  feed | **DON'T TOUCH** Contains code to generate the [RSS feed](https://en.wikipedia.org/wiki/RSS). |
-|  archive | Contains pages to display the lists of posts. |
-|  _data | Contains configuration files, in [JSON](https://en.wikipedia.org/wiki/JSON) format. |
-|  _uploads | Folder into which to upload images to process them into the [WEBP](https://en.wikipedia.org/wiki/WebP) image format. |
-|  themes | Contains template for the site design, using the [Twig](https://docs.github.com/en/get-started/writing-on-github) templating system. |
+| posts | Contains the blog posts in [GitHub's Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github) format. Subfolders are allowed to help find the posts (eg by year), but it won't affect how the posts are processed in GitHub's Markdown format. |
+| themes | Contains template for the site design, using the [Twig](https://docs.github.com/en/get-started/writing-on-github) templating system. |
+| uploads | Folder into which to upload images to process them into the [WEBP](https://en.wikipedia.org/wiki/WebP) image format. |
+
+Only touch the **.github** folder if you know what you are doing. This contains the code that generates and publishes the website. 
 
 #### Files
 
@@ -94,15 +95,18 @@ Pay attention to remove CNAME if the site is not loading properly. It should be 
 | --- | --- |
 | index.php | **DON'T TOUCH** Processes the markdown files and generates the static site.|
 | robots.txt | Tell search engines how to index the site. See [Google for further information on robots.txt](https://developers.google.com/search/docs/crawling-indexing/robots/intro). Modify only if needed. |
-| CNAME | Needed by GitHub Pages to read your custom domain if used. |
-| pages/home.md | **DON'T RENAME** Content to display on the home page. |
-| pages/404.md |  **DON'T RENAME** Content to display when a page is not found. |
-| pages/sitemap.md |  **DON'T TOUCH** Need in order to generate a [sitemap.xml file](https://www.sitemaps.org/protocol.html) used by [search engines to index the site](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap). |
+| _CNAME | Contains the custom domain if there is one. Rename it to "CNAME" if using a custom domain name with GitHub Pages. Otherwise ignore. |
+| pages/home.md | Content for the homepage. Homepage is defined by having `permalink: /` in the front matter. One page, and only one page, should have this set otherwise the site will not have a homepage and visiting the base URL will return a page not found. |
+| pages/404.md | Content to display when a page is not found. The page not found file should have `permalink: /404.html` set in the front matter.  |
+| feed/index.md |  Content to display when a page is not found. |
+| pages/sitemap.md |  Generate a [sitemap.xml file](https://www.sitemaps.org/protocol.html) used by [search engines to index the site](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap). Remove if a sitemap is not needed (not recommended). |
+
+Only touch the **index.php** file if you know what you are doing. This contains the code that processes the markdown files to generate the static HTML files.
 
 ### File processing
-All content is stored in Markdown file, such as home.md.  Only files with the extension .md are processed by the engine. All other file types are ignored unless they are static simply files to be copied.
+All content is stored in Markdown file, such as home.md.  Only files with the extension .md are processed onverted to HTML files. All other file types are ignored unless they are files in the assets folder, which are then simply copied.
 
-Each .md file is converted to an index.html file. This file is placed in a folder with the same path and name as the .md file, unless specified otherwise in the Front Matter configuration for the file using the "permalink" attribute.
+Each markdown file, those with extension .md, is converted to an index.html file. This file is placed in a folder with the same path and name as the markdown file, unless specified otherwise in the Front Matter configuration for the file using the "permalink" attribute.
 
 For example the file:
 
@@ -146,7 +150,7 @@ Which would be accessible using this URL:
 /
 ```
 
-TO DO: explain slug "permalink": "/{{ page.fileSlug }}/" as in pages.json.
+TO DO: explain slug "permalink": "/{{ filename }}/" as in pages.json.
 
 ### File structure
 All Markdown files, whether posts or pages have two main parts. 
