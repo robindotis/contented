@@ -25,7 +25,7 @@ echo $startMem .''.' MB';
 $sourceRoot = ".";
 $outputRoot = ".";
 $staticDirs = ['assets'];
-$staticFiles = ['CNAME','robots.txt','feed/pretty-feed-v3.xsl','feed/.htaccess'];
+$staticFiles = ['CNAME','robots.txt','feed/pretty-feed-v3.xsl'];
 $sourceDirs = ['posts', 'pages', 'feed'];
 $outputDir = '_site';
 $templatesDir = __DIR__ . '/themes/default/templates';

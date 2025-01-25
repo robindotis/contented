@@ -1,9 +1,11 @@
 - name: header
   items:
-    - title: About
-      link: /about/
-    - title: Blog
-      link: /archive/
+    - title: Home
+      link: /
+    - title: Docs
+      link: /docs/
+    - title: News
+      link: /news/
 - name: footer
   items:
     - title: RSS

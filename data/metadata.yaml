@@ -1,6 +1,6 @@
-title: DIY Blog
-url: https://diyblog.robin.is/
-urlShort: diyblog.robin.is
+title: Contented
+url: https://robindotis.github.io/
+urlShort: robindotis.github.io
 language: en
 description: A Do It Yourself Blog
 logo: /assets/images/logo.jpg
@@ -10,10 +10,10 @@ gitHubRepo: https://github.com/robindotis/robin.is/
 theme: sky
 clacksOverhead: GNU Terry Pratchett
 feed:
-  subtitle: A Do It Yourself Blog
+  subtitle: Contented
   filename: index.xml
   path: /feed/index.xml
-  id: https://diyblog.robin.is/
+  id: https://robindotis.github.io/
 author:
   name: robindotis
   email: admin@robin.is

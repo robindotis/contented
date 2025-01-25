@@ -1,27 +1,23 @@
 ---
-title: Contented Docs
-date: 2025-01-19 12:00:00
+title: Documentation
+date: 2025-01-25 12:00:00
 ---
 
-## Documentation for Contented
+## Why Contented?
 
-Base on this: https://docs.bearblog.dev/
-
-### Why Contented?
+Note: Base on this: https://docs.bearblog.dev/
 
 > Let a hundred blogging tools bloom; let a hundred schools of thought blog.
 >
 > -- With apologies to <cite>[Mao Zedong](https://en.wikipedia.org/wiki/Hundred_Flowers_Campaign)</cite>
 
-The idea behind Contented is to encourage building, hosting and managing independent blogs over the use one of the common blogging services. 
+The idea behind ***Contented*** is to encourage building, hosting and managing independent blogs over the use one of the common blogging services. 
 
 Why yet another blogging tool? Because the more independent tools, the more means of expression there is are and the more ways of thinking are encouraged. 
 
-Contented is not a service. It is an imperfect blogging tool. It is not intended for those who want to get started wrriting content right now. Rather it is designed for those who are willing to get their hands a little bit dirty. No coding knowledge is needed to start using Contented. The setup instructions are easy to follow and a new blog can be online in a couple of minutes.
+***Contented*** is not a service. It is a straightforward tool for creating a website. Whilst it is not a one click tool, no coding knowledge is needed to start using ***Contented***. There is a basic procedure to follow, using GitHub, in order to get started. Instructions are provided and are aimed at those with no prior experience of creating websites or using GitHub. A new website can be online in a couple of minutes following the instructions. 
 
-A good dose of patience mixed with sprinkle of perseverance will go a long way to in helping you personalise your blog. Things might go wrong, but you will fix problems in no time.
-
-If this is you, [keep reading](#table-of-contents), if not, these alternative independent online blogging services are highly recommended:
+It helps if you are willing to play around a bit and explore the tool. If this is you, [keep reading](#table-of-contents), if not, these alternative independent online blogging services are highly recommended:
 
 * [Bear Blog](https://bearblog.dev/)
 * [PIKA](https://pika.page/)
@@ -47,10 +43,10 @@ If this is you, [keep reading](#table-of-contents), if not, these alternative in
 
 ### Getting started
 
-To use Contented a [GitHub](https://github.com/) account is needed. Everything is done in GitHub: writing content, generating the site and publishing the pages. No other tool is needed other than a browser.
+To use ***Contented*** a [GitHub](https://github.com/) account is needed. Everything is done in GitHub: writing content, generating the site and publishing the pages. No other tool is needed other than a browser.
 
 1. First of all sign up for a [GitHub account](https://github.com/signup) and then login to GitHub.
-2. Next make a fork of the contented by forking the contented repository. Name the fork username.github.io
+2. Next make a fork of ***Contented*** by forking the ***Contented*** repository. Name the fork username.github.io
 3. Allow the actions to run.
 4. Run the "Build site" action.
 5. Settings -> Pages -> Deploy from Branch -> gh-pages -> Save
@@ -93,12 +89,11 @@ Only touch the **.github** folder if you know what you are doing. This contains 
 
 | Page | Description |
 | --- | --- |
-| index.php | **DON'T TOUCH** Processes the markdown files and generates the static site.|
-| robots.txt | Tell search engines how to index the site. See [Google for further information on robots.txt](https://developers.google.com/search/docs/crawling-indexing/robots/intro). Modify only if needed. |
+| robots.txt | Defines how search engines index the site. See [Google for further information on robots.txt](https://developers.google.com/search/docs/crawling-indexing/robots/intro). Modify only if needed. |
 | _CNAME | Contains the custom domain if there is one. Rename it to "CNAME" if using a custom domain name with GitHub Pages. Otherwise ignore. |
-| pages/home.md | Content for the homepage. Homepage is defined by having `permalink: /` in the front matter. One page, and only one page, should have this set otherwise the site will not have a homepage and visiting the base URL will return a page not found. |
-| pages/404.md | Content to display when a page is not found. The page not found file should have `permalink: /404.html` set in the front matter.  |
-| feed/index.md |  Content to display when a page is not found. |
+| pages/home.md | Content for the homepage. The homepage markdown file should have the permalink front matter attribute defined as: `permalink: /`. One page, and only one page, should have this set otherwise the site will not have a homepage and visiting the base URL will return a page not found. |
+| pages/404.md | Content to display when a page is not found. The page not found markdown file should have the permalink front matter attribute defined as: `permalink: /404.html`.  |
+| feed/index.md |  Generates the RSS feed in Atom format. |
 | pages/sitemap.md |  Generate a [sitemap.xml file](https://www.sitemaps.org/protocol.html) used by [search engines to index the site](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap). Remove if a sitemap is not needed (not recommended). |
 
 Only touch the **index.php** file if you know what you are doing. This contains the code that processes the markdown files to generate the static HTML files.
@@ -189,7 +184,7 @@ tags:
 ---
 ```
 
-DC understands the following Front Matter attributes. Any other attributes will be ignored.
+***Contented*** understands the following Front Matter attributes. Any other attributes will be ignored.
 
 | Attribute | Value |
 | --- | --- |
@@ -204,7 +199,7 @@ Note: you do not need to enclose the value in quotes in the Front Matter section
 
 ### Content
 
-In DC all content is written using [GitHub's implementation of Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+In ***Contented***. all content is written using [GitHub's implementation of Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
 
 Note that Markdown can also contain HTML. So any tags for which there is no Markdown equivalent can be written in HTML.  
 

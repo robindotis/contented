@@ -49,6 +49,10 @@
   </li>
   {% set prevYear = currYear %}
 {% endfor %}
+{% if index > 0 %}
+  </ul>
+{% endif %}
+
 <hr>
 <p>See <a href="{{ '/archiving/' }}">all posts</a> or <a href="{{ '/tagging/' }}">all tags</a>.</p>
 

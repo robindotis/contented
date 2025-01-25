@@ -9,7 +9,7 @@ I have four style sheets for the site
 */
 
 body {
-    font-family: 'Mona Sans', sans-serif, serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif, serif;
     background-color: var(--body-bg-color);
 }
 
@@ -17,8 +17,8 @@ a, details summary {
     border:2px solid;
     border-color: rgba(0,0,0,0); /*use alpha = 0 to remove border color completely for all links*/
     color: var(--link-color);
-    text-decoration-color: var(--main-highlight-color); /*rgb(248, 119, 175);*/
-    text-decoration-thickness: 3px;
+    /*text-decoration-color: var(--link-color); */
+    text-decoration-thickness: 1px;
 }
 
 a:visited {
@@ -72,7 +72,7 @@ header .subtitle {
     font-size: 1.6em;
     color: var(--header-subtitle-color);
     font-weight: normal;
-    padding-top: 5px;
+    padding-top: 20px;
     font-style: normal;
     vertical-align:baseline;
     line-height: 2;
@@ -86,13 +86,15 @@ header .sitetitle a:visited, header .sitetitle a {
 
 header.masthead nav a {
     text-decoration: underline;
-    text-decoration-thickness: 3px;
+    text-decoration-thickness: 1px;
 }
 
 header nav.subtitle a.current {
     border:0;
+    /*
     background-color: var(--header-title-color);
     color: var(--header-bg-color);
+    */
     text-decoration: none;
     padding: 0 2px 2px;
 }
@@ -108,8 +110,7 @@ header.masthead a {
 }
 
 nav a, nav a:visited, div.access a, div.access a:visited {
-    color: var(--header-navtext-color);
-    font-weight: bold;
+    color: var(--link-color);
     /*padding:0 2px;*/
 }   
 
@@ -268,9 +269,8 @@ footer div.footer-area div.rss {
 footer div.footer-area div.rss a, footer div.footer-area div.rss a:visited {
     text-decoration: underline;
     /*text-decoration-color: rgb(248, 119, 175);*/
-    text-decoration-thickness: 3px;
-    font-weight: bold;
-    color: var(--footer-navtext-color);
+    text-decoration-thickness: 1px;
+    color: var(--link-color);
 }
 
 footer div.footer-area div {
@@ -334,7 +334,7 @@ main div article.custom-running table tr td:last-child {
 
 @media (min-width: 700px) { 
     main {
-        font-size: 1.2em;
+        font-size: 1.5em;
     }
 
     header div.sitetitle {

@@ -9,7 +9,9 @@ I have four style sheets for the site
 */
 
 html {
-    /*See: https://www.sitepoint.com/understanding-and-using-rem-units-in-css/*/
+    /*
+    See: https://www.sitepoint.com/understanding-and-using-rem-units-in-css 
+    */
     font-size: 62.5%;
 }
 
@@ -110,6 +112,7 @@ header div.header-area {
     flex-wrap: wrap;
     margin: 0;
     padding: 20px 20px 20px 20px;
+    padding-bottom: 10px;
 }
 
 header div.nav-area {
@@ -124,13 +127,8 @@ header img.logo {
     vertical-align: middle;
 }
 
-header .sitetitle, header .subtitle {
+header .sitetitle {
     display: inline;
-}
-
-header nav {
-    display:inline-block;
-    text-align: right;
 }
 
 header h2 {
@@ -141,6 +139,11 @@ header h2 {
 main article section {
     margin-top: 20px;
 }
+
+nav ul li {
+    padding: 0 10px 0 0;
+}   
+
 
 /*
 nav ul {
@@ -190,20 +193,22 @@ main {
 }
 
 article ul, ul.postlist {
-    list-style-type:none;
-    padding-left: 0;
+    /*list-style-type:none;*/
+    padding-left: 20px;
 }
 
 .postlist li {
     padding-bottom: 0.2em;    
 }
 
+/*
 article ul li::before, ul.postlist li:before {
     content: '👉';
     font-size: 0.9em;
     vertical-align: top;
     padding-right: 0.5em;    
 }
+*/
 
 article ul.taglist li::before {
     content: none;
@@ -243,6 +248,10 @@ pre {
 
 code {
     word-break:break-all;
+    background-color: #ccc;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: #eeeeee;
 }
 
 main > div.main-content, div.footer-area, header.masthead div.header-area {
@@ -257,12 +266,12 @@ main > article {
 
 main article h1 {
     font-size: 1.5em;
-    text-align: center;
     margin:auto;
 }
 
 table {
     border-collapse: collapse;
+    margin-bottom: 20px;
 }
 
 td, th {
@@ -277,7 +286,7 @@ th {
 }
 
 tr:nth-child(even) td {background: #fff}
-tr:nth-child(odd) td {background: #eee}
+tr:nth-child(odd) td {background: #fff}
 
 ul p img, ul img {
     float: none;
