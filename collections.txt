@@ -19,6 +19,7 @@ Array
                     [content] => <h2>Post Four</h2>
 <p>This is the fourth post on the blog</p>
 
+                    [filename] => post-four
                     [nextPagePermalink] => 
                     [nextPageTitle] => 
                     [prevPagePermalink] => /posts/post-three/
@@ -42,6 +43,7 @@ Array
                     [content] => <h2>Post Thee</h2>
 <p>This is the third post on the blog</p>
 
+                    [filename] => post-three
                     [nextPagePermalink] => /posts/drafts/post-four/
                     [nextPageTitle] => Post Four
                     [prevPagePermalink] => /posts/post-two/
@@ -65,6 +67,7 @@ Array
                     [content] => <h2>Post Two</h2>
 <p>This is the second post on the blog</p>
 
+                    [filename] => post-two
                     [nextPagePermalink] => /posts/post-three/
                     [nextPageTitle] => Post Three
                     [prevPagePermalink] => /posts/post-one/
@@ -88,6 +91,7 @@ Array
                     [content] => <h2>Post One</h2>
 <p>This is the first post on the blog</p>
 
+                    [filename] => post-one
                     [nextPagePermalink] => /posts/post-two/
                     [nextPageTitle] => Post Two
                 )
@@ -105,6 +109,7 @@ Array
                             [date] => 2025-02-01 12:00:00
                             [permalink] => /posts/drafts/post-four/
                             [inputPath] => posts/drafts/post-four.md
+                            [filename] => post-four
                         )
 
                     [posts/post-three.md] => Array
@@ -114,6 +119,7 @@ Array
                             [date] => 2025-01-31 12:00:00
                             [permalink] => /posts/post-three/
                             [inputPath] => posts/post-three.md
+                            [filename] => post-three
                         )
 
                     [posts/post-two.md] => Array
@@ -123,6 +129,7 @@ Array
                             [date] => 2025-01-29 12:00:00
                             [permalink] => /posts/post-two/
                             [inputPath] => posts/post-two.md
+                            [filename] => post-two
                         )
 
                     [posts/post-one.md] => Array
@@ -132,6 +139,7 @@ Array
                             [date] => 2025-01-28 12:00:00
                             [permalink] => /posts/post-one/
                             [inputPath] => posts/post-one.md
+                            [filename] => post-one
                         )
 
                 )
@@ -145,6 +153,7 @@ Array
                             [date] => 2025-02-01 12:00:00
                             [permalink] => /posts/drafts/post-four/
                             [inputPath] => posts/drafts/post-four.md
+                            [filename] => post-four
                         )
 
                     [posts/post-three.md] => Array
@@ -154,6 +163,7 @@ Array
                             [date] => 2025-01-31 12:00:00
                             [permalink] => /posts/post-three/
                             [inputPath] => posts/post-three.md
+                            [filename] => post-three
                         )
 
                     [posts/post-two.md] => Array
@@ -163,6 +173,7 @@ Array
                             [date] => 2025-01-29 12:00:00
                             [permalink] => /posts/post-two/
                             [inputPath] => posts/post-two.md
+                            [filename] => post-two
                         )
 
                     [posts/post-one.md] => Array
@@ -172,6 +183,7 @@ Array
                             [date] => 2025-01-28 12:00:00
                             [permalink] => /posts/post-one/
                             [inputPath] => posts/post-one.md
+                            [filename] => post-one
                         )
 
                 )
@@ -185,6 +197,7 @@ Array
                             [date] => 2025-02-01 12:00:00
                             [permalink] => /posts/drafts/post-four/
                             [inputPath] => posts/drafts/post-four.md
+                            [filename] => post-four
                         )
 
                 )
@@ -198,6 +211,7 @@ Array
                             [date] => 2025-01-29 12:00:00
                             [permalink] => /posts/post-two/
                             [inputPath] => posts/post-two.md
+                            [filename] => post-two
                         )
 
                 )
@@ -211,6 +225,7 @@ Array
                             [date] => 2025-01-28 12:00:00
                             [permalink] => /posts/post-one/
                             [inputPath] => posts/post-one.md
+                            [filename] => post-one
                         )
 
                 )
@@ -224,6 +239,7 @@ Array
                             [date] => 2025-01-31 12:00:00
                             [permalink] => /posts/post-three/
                             [inputPath] => posts/post-three.md
+                            [filename] => post-three
                         )
 
                 )
@@ -244,10 +260,7 @@ Array
   <p>This is the home page of your blog!</p>
 </article>
 
-                    [nextPagePermalink] => 
-                    [nextPageTitle] => 
-                    [prevPagePermalink] => /404.html
-                    [prevPageTitle] => 404
+                    [filename] => home
                 )
 
             [pages/404.md] => Array
@@ -260,45 +273,36 @@ Array
                     [content] => <h1>Content not found.</h1>
 <p>Visit the <a href="/">homepage</a>.</p>
 
-                    [nextPagePermalink] => /
-                    [nextPageTitle] => Home
-                    [prevPagePermalink] => /sitemap.xml
-                    [prevPageTitle] => [MISSING TITLE]
+                    [filename] => 404
                 )
 
             [pages/sitemap.md] => Array
                 (
                     [template] => sitemap.html.twig
-                    [permalink] => /sitemap.xml
+                    [permalink] => /sitemap.xml/
                     [inputPath] => pages/sitemap.md
                     [title] => [MISSING TITLE]
                     [date] => 253402300799
                     [content] => 
-                    [nextPagePermalink] => /404.html
-                    [nextPageTitle] => 404
-                    [prevPagePermalink] => /tagging/
-                    [prevPageTitle] => Tags
+                    [filename] => sitemap
                 )
 
             [pages/tagging.md] => Array
                 (
                     [template] => tagging.html.twig
-                    [permalink] => /tagging/
+                    [permalink] => /{{ page.fileSlug }}/
                     [title] => Tags
                     [inputPath] => pages/tagging.md
                     [date] => 253402300799
                     [content] => <p>Here are all the tags</p>
 
-                    [nextPagePermalink] => /sitemap.xml
-                    [nextPageTitle] => [MISSING TITLE]
-                    [prevPagePermalink] => /archive/
-                    [prevPageTitle] => Archiving
+                    [filename] => tagging
                 )
 
             [pages/archive.md] => Array
                 (
                     [template] => archive.html.twig
-                    [permalink] => /archive/
+                    [permalink] => /{{ page.fileSlug }}/
                     [title] => Archiving
                     [pagination] => Array
                         (
@@ -310,10 +314,7 @@ Array
                     [date] => 253402300799
                     [content] => <p>These are all the posts, listed in reverse chronological order. You can also browse posts <a href="/tagging/">by tag</a>.</p>
 
-                    [nextPagePermalink] => /tagging/
-                    [nextPageTitle] => Tags
-                    [prevPagePermalink] => /tagging/{{ tag | slug }}/
-                    [prevPageTitle] => Posts tagged “{{ tag }}”
+                    [filename] => archive
                 )
 
             [pages/tagged.md] => Array
@@ -341,32 +342,26 @@ Array
                     [date] => 253402300799
                     [content] => <p>Posts for tag...</p>
 
-                    [nextPagePermalink] => /archive/
-                    [nextPageTitle] => Archiving
-                    [prevPagePermalink] => /about/
-                    [prevPageTitle] => About Me
+                    [filename] => tagged
                 )
 
             [pages/about.md] => Array
                 (
                     [template] => page.html.twig
-                    [permalink] => /about/
+                    [permalink] => /{{ page.fileSlug }}/
                     [title] => About Me
                     [date] => 2025-01-31 12:00:00
                     [inputPath] => pages/about.md
                     [content] => <h2>Introduction</h2>
 <p>This is an example page on which you can introduce yourself.</p>
 
-                    [nextPagePermalink] => /tagging/{{ tag | slug }}/
-                    [nextPageTitle] => Posts tagged “{{ tag }}”
-                    [prevPagePermalink] => /accessible/
-                    [prevPageTitle] => Accessibility Statement
+                    [filename] => about
                 )
 
             [pages/accessible.md] => Array
                 (
                     [template] => page.html.twig
-                    [permalink] => /accessible/
+                    [permalink] => /{{ page.fileSlug }}/
                     [title] => Accessibility Statement
                     [date] => 2025-01-31 12:00:00
                     [inputPath] => pages/accessible.md
@@ -392,16 +387,13 @@ Array
 <h2>Enforcement procedure</h2>
 <p>Since I am not a public sector body, I do not provide an enforcement procedure. The content on this website is provided &quot;as is&quot; for information only.  It is not to be used as legal advice or as a definitive source for creating accessible web content.</p>
 
-                    [nextPagePermalink] => /about/
-                    [nextPageTitle] => About Me
-                    [prevPagePermalink] => /docs/
-                    [prevPageTitle] => Contented Docs
+                    [filename] => accessible
                 )
 
             [pages/docs.md] => Array
                 (
                     [template] => page.html.twig
-                    [permalink] => /docs/
+                    [permalink] => /{{ page.fileSlug }}/
                     [title] => Contented Docs
                     [date] => 2025-01-19 12:00:00
                     [inputPath] => pages/docs.md
@@ -453,8 +445,16 @@ Array
 <h2>Installation Guide</h2>
 <h3>Getting started</h3>
 <p>To use Contented a <a href="https://github.com/">GitHub</a> account is needed. Everything is done in GitHub: writing content, generating the site and publishing the pages. No other tool is needed other than a browser.</p>
-<p>First of all sign up for a <a href="https://github.com/signup">GitHub account</a> and then login to GitHub.</p>
-<p>Next make a copy of the DC code by forking the DC repository.</p>
+<ol>
+<li>First of all sign up for a <a href="https://github.com/signup">GitHub account</a> and then login to GitHub.</li>
+<li>Next make a fork of the contented by forking the contented repository. Name the fork username.github.io</li>
+<li>Allow the actions to run.</li>
+<li>Run the &quot;Build site&quot; action.</li>
+<li>Settings -&gt; Pages -&gt; Deploy from Branch -&gt; gh-pages -&gt; Save</li>
+<li>Wait one minute, reload the page, follow the link</li>
+<li>Blog is live.</li>
+</ol>
+<p>(see contentedweb as an example)</p>
 <p>Notes:</p>
 <ul>
 <li>Start with simple setup of public rep names username.github.io and using branches for the deployment.</li>
@@ -723,10 +723,10 @@ author:
 <li>Webhooks eg for EU hosting</li>
 <li>GitHub Pages</li>
 <li>RSS, sitemap, SEO etc</li>
+<li><a href="https://stefanbohacek.com/blog/resources-for-keeping-the-web-free-open-and-poetic/">https://stefanbohacek.com/blog/resources-for-keeping-the-web-free-open-and-poetic/</a></li>
 </ul>
 
-                    [nextPagePermalink] => /accessible/
-                    [nextPageTitle] => Accessibility Statement
+                    [filename] => docs
                 )
 
         )
@@ -735,12 +735,13 @@ author:
         (
             [feed/index.md] => Array
                 (
-                    [permalink] => /feed/index.xml
+                    [permalink] => /feed/index.xml/
                     [template] => feed.html.twig
                     [inputPath] => feed/index.md
                     [title] => [MISSING TITLE]
                     [date] => 253402300799
                     [content] => 
+                    [filename] => index
                     [nextPagePermalink] => 
                     [nextPageTitle] => 
                 )
