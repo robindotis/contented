@@ -81,17 +81,52 @@ foreach($staticFiles as $file) {
 echo "\n\nStatic copied in " . (microtime(true) - $start) . " seconds";
 
 //YAML content - read
+//check exists first - maybe metadata should always exist, else create its values?
 $metadata = Yaml::parseFile($sourceRoot. '/data/metadata.yaml');
-$menus = Yaml::parseFile($sourceRoot. '/data/menus.yaml');
+//check exists first
+$hasMenuFile = false;
+$menus = [];
+if (file_exists($sourceRoot. '/data/menus.yaml')) {
+    $menus = Yaml::parseFile($sourceRoot. '/data/menus.yaml');
+    if(!is_null($menus)) {
+        $hasMenuFile = true;
+    }
+}
+
+$pageMenus = []; //for menu items in front matter
 
 $collections = [];
 //MARKDOWN - read files in source directories
 foreach($sourceDirs as $src) {
     $mergedJsonStrings = mergedJsonStrings($src,$sourceRoot);
     $collections[$src] = [];
-    readMarkdownFiles($sourceRoot, $src, $outputDir, $converter, $mergedJsonStrings, $collections);
+    readMarkdownFiles($sourceRoot, $src, $outputDir, $converter, $mergedJsonStrings, $collections, $pageMenus, $hasMenuFile);
 }
 echo "\n\nMarkdown files read in " . (microtime(true) - $start) . " seconds";
+
+//reorder pageMenus items based on their position
+foreach($pageMenus as $key1 => $menu) {
+    array_multisort(array_map(function($element) {
+        if(array_key_exists("position", $element)) {
+            return $element['position'];
+        }
+        else {
+            return 0;
+        }
+    }, $menu), SORT_ASC, $menu);   
+    $pageMenus[$key1] = $menu;
+}
+
+if(!$hasMenuFile) {
+    //if no menus.yaml file, then use the front matter menus
+    $menus = $pageMenus;
+}
+
+// DONT merge the two ($menus and $pageMenus) arrays into one  
+// IF menus.yaml is not empty, use that
+// ELSE use front matter
+// So only worry about front matter menus if menus.yaml is empty
+
 
 //reorder the collections by date desc
 foreach($collections as $key => $collection) {
@@ -149,13 +184,16 @@ foreach($collections as $key => $collection) {
         $collections[$key] = $collection;
     }
 }
-echo "\n\nArray reordered in " . (microtime(true) - $start) . " seconds";
+echo "\n\nArrays reordered in " . (microtime(true) - $start) . " seconds";
 
 processMarkdown($outputRoot, $outputDir, $converter, $twig, $metadata, $menus, $collections);
 
 //Output collections array to file on site for easier debuggin
 echo "\n\nCollection outputted to: " . $outputRoot . "/" . $outputDir . "/collections.txt";
 file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r($collections, true));
+file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r($metadata, true),FILE_APPEND);
+file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r($menus, true),FILE_APPEND);
+file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r($pageMenus, true),FILE_APPEND);
 
 echo "\n\nConversion completed in " . (microtime(true) - $start) . " seconds";
 
@@ -231,7 +269,7 @@ function mergedJsonStrings($sourceDir, $sourceRoot) {
     return mergeJsonFilesAsStrings($jsonFiles);
 }
 
-function readMarkdownFiles($sourceRoot, $sourceDir, $outputDir, $converter, $mergedJsonStrings, &$completeCollection) {
+function readMarkdownFiles($sourceRoot, $sourceDir, $outputDir, $converter, $mergedJsonStrings, &$completeCollection, &$pageMenus, $hasMenu) {
     $sourceFullPath = $sourceRoot . '/' . $sourceDir . '/';
     $rdi = new RecursiveDirectoryIterator($sourceFullPath, RecursiveDirectoryIterator::SKIP_DOTS);
     $rii = new RecursiveIteratorIterator($rdi, RecursiveIteratorIterator::SELF_FIRST);
@@ -379,6 +417,31 @@ function readMarkdownFiles($sourceRoot, $sourceDir, $outputDir, $converter, $mer
 
             //only add to collection if not a draft
             if(!$isDraft) {
+                //if not draft add to menus array
+                if(array_key_exists('navigation',$frontMatter) && !$hasMenu) {
+                    $navigation = $frontMatter['navigation'];
+                    if(!is_array($navigation)){
+                        $navigation = [$navigation];
+                    }
+                    $navigation['title'] = $frontMatter['title'];
+                    $navigation['link'] = $frontMatter['permalink'];
+                    //default to header menu if no menu defined
+                    if(!array_key_exists('menu',$navigation) || strlen($navigation['menu']) < 1) {
+                        $navigation['menu'] = 'header';
+                    }
+
+                    //process any twig statements in menu item values 
+                    $navigation = renderTwigArray($navigation,$tmplVars);
+
+                    if(!array_key_exists($navigation['menu'],$pageMenus)) {
+                        $pageMenus[$navigation['menu']] = [];
+                    }
+                    array_push($pageMenus[$navigation['menu']],$navigation); 
+                    
+                    //echo "\n";
+                    //var_dump($pageMenus);
+                }
+
                 //create a collection entry for each tag
                 if(array_key_exists("tags", $frontMatter)){
                     foreach($frontMatter['tags'] as $tag){
@@ -396,8 +459,26 @@ function readMarkdownFiles($sourceRoot, $sourceDir, $outputDir, $converter, $mer
     }
 }
 
+function renderTwigArray($arrayToChange,$values){
+    foreach ($arrayToChange as $key => $value) 
+    {
+        if (is_string($value)) {
+            $arrayLoader = new \Twig\Loader\ArrayLoader([
+                'index' => $value,
+            ]);
+            $arrayTwig = new \Twig\Environment($arrayLoader);
+            $arrayTwig->addExtension(new StringExtension());
+            $arrayTwig->addExtension(new \Twig\Extension\DebugExtension());
+            $arrayToChange[$key] = $arrayTwig->render('index', $values);
+        }
+    }
+    return $arrayToChange;
+}
+
 function renderTwig($twig, $outputRoot, $outputDir, $tmplVars){
     // Process Twig statements inside tmplVars
+    $tmplVars = renderTwigArray($tmplVars,$tmplVars);
+    /*
     foreach ($tmplVars as $key => $value) 
     {
         if (is_string($value)) {
@@ -410,6 +491,7 @@ function renderTwig($twig, $outputRoot, $outputDir, $tmplVars){
             $tmplVars[$key] = $arrayTwig->render('index', $tmplVars);
         }
     }
+    */
     $outputPath =  $outputRoot . '/' . $outputDir . '/' . $tmplVars['permalink'];
 
     //if output path includes an extention (ie a ".") simply create it, don't create index.html in subfolder
