@@ -279,7 +279,7 @@ Array
             [pages/sitemap.md] => Array
                 (
                     [template] => sitemap.html.twig
-                    [permalink] => /sitemap.xml/
+                    [permalink] => /sitemap.xml
                     [inputPath] => pages/sitemap.md
                     [title] => [MISSING TITLE]
                     [date] => 253402300799
@@ -731,7 +731,7 @@ author:
         (
             [feed/index.md] => Array
                 (
-                    [permalink] => /feed/index.xml/
+                    [permalink] => /feed/index.xml
                     [template] => feed.html.twig
                     [inputPath] => feed/index.md
                     [title] => [MISSING TITLE]
@@ -744,4 +744,108 @@ author:
 
         )
 
+)
+Array
+(
+    [title] => Contented
+    [url] => https://robindotis.github.io/
+    [urlShort] => robindotis.github.io
+    [language] => en
+    [description] => A Do It Yourself Blog
+    [logo] => /assets/images/logo.jpg
+    [startYear] => 1998
+    [relMe] => https://github.com/robindotis/
+    [gitHubRepo] => https://github.com/robindotis/robin.is/
+    [theme] => sky
+    [clacksOverhead] => GNU Terry Pratchett
+    [feed] => Array
+        (
+            [subtitle] => Contented
+            [filename] => index.xml
+            [path] => /feed/index.xml
+            [id] => https://robindotis.github.io/
+        )
+
+    [author] => Array
+        (
+            [name] => robindotis
+            [email] => admin@robin.is
+            [url] => https://github.com/robindotis/
+            [webmention] => https://github.com/robindotis/
+        )
+
+    [css] => Array
+        (
+            [headerBgColor] => #F2E3A9
+            [headerTitleColor] => #B85F01
+            [headerTitleFocusColor] => #000000
+            [headerSubtitleColor] => #800020
+            [headerNavtextColor] => #005c5c
+            [mainHighlightColor] => #AE0951
+            [mainBgColor] => #ffffff
+            [mainFontFamily] => 'Lucia Grande', Verdana, Helvetica, Arial, sans-serif, serif
+            [footerBgColor] => #eeeeee
+            [footerTextColor] => var(--header-navtext-color)
+            [footerNavtextColor] => var(--header-navtext-color)
+            [linkColor] => #000000
+            [linkFocusBgColor] => #ffff00
+            [dateTextColor] => var(--header-bg-color)
+            [dateBgColor] => var(--header-title-color)
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [name] => header
+            [items] => Array
+                (
+                    [0] => Array
+                        (
+                            [title] => Home
+                            [link] => /
+                        )
+
+                    [1] => Array
+                        (
+                            [title] => Docs
+                            [link] => /docs/
+                        )
+
+                    [2] => Array
+                        (
+                            [title] => News
+                            [link] => /news/
+                        )
+
+                )
+
+        )
+
+    [1] => Array
+        (
+            [name] => footer
+            [items] => Array
+                (
+                    [0] => Array
+                        (
+                            [title] => RSS
+                            [link] => /feed/
+                            [class] => ally-statement
+                        )
+
+                    [1] => Array
+                        (
+                            [title] => Accessibility
+                            [link] => /accessible/
+                        )
+
+                )
+
+        )
+
+)
+Array
+(
 )
