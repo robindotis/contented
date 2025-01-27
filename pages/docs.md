@@ -13,9 +13,9 @@ Note: Base on this: https://docs.bearblog.dev/
 
 The idea behind ***Contented***🕸 is to encourage building, hosting and managing independent blogs over the use one of the common blogging services. 
 
-Why yet another blogging tool? Because the more independent tools, the more means of expression there is are and the more ways of thinking are encouraged. 
+Why yet another blogging tool? The more independent tools there are, the more means of expression we have and the more ways of thinking are encouraged. 
 
-***Contented***🕸 is not a service. It is a straightforward tool for creating a website. Whilst it is not a one click tool, no coding knowledge is needed to start using ***Contented***🕸. There is a basic procedure to follow, using GitHub, in order to get started. Instructions are provided and are aimed at those with no prior experience of creating websites or using GitHub. A new website can be online in a couple of minutes following the instructions. 
+***Contented***🕸 is not a service. It is a straightforward tool for creating a website. It is not a one click tool, yet no coding knowledge is needed to put content online using ***Contented***🕸. The instructions make heavy use of GitThere is a basic procedure to follow, using GitHub, in order to get started. Instructions are provided and are aimed at those with no prior experience of creating websites or using GitHub. A new website can be online in a couple of minutes following the instructions. 
 
 It helps if you are willing to play around a bit and explore the tool. If this is you, [keep reading](#table-of-contents), if not, these alternative independent online blogging services are highly recommended:
 
