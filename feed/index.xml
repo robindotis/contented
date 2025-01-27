@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="/feed/pretty-feed-v3.xsl" type="text/xsl"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-	<title>Contented 🙂🕸</title>
-	<subtitle>Contented</subtitle>
+	<title>Contented 🕸</title>
+	<subtitle>Contented 🕸</subtitle>
 		<link href="https://robindotis.github.io/feed/index.xml" rel="self"/>
 	<link href="https://robindotis.github.io/" rel="alternate" type="text/html"/>
 	<updated></updated>
