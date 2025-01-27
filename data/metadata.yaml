@@ -9,7 +9,7 @@ gitHubRepo: https://github.com/robindotis/robin.is/
 theme: sky
 clacksOverhead: GNU Terry Pratchett
 feed:
-  subtitle: Contented
+  subtitle: Contented 🕸
   filename: index.xml
   path: /feed/index.xml
   id: https://robindotis.github.io/
