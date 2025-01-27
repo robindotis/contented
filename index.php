@@ -24,7 +24,7 @@ echo $startMem .''.' MB';
 // Settings - could be user defined
 $sourceRoot = ".";
 $outputRoot = ".";
-$staticDirs = ['assets', 'old'];
+$staticDirs = ['assets'];
 $staticFiles = ['CNAME','statichost.yml','robots.txt','feed/pretty-feed-v3.xsl'];
 $sourceDirs = ['posts', 'pages', 'feed'];
 $outputDir = '_site';
