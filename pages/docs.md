@@ -3,7 +3,7 @@ title: Documentation
 date: 2025-01-25 12:00:00
 ---
 
-## Why Contented 🕸?
+## Why Contented🕸?
 
 Note: Base on this: https://docs.bearblog.dev/
 
@@ -11,11 +11,11 @@ Note: Base on this: https://docs.bearblog.dev/
 >
 > -- With apologies to <cite>[Mao Zedong](https://en.wikipedia.org/wiki/Hundred_Flowers_Campaign)</cite>
 
-The idea behind ***Contented*** 🕸 is to encourage building, hosting and managing independent blogs over the use one of the common blogging services. 
+The idea behind ***Contented***🕸 is to encourage building, hosting and managing independent blogs over the use one of the common blogging services. 
 
 Why yet another blogging tool? Because the more independent tools, the more means of expression there is are and the more ways of thinking are encouraged. 
 
-***Contented 🕸*** is not a service. It is a straightforward tool for creating a website. Whilst it is not a one click tool, no coding knowledge is needed to start using ***Contented***. There is a basic procedure to follow, using GitHub, in order to get started. Instructions are provided and are aimed at those with no prior experience of creating websites or using GitHub. A new website can be online in a couple of minutes following the instructions. 
+***Contented***🕸 is not a service. It is a straightforward tool for creating a website. Whilst it is not a one click tool, no coding knowledge is needed to start using ***Contented***🕸. There is a basic procedure to follow, using GitHub, in order to get started. Instructions are provided and are aimed at those with no prior experience of creating websites or using GitHub. A new website can be online in a couple of minutes following the instructions. 
 
 It helps if you are willing to play around a bit and explore the tool. If this is you, [keep reading](#table-of-contents), if not, these alternative independent online blogging services are highly recommended:
 
@@ -46,7 +46,7 @@ It helps if you are willing to play around a bit and explore the tool. If this i
 To use ***Contented*** a [GitHub](https://github.com/) account is needed. Everything is done in GitHub: writing content, generating the site and publishing the pages. No other tool is needed other than a browser.
 
 1. First of all sign up for a [GitHub account](https://github.com/signup) and then login to GitHub.
-2. Next make a fork of ***Contented*** by forking the ***Contented*** repository. Name the fork username.github.io
+2. Next make a fork of ***Contented***🕸 by forking the ***Contented***🕸 repository. Name the fork username.github.io
 3. Allow the actions to run.
 4. Run the "Build site" action.
 5. Settings -> Pages -> Deploy from Branch -> gh-pages -> Save
