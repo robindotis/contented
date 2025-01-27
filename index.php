@@ -24,8 +24,8 @@ echo $startMem .''.' MB';
 // Settings - could be user defined
 $sourceRoot = ".";
 $outputRoot = ".";
-$staticDirs = ['assets'];
-$staticFiles = ['CNAME','robots.txt','feed/pretty-feed-v3.xsl'];
+$staticDirs = ['assets', 'old'];
+$staticFiles = ['CNAME','statichost.yml','robots.txt','feed/pretty-feed-v3.xsl'];
 $sourceDirs = ['posts', 'pages', 'feed'];
 $outputDir = '_site';
 $templatesDir = __DIR__ . '/themes/default/templates';
@@ -351,9 +351,9 @@ function readMarkdownFiles($sourceRoot, $sourceDir, $outputDir, $converter, $mer
 
             //check permalink is not a file
             //it should not have an html or xml extension
-            if(!(substr($frontMatter["permalink"],-5) == ".html") 
+            if(!((substr($frontMatter["permalink"],-5) == ".html") 
                 || (substr($frontMatter["permalink"],-4) == ".htm")
-                || (substr($frontMatter["permalink"],-4) == ".xml")){
+                || (substr($frontMatter["permalink"],-4) == ".xml"))){
                 //ensure permalink starts and ends with a slash
                 if(substr($frontMatter["permalink"],0,1) != "/"){
                     $frontMatter["permalink"] = "/" . $frontMatter["permalink"];
