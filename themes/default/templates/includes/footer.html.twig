@@ -2,13 +2,11 @@
         <div class="footer-area">
             <div class="rss">
                 <p>
-                {% for menu in menus %}
-                    {% if menu.name == "footer" %}
-                        {% for item in menu.items %}
-                            <a href="{{ item.link }}" class="{% if permalink starts with item.link %}current{% endif %} {% if item.class %} {{ item.class }} {% endif %}">{{ item.title }}</a> 
-                        {% endfor %}
-                    {% endif %}
-                {% endfor %}
+                {% if menus.footer is defined %}
+                    {% for item in menus.footer %}
+                        <a href="{{ item.link }}" class="{% if permalink starts with item.link %}current{% endif %} {% if item.class %} {{ item.class }} {% endif %}">{{ item.title }}</a> 
+                    {% endfor %}
+                {% endif %}
                 </p>
             </div>
             <div>
