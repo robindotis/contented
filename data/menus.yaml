@@ -1,13 +1,11 @@
-- name: header
-  items:
+- header:
     - title: Home
       link: /
     - title: Docs
       link: /docs/
     - title: News
       link: /news/
-- name: footer
-  items:
+- footer:
     - title: RSS
       link: /feed/
       class: ally-statement
