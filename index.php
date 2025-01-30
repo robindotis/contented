@@ -21,14 +21,39 @@ $startMem = round(memory_get_usage()/1048576,2);
 echo "\n Memory Consumption is   ";
 echo $startMem .''.' MB';
 
-// Settings - could be user defined
-$sourceRoot = ".";
+
+// Default Settings - overriden by settings.yaml if it exists
+const SOURCE_ROOT = ".";
+const YAML_SETTINGS = SOURCE_ROOT . '/data/settings.yaml';
+const YAML_METADATA = SOURCE_ROOT . '/data/metadata.yaml';
+const YAML_MENUS = SOURCE_ROOT . '/data/menus.yaml';
+
 $outputRoot = ".";
 $staticDirs = ['assets'];
-$staticFiles = ['CNAME','statichost.yml','robots.txt','feed/pretty-feed-v3.xsl'];
+$staticFiles = ['CNAME','robots.txt','feed/pretty-feed-v3.xsl'];
 $sourceDirs = ['posts', 'pages', 'feed'];
 $outputDir = '_site';
 $templatesDir = __DIR__ . '/themes/default/templates';
+
+//YAML content - read
+$settings = [];  
+if (file_exists(YAML_SETTINGS)) {
+    $settings = Yaml::parseFile(YAML_SETTINGS);
+}
+//check exists first - maybe metadata should always exist, else create its values?
+$metadata = Yaml::parseFile(YAML_METADATA);
+//check exists first
+$yamlMenus = [];
+if (file_exists(YAML_MENUS)) {
+    $yamlMenus = Yaml::parseFile(YAML_MENUS);
+}
+
+$outputRoot = $settings['outputRoot'];
+$sourceDirs = $settings['sourceDirs'];
+$staticFiles = $settings['staticFiles'];
+$sourceDirs = $settings['sourceDirs'];
+$outputDir = $settings['outputDir'];
+$templatesDir = __DIR__ . $settings['templatesDir'];
 
 if (isset($argv[1])) {
     $outputDir = $argv[1];
@@ -57,7 +82,7 @@ echo "\n\nSetup ready in " . (microtime(true) - $start) . " seconds";
 
 //STATIC content - copy
 foreach($staticDirs as $dir) {
-    $src = $sourceRoot . '/' . $dir . '/';
+    $src = SOURCE_ROOT . '/' . $dir . '/';
     $dest = __DIR__ . '/' . $outputDir . '/' . $dir . '/';
     if(DIRECTORY_SEPARATOR == "/") {
         //Linux
@@ -67,7 +92,7 @@ foreach($staticDirs as $dir) {
     $fileSystem->mirror($src, $dest);
 }
 foreach($staticFiles as $file) {
-    $srcFile = $sourceRoot . '/' . $file;
+    $srcFile = SOURCE_ROOT . '/' . $file;
     $destFile = $outputRoot . '/' . $outputDir . '/' . $file;
 
     //have to check if the destination folder exists before copying
@@ -80,32 +105,37 @@ foreach($staticFiles as $file) {
 }
 echo "\n\nStatic copied in " . (microtime(true) - $start) . " seconds";
 
-//YAML content - read
-//check exists first - maybe metadata should always exist, else create its values?
-$metadata = Yaml::parseFile($sourceRoot. '/data/metadata.yaml');
-//check exists first
-$hasMenuFile = false;
-$menus = [];
-if (file_exists($sourceRoot. '/data/menus.yaml')) {
-    $menus = Yaml::parseFile($sourceRoot. '/data/menus.yaml');
-    if(!is_null($menus)) {
-        $hasMenuFile = true;
-    }
-}
 
 $pageMenus = []; //for menu items in front matter
-
 $collections = [];
 //MARKDOWN - read files in source directories
 foreach($sourceDirs as $src) {
-    $mergedJsonStrings = mergedJsonStrings($src,$sourceRoot);
+    $mergedJsonStrings = mergedJsonStrings($src,SOURCE_ROOT);
     $collections[$src] = [];
-    readMarkdownFiles($sourceRoot, $src, $outputDir, $converter, $mergedJsonStrings, $collections, $pageMenus, $hasMenuFile);
+    readMarkdownFiles(SOURCE_ROOT, $src, $outputDir, $converter, $mergedJsonStrings, $collections, $pageMenus);
 }
 echo "\n\nMarkdown files read in " . (microtime(true) - $start) . " seconds";
 
-//reorder pageMenus items based on their position
+//Add position element to each menu item $menus based on key, if it doesn't exist
+foreach($yamlMenus as $key1 => $menu) {
+    foreach($menu as $key2 => $menuItem) {
+        $yamlMenus[$key1][$key2]['position'] = $key2 + 1;
+    }  
+}
+$mergedMenus = $yamlMenus;
+
+//merge the two arrays into one
 foreach($pageMenus as $key1 => $menu) {
+    if(array_key_exists($key1, $mergedMenus)) {
+        $mergedMenus[$key1] = array_merge($mergedMenus[$key1],$menu);
+    }
+    else {
+        $mergedMenus[$key1] = $menu;
+    }
+}
+
+//reorder mergedMenus items based on their position
+foreach($mergedMenus as $key1 => $menu) {
     array_multisort(array_map(function($element) {
         if(array_key_exists("position", $element)) {
             return $element['position'];
@@ -114,19 +144,8 @@ foreach($pageMenus as $key1 => $menu) {
             return 0;
         }
     }, $menu), SORT_ASC, $menu);   
-    $pageMenus[$key1] = $menu;
+    $mergedMenus[$key1] = $menu;
 }
-
-if(!$hasMenuFile) {
-    //if no menus.yaml file, then use the front matter menus
-    $menus = $pageMenus;
-}
-
-// DONT merge the two ($menus and $pageMenus) arrays into one  
-// IF menus.yaml is not empty, use that
-// ELSE use front matter
-// So only worry about front matter menus if menus.yaml is empty
-
 
 //reorder the collections by date desc
 foreach($collections as $key => $collection) {
@@ -186,14 +205,27 @@ foreach($collections as $key => $collection) {
 }
 echo "\n\nArrays reordered in " . (microtime(true) - $start) . " seconds";
 
-processMarkdown($outputRoot, $outputDir, $converter, $twig, $metadata, $menus, $collections);
+processMarkdown($outputRoot, $outputDir, $converter, $twig, $metadata, $mergedMenus, $collections);
 
 //Output collections array to file on site for easier debuggin
 echo "\n\nCollection outputted to: " . $outputRoot . "/" . $outputDir . "/collections.txt";
 file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r($collections, true));
+file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r("\n=============================================================\n", true),FILE_APPEND);
+file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r("METADATA=====================================================\n", true),FILE_APPEND);
+file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r("=============================================================\n", true),FILE_APPEND);
 file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r($metadata, true),FILE_APPEND);
-file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r($menus, true),FILE_APPEND);
+file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r("\n=============================================================\n", true),FILE_APPEND);
+file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r("YAML MENUS===================================================\n", true),FILE_APPEND);
+file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r("=============================================================\n", true),FILE_APPEND);
+file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r($yamlMenus, true),FILE_APPEND);
+file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r("\n=============================================================\n", true),FILE_APPEND);
+file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r("PAGE MENUS===================================================\n", true),FILE_APPEND);
+file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r("=============================================================\n", true),FILE_APPEND);
 file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r($pageMenus, true),FILE_APPEND);
+file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r("\n=============================================================\n", true),FILE_APPEND);
+file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r("MERGED MENUS=================================================\n", true),FILE_APPEND);
+file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r("=============================================================\n", true),FILE_APPEND);
+file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r($mergedMenus, true),FILE_APPEND);
 
 echo "\n\nConversion completed in " . (microtime(true) - $start) . " seconds";
 
@@ -269,7 +301,7 @@ function mergedJsonStrings($sourceDir, $sourceRoot) {
     return mergeJsonFilesAsStrings($jsonFiles);
 }
 
-function readMarkdownFiles($sourceRoot, $sourceDir, $outputDir, $converter, $mergedJsonStrings, &$completeCollection, &$pageMenus, $hasMenu) {
+function readMarkdownFiles($sourceRoot, $sourceDir, $outputDir, $converter, $mergedJsonStrings, &$completeCollection, &$pageMenus) {
     $sourceFullPath = $sourceRoot . '/' . $sourceDir . '/';
     $rdi = new RecursiveDirectoryIterator($sourceFullPath, RecursiveDirectoryIterator::SKIP_DOTS);
     $rii = new RecursiveIteratorIterator($rdi, RecursiveIteratorIterator::SELF_FIRST);
@@ -321,7 +353,7 @@ function readMarkdownFiles($sourceRoot, $sourceDir, $outputDir, $converter, $mer
                     $frontMatter['tags'] = array_unique(array_merge($frontMatter['tags'], $tags));
                 }
                 
-                //add extension to template filename
+                //merge templates if needed
                 if(array_key_exists('template',$frontMatter) && strlen($frontMatter['template']) > 0) {
                     $template = $frontMatter['template'];
                 }
@@ -335,6 +367,7 @@ function readMarkdownFiles($sourceRoot, $sourceDir, $outputDir, $converter, $mer
                 $permalink = $frontMatter["permalink"];
             } 
             
+            //add extension to template filename
             $frontMatter['template'] = $frontMatter['template'] . '.html.twig';
             
             //if not permalink set in fronmatter 
@@ -349,15 +382,16 @@ function readMarkdownFiles($sourceRoot, $sourceDir, $outputDir, $converter, $mer
                 $frontMatter["permalink"] = $pageUrl;
             }
 
-            //check permalink is not a file
-            //it should not have an html or xml extension
+            //ensure permalink starts and ends with a slash
+            if(substr($frontMatter["permalink"],0,1) != "/"){
+                $frontMatter["permalink"] = "/" . $frontMatter["permalink"];
+            }
+            
+            //ensure permalink starts and ends with a slash
+            //if it is not a file with html or xml extensions (other file types not allowed)
             if(!((substr($frontMatter["permalink"],-5) == ".html") 
                 || (substr($frontMatter["permalink"],-4) == ".htm")
                 || (substr($frontMatter["permalink"],-4) == ".xml"))){
-                //ensure permalink starts and ends with a slash
-                if(substr($frontMatter["permalink"],0,1) != "/"){
-                    $frontMatter["permalink"] = "/" . $frontMatter["permalink"];
-                }
                 if(substr($frontMatter["permalink"],-1) != "/"){
                     $frontMatter["permalink"] = $frontMatter["permalink"] . "/";
                 }
@@ -418,16 +452,23 @@ function readMarkdownFiles($sourceRoot, $sourceDir, $outputDir, $converter, $mer
             //only add to collection if not a draft
             if(!$isDraft) {
                 //if not draft add to menus array
-                if(array_key_exists('navigation',$frontMatter) && !$hasMenu) {
+                if(array_key_exists('navigation',$frontMatter)) {
                     $navigation = $frontMatter['navigation'];
                     if(!is_array($navigation)){
                         $navigation = [$navigation];
                     }
-                    $navigation['title'] = $frontMatter['title'];
                     $navigation['link'] = $frontMatter['permalink'];
+                    //if not title or title is empty, use the page title
+                    if(!array_key_exists('title',$navigation) || strlen($navigation['title']) < 1) {
+                        $navigation['title'] = $frontMatter['title'];
+                    }
                     //default to header menu if no menu defined
                     if(!array_key_exists('menu',$navigation) || strlen($navigation['menu']) < 1) {
                         $navigation['menu'] = 'header';
+                    }
+                    //default to position 0 if not defined
+                    if(!array_key_exists('position',$navigation) || strlen($navigation['position']) < 1) {
+                        $navigation['position'] = 0;
                     }
 
                     //process any twig statements in menu item values 
@@ -478,24 +519,10 @@ function renderTwigArray($arrayToChange,$values){
 function renderTwig($twig, $outputRoot, $outputDir, $tmplVars){
     // Process Twig statements inside tmplVars
     $tmplVars = renderTwigArray($tmplVars,$tmplVars);
-    /*
-    foreach ($tmplVars as $key => $value) 
-    {
-        if (is_string($value)) {
-            $arrayLoader = new \Twig\Loader\ArrayLoader([
-                'index' => $value,
-            ]);
-            $arrayTwig = new \Twig\Environment($arrayLoader);
-            $arrayTwig->addExtension(new StringExtension());
-            $arrayTwig->addExtension(new \Twig\Extension\DebugExtension());
-            $tmplVars[$key] = $arrayTwig->render('index', $tmplVars);
-        }
-    }
-    */
-    $outputPath =  $outputRoot . '/' . $outputDir . '/' . $tmplVars['permalink'];
+    $outputPath =  $outputRoot . '/' . $outputDir . $tmplVars['permalink'];
 
-    //if output path includes an extention (ie a ".") simply create it, don't create index.html in subfolder
-    //deal with "." in folder names? 
+    //if output path (ie permalink) ends with a / add index.html, 
+    //else it's a file so don't change
     //    eg "/some.folder/" should be "/some.folder/index.html", 
     //    but "/sitemap.xml" should remain "/sitemap.xml"
     if(!strpos($outputPath,".", (is_null(strrpos($outputPath, "/"))?0:strrpos($outputPath, "/")))){
