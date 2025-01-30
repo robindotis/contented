@@ -5,17 +5,15 @@ date: 2025-01-25 12:00:00
 
 ## Why Contented🕸?
 
-Note: Base on this: https://docs.bearblog.dev/
-
 > Let a hundred blogging tools bloom; let a hundred schools of thought blog.
 >
 > -- With apologies to <cite>[Mao Zedong](https://en.wikipedia.org/wiki/Hundred_Flowers_Campaign)</cite>
 
-The idea behind ***Contented*** 🕸 is to encourage building, hosting and managing independent blogs over the use one of the common blogging services. 
+The idea behind ***Contented*** 🕸 is to encourage building, hosting and managing independent blogs over the use one of the common blogging services. In the spirit of the [IndieWeb](https://indieweb.org/).
 
 Why yet another blogging tool? The more independent tools there are, the more means of expression we have and the more ways of thinking are encouraged. 
 
-***Contented*** 🕸 is not a service. It is a straightforward tool for creating a website. It is not a one click tool, yet no coding knowledge is needed to put content online using ***Contented***🕸. The instructions make heavy use of GitThere is a basic procedure to follow, using GitHub, in order to get started. Instructions are provided and are aimed at those with no prior experience of creating websites or using GitHub. A new website can be online in a couple of minutes following the instructions. 
+***Contented*** 🕸 is not a service. It is a straightforward tool for creating a website. It is not a one click install tool, yet no coding knowledge is needed to put content online using ***Contented***🕸. The instructions make heavy use of GitHub, in order to get started. They are aimed at those with no prior experience of creating websites or using GitHub. A new website can be online within a couple of minutes by following the instructions. 
 
 It helps if you are willing to play around a bit and explore the tool. If this is you, [keep reading](#table-of-contents), if not, these alternative independent online blogging services are highly recommended:
 
@@ -37,6 +35,7 @@ It helps if you are willing to play around a bit and explore the tool. If this i
         1. [Content](#content)
     1. [Menus](#menus)
     1. [Metadata](#metadata)
+1. [FAQ](#faq)
 1. [References](#references)
 
 ## Installation Guide
@@ -302,6 +301,14 @@ author:
   url: https://www.robin.is/about/
   webmention: https://github.com/robindotis/
 ```
+
+## FAQ
+
+How is being tied to GitHub in the spirit of the IndieWeb?
+For those wanting to be independent of GitHub, nothing prevents this if you are happy to have a slightly more manual workflow. Or to Although.It is possible to run the script
+
+
+
 
 ## References
 
