@@ -1,13 +1,13 @@
-- header:
-    - title: Home
-      link: /
-    - title: Docs
-      link: /docs/
-    - title: News
-      link: /news/
-- footer:
-    - title: RSS
-      link: /feed/
-      class: ally-statement
-    - title: Accessibility
-      link: /accessible/
+header:
+  - title: Home
+    link: /
+  - title: Docs
+    link: /docs/
+  - title: News
+    link: /news/
+footer:
+  - title: RSS
+    link: /feed/
+    class: ally-statement
+  - title: Accessibility
+    link: /accessible/
