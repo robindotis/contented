@@ -1,0 +1,6 @@
+outputRoot: "."
+staticDirs: [assets]
+staticFiles: [CNAME,robots.txt,feed/pretty-feed-v3.xsl]
+sourceDirs: [posts, pages, feed]
+outputDir: _site
+templatesDir: /themes/default/templates
