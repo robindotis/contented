@@ -17,21 +17,18 @@
                 <ul>
 
 {# Example menu from menus.yaml #}
-{% for menu in menus %}
-    {% if menu.name == "header" %}
-        {% for item in menu.items %}
-                    <li>
-                        {{ item.pre }}
-                        {% if item.title == "posts" %}
-                            {{collections['posts']|length}}
-                        {% endif %}
-                        <a href="{{ item.link }}" class="{% if ((permalink == item.link) or ((permalink starts with item.link) and (item.link != '/'))) %}current{% endif %} {% if item.class %}{{ item.class }}{% endif %}">{{ item.title }}</a> 
-                        {{- item.post }}
-                    </li>
-        {% endfor %}
-    {% endif %}
-{% endfor %}
-
+{% if menus.header is defined %}
+    {% for item in menus.header %}
+                <li>
+                    {{ item.pre }}
+                    {% if item.title == "posts" %}
+                        {{collections['posts']|length}}
+                    {% endif %}
+                    <a href="{{ item.link }}" class="{% if ((permalink == item.link) or ((permalink starts with item.link) and (item.link != '/'))) %}current{% endif %} {% if item.class %}{{ item.class }}{% endif %}">{{ item.title }}</a> 
+                    {{- item.post }}
+                </li>
+    {% endfor %}
+{% endif %}
                 </ul>
 {#                    {{ metadata.description }}  #}
             </nav>
