@@ -745,6 +745,10 @@ author:
         )
 
 )
+
+=============================================================
+METADATA=====================================================
+=============================================================
 Array
 (
     [title] => Contented 🕸
@@ -793,58 +797,112 @@ Array
         )
 
 )
+
+=============================================================
+YAML MENUS===================================================
+=============================================================
 Array
 (
-    [0] => Array
+    [header] => Array
         (
-            [name] => header
-            [items] => Array
+            [0] => Array
                 (
-                    [0] => Array
-                        (
-                            [title] => Home
-                            [link] => /
-                        )
+                    [title] => Home
+                    [link] => /
+                    [position] => 1
+                )
 
-                    [1] => Array
-                        (
-                            [title] => Docs
-                            [link] => /docs/
-                        )
+            [1] => Array
+                (
+                    [title] => Docs
+                    [link] => /docs/
+                    [position] => 2
+                )
 
-                    [2] => Array
-                        (
-                            [title] => News
-                            [link] => /news/
-                        )
-
+            [2] => Array
+                (
+                    [title] => News
+                    [link] => /news/
+                    [position] => 3
                 )
 
         )
 
-    [1] => Array
+    [footer] => Array
         (
-            [name] => footer
-            [items] => Array
+            [0] => Array
                 (
-                    [0] => Array
-                        (
-                            [title] => RSS
-                            [link] => /feed/
-                            [class] => ally-statement
-                        )
+                    [title] => RSS
+                    [link] => /feed/
+                    [class] => ally-statement
+                    [position] => 1
+                )
 
-                    [1] => Array
-                        (
-                            [title] => Accessibility
-                            [link] => /accessible/
-                        )
-
+            [1] => Array
+                (
+                    [title] => Accessibility
+                    [link] => /accessible/
+                    [position] => 2
                 )
 
         )
 
 )
+
+=============================================================
+PAGE MENUS===================================================
+=============================================================
 Array
 (
+)
+
+=============================================================
+MERGED MENUS=================================================
+=============================================================
+Array
+(
+    [header] => Array
+        (
+            [0] => Array
+                (
+                    [title] => Home
+                    [link] => /
+                    [position] => 1
+                )
+
+            [1] => Array
+                (
+                    [title] => Docs
+                    [link] => /docs/
+                    [position] => 2
+                )
+
+            [2] => Array
+                (
+                    [title] => News
+                    [link] => /news/
+                    [position] => 3
+                )
+
+        )
+
+    [footer] => Array
+        (
+            [0] => Array
+                (
+                    [title] => RSS
+                    [link] => /feed/
+                    [class] => ally-statement
+                    [position] => 1
+                )
+
+            [1] => Array
+                (
+                    [title] => Accessibility
+                    [link] => /accessible/
+                    [position] => 2
+                )
+
+        )
+
 )
