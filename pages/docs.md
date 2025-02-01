@@ -324,11 +324,13 @@ Settings are set in the file: `/data/setting.yaml`.
 Allowed settings are:
 
 | Name | Default | Description |
-| staticDirs | [assets] | List of folders containing static files to be copied as is to the output directory |
-| staticFiles | [robots.txt,feed/pretty-feed-v3.xsl] | List of static files to be copied as is to the output directory |
-| sourceDirs | [posts, pages, feed] | List of folders to be processed. Only Markdown files will be processed |
-| outputDir | /_site/ | The folder in to which the files for the static site will be placed |
-| theme | /templates/default/ | The folder containing the templates for the site |
+|---|---|---|
+| staticDirs | [assets] | List of folders containing static files to be copied as is to the output directory. |
+| staticFiles | [robots.txt,feed/pretty-feed-v3.xsl] | List of static files to be copied as is to the output directory. |
+| sourceDirs | [posts, pages, feed] | List of folders to be processed. Only Markdown files will be processed. |
+| outputDir | /_site/ | The folder in to which the files for the static site will be placed. |
+| theme | matrix | The name of the folder containing the templates for the site. |
+| themeExtends | default | The name of the folder containing the theme that `theme` builds up on, if any. |
 
 The default settings.yaml file looks like this:
 
@@ -337,7 +339,7 @@ staticDirs: [assets]
 staticFiles: [robots.txt,feed/pretty-feed-v3.xsl]
 sourceDirs: [posts, pages, feed]
 outputDir: /_site/
-theme: /templates/matrix/
+theme: matrix
 themeExtends: default
 ```
 
