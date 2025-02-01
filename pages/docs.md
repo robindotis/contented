@@ -248,8 +248,9 @@ Themes can be set in the settings.yaml file.
 
 Themes are created in the `/templates/` folder.
 
-If not set it will take the default templates from the folder: `/templates/default/`. If that folder is not exist, the site will cannot be built. 
+If not set it will take the default templates from the folder: `/templates/default/`. If that folder is not exist, the site will cannot be built.
 
+A theme can extend another theme, as defined by the `themeExtends` setting.
 
 ### Menus
 
@@ -336,7 +337,8 @@ staticDirs: [assets]
 staticFiles: [robots.txt,feed/pretty-feed-v3.xsl]
 sourceDirs: [posts, pages, feed]
 outputDir: /_site/
-theme: /templates/default/
+theme: /templates/matrix/
+themeExtends: default
 ```
 
 ## FAQ
