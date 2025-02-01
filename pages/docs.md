@@ -33,8 +33,10 @@ It helps if you are willing to play around a bit and explore the tool. If this i
     1. [File structure](#file-structure)
         1. [Front Matter](#front-matter)
         1. [Content](#content)
+    1. [Theming](#themes)
     1. [Menus](#menus)
     1. [Metadata](#metadata)
+    1. [Settings](#settings)
 1. [FAQ](#faq)
 1. [References](#references)
 
@@ -240,6 +242,15 @@ pagination:
 
 data is tag name to include in the archive.
 
+### Themes
+
+Themes can be set in the settings.yaml file. 
+
+Themes are created in the `/templates/` folder.
+
+If not set it will take the default templates from the folder: `/templates/default/`. If that folder is not exist, the site will cannot be built. 
+
+
 ### Menus
 
 Menus can be defined for the header and footer. This is done in the file "_data/menus.yaml". The syntax of this file is a little more complicated as it is written in YAML.
@@ -276,6 +287,9 @@ As an example this file menus.yaml file for a site with two menus. A header and 
 ```
 
 ### Metadata
+
+**Consider renaming this to "configuration", config.yaml**
+
 Metadata for the site can be defined and is stored in the file "_data/metadata.yaml". 
 
 This is an example the metadata.yaml file for a basic site:
@@ -300,6 +314,29 @@ author:
   email: admin@robin.is
   url: https://www.robin.is/about/
   webmention: https://github.com/robindotis/
+```
+
+### Settings
+
+Settings are set in the file: `/data/setting.yaml`.
+
+Allowed settings are:
+
+| Name | Default | Description |
+| staticDirs | [assets] | List of folders containing static files to be copied as is to the output directory |
+| staticFiles | [robots.txt,feed/pretty-feed-v3.xsl] | List of static files to be copied as is to the output directory |
+| sourceDirs | [posts, pages, feed] | List of folders to be processed. Only Markdown files will be processed |
+| outputDir | /_site/ | The folder in to which the files for the static site will be placed |
+| theme | /templates/default/ | The folder containing the templates for the site |
+
+The default settings.yaml file looks like this:
+
+```
+staticDirs: [assets]
+staticFiles: [robots.txt,feed/pretty-feed-v3.xsl]
+sourceDirs: [posts, pages, feed]
+outputDir: /_site/
+theme: /templates/default/
 ```
 
 ## FAQ
