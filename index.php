@@ -265,6 +265,10 @@ file_put_contents($outputDir . '/collections.txt', print_r("MERGED MENUS========
 file_put_contents($outputDir . '/collections.txt', print_r("=============================================================\n", true),FILE_APPEND);
 file_put_contents($outputDir . '/collections.txt', print_r($mergedMenus, true),FILE_APPEND);
 
+//remove temporary folder once finished processing
+$tempFileSystem = new Symfony\Component\Filesystem\Filesystem();
+$tempFileSystem->remove(TEMP_FOLDER);
+
 echo "\n\nConversion completed in " . (microtime(true) - $start) . " seconds";
 
 $endMem = round(memory_get_usage()/1048576,2); 
