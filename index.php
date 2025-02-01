@@ -24,16 +24,21 @@ echo $startMem .''.' MB';
 
 // Default Settings - overriden by settings.yaml if it exists
 const SOURCE_ROOT = ".";
+const TEMPLATES = __DIR__ . '/templates/';
 const YAML_SETTINGS = SOURCE_ROOT . '/data/settings.yaml';
 const YAML_METADATA = SOURCE_ROOT . '/data/metadata.yaml';
 const YAML_MENUS = SOURCE_ROOT . '/data/menus.yaml';
+const TEMP_FOLDER = __DIR__ . '/.CW_TEMP';
 
-$outputRoot = ".";
 $staticDirs = ['assets'];
 $staticFiles = ['robots.txt','feed/pretty-feed-v3.xsl'];
 $sourceDirs = ['posts', 'pages', 'feed'];
 $outputDir = '_site';
-$templatesDir = __DIR__ . '/themes/default/templates';
+$theme = "default";
+$themeExtends = "";
+$templatesDir ="";
+$templatesExtendsDir = "";
+
 
 //YAML content - read
 $settings = [];  
@@ -48,18 +53,50 @@ if (file_exists(YAML_MENUS)) {
     $yamlMenus = Yaml::parseFile(YAML_MENUS);
 }
 
-$outputRoot = $settings['outputRoot'];
-$sourceDirs = $settings['sourceDirs'];
-$staticFiles = $settings['staticFiles'];
-$sourceDirs = $settings['sourceDirs'];
-$outputDir = $settings['outputDir'];
-$templatesDir = __DIR__ . $settings['templatesDir'];
-
-if (isset($argv[1])) {
-    $outputDir = $argv[1];
+//override defaults with settings.yaml values, if they exist
+if(array_key_exists('staticDirs',$settings)) {
+    $staticDirs = $settings['staticDirs'];
 }
+if(array_key_exists('staticFiles',$settings)) {
+    $staticFiles = $settings['staticFiles'];
+}
+if(array_key_exists('sourceDirs',$settings)) {
+    $sourceDirs = $settings['sourceDirs'];
+}
+if(array_key_exists('outputDir',$settings)) {
+    $outputDir = $settings['outputDir'];
+}
+if(array_key_exists('theme',$settings)) {
+    $theme = $settings['theme'];
+}
+if(array_key_exists('themeExtends',$settings)) {
+    $themeExtends = $settings['themeExtends'];
+    $templatesExtendsDir = TEMPLATES . $themeExtends . '/';
+}
+$templatesDir = TEMPLATES . $theme . '/';
+
+// add leading and trailing slash if outputDir doesn't have it
+if (substr($outputDir, 0, 1) != '/') {
+    $outputDir = '/' . $outputDir;
+}
+if (substr($outputDir, -1) != '/') {
+    $outputDir = $outputDir . '/';
+}
+$outputDir = '.' . $outputDir;
 
 echo "\n outputdir: " . $outputDir;
+
+//create temporary folder __TEMP
+echo "\nExtends: " . $templatesExtendsDir;
+echo "\nTemplates: " . $templatesDir;
+$fs = new Filesystem();
+$fs->mkdir(TEMP_FOLDER);
+//copy recursively all files from theme folder to TEMP folder
+if(strlen($templatesExtendsDir) > 0) {
+    $fs->mirror($templatesExtendsDir, TEMP_FOLDER);
+}
+//copy recursively all template extends files to TEMP folder overwriting any that exist
+$fs->mirror($templatesDir, TEMP_FOLDER);
 
 // SETTING UP MarkDown converter
 // Define your configuration, if needed
@@ -73,7 +110,7 @@ $environment->addExtension(new FrontMatterExtension());
 $converter = new MarkdownConverter($environment);
 
 // SETTING UP Twig for file loading
-$loader = new FilesystemLoader($templatesDir);
+$loader = new FilesystemLoader(TEMP_FOLDER);
 $twig = new TwigEnv($loader);
 $twig->addExtension(new StringExtension());
 $twig->addExtension(new \Twig\Extension\DebugExtension());
@@ -83,17 +120,18 @@ echo "\n\nSetup ready in " . (microtime(true) - $start) . " seconds";
 //STATIC content - copy
 foreach($staticDirs as $dir) {
     $src = SOURCE_ROOT . '/' . $dir . '/';
-    $dest = __DIR__ . '/' . $outputDir . '/' . $dir . '/';
+    $dest = __DIR__ . $outputDir . $dir . '/';
     if(DIRECTORY_SEPARATOR == "/") {
         //Linux
-        $dest = $outputRoot . '/' . $outputDir . '/' . $dir . '/';
+        //$dest = $outputRoot . '/' . $outputDir . '/' . $dir . '/';
+        $dest = $outputDir . $dir . '/';
     }
     $fileSystem = new Symfony\Component\Filesystem\Filesystem();
     $fileSystem->mirror($src, $dest);
 }
 foreach($staticFiles as $file) {
     $srcFile = SOURCE_ROOT . '/' . $file;
-    $destFile = $outputRoot . '/' . $outputDir . '/' . $file;
+    $destFile = $outputDir . $file;
 
     //have to check if the destination folder exists before copying
     //if not, create it.
@@ -205,27 +243,27 @@ foreach($collections as $key => $collection) {
 }
 echo "\n\nArrays reordered in " . (microtime(true) - $start) . " seconds";
 
-processMarkdown($outputRoot, $outputDir, $converter, $twig, $metadata, $mergedMenus, $collections);
+processMarkdown($outputDir, $converter, $twig, $metadata, $mergedMenus, $collections);
 
 //Output collections array to file on site for easier debuggin
-echo "\n\nCollection outputted to: " . $outputRoot . "/" . $outputDir . "/collections.txt";
-file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r($collections, true));
-file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r("\n=============================================================\n", true),FILE_APPEND);
-file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r("METADATA=====================================================\n", true),FILE_APPEND);
-file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r("=============================================================\n", true),FILE_APPEND);
-file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r($metadata, true),FILE_APPEND);
-file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r("\n=============================================================\n", true),FILE_APPEND);
-file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r("YAML MENUS===================================================\n", true),FILE_APPEND);
-file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r("=============================================================\n", true),FILE_APPEND);
-file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r($yamlMenus, true),FILE_APPEND);
-file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r("\n=============================================================\n", true),FILE_APPEND);
-file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r("PAGE MENUS===================================================\n", true),FILE_APPEND);
-file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r("=============================================================\n", true),FILE_APPEND);
-file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r($pageMenus, true),FILE_APPEND);
-file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r("\n=============================================================\n", true),FILE_APPEND);
-file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r("MERGED MENUS=================================================\n", true),FILE_APPEND);
-file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r("=============================================================\n", true),FILE_APPEND);
-file_put_contents($outputRoot . '/' . $outputDir . '/collections.txt', print_r($mergedMenus, true),FILE_APPEND);
+echo "\n\nCollection outputted to: " . $outputDir . "/collections.txt";
+file_put_contents($outputDir . '/collections.txt', print_r($collections, true));
+file_put_contents($outputDir . '/collections.txt', print_r("\n=============================================================\n", true),FILE_APPEND);
+file_put_contents($outputDir . '/collections.txt', print_r("METADATA=====================================================\n", true),FILE_APPEND);
+file_put_contents($outputDir . '/collections.txt', print_r("=============================================================\n", true),FILE_APPEND);
+file_put_contents($outputDir . '/collections.txt', print_r($metadata, true),FILE_APPEND);
+file_put_contents($outputDir . '/collections.txt', print_r("\n=============================================================\n", true),FILE_APPEND);
+file_put_contents($outputDir . '/collections.txt', print_r("YAML MENUS===================================================\n", true),FILE_APPEND);
+file_put_contents($outputDir . '/collections.txt', print_r("=============================================================\n", true),FILE_APPEND);
+file_put_contents($outputDir . '/collections.txt', print_r($yamlMenus, true),FILE_APPEND);
+file_put_contents($outputDir . '/collections.txt', print_r("\n=============================================================\n", true),FILE_APPEND);
+file_put_contents($outputDir . '/collections.txt', print_r("PAGE MENUS===================================================\n", true),FILE_APPEND);
+file_put_contents($outputDir . '/collections.txt', print_r("=============================================================\n", true),FILE_APPEND);
+file_put_contents($outputDir . '/collections.txt', print_r($pageMenus, true),FILE_APPEND);
+file_put_contents($outputDir . '/collections.txt', print_r("\n=============================================================\n", true),FILE_APPEND);
+file_put_contents($outputDir . '/collections.txt', print_r("MERGED MENUS=================================================\n", true),FILE_APPEND);
+file_put_contents($outputDir . '/collections.txt', print_r("=============================================================\n", true),FILE_APPEND);
+file_put_contents($outputDir . '/collections.txt', print_r($mergedMenus, true),FILE_APPEND);
 
 echo "\n\nConversion completed in " . (microtime(true) - $start) . " seconds";
 
@@ -516,10 +554,10 @@ function renderTwigArray($arrayToChange,$values){
     return $arrayToChange;
 }
 
-function renderTwig($twig, $outputRoot, $outputDir, $tmplVars){
+function renderTwig($twig, $outputDir, $tmplVars){
     // Process Twig statements inside tmplVars
     $tmplVars = renderTwigArray($tmplVars,$tmplVars);
-    $outputPath =  $outputRoot . '/' . $outputDir . $tmplVars['permalink'];
+    $outputPath =  $outputDir . $tmplVars['permalink'];
 
     //if output path (ie permalink) ends with a / add index.html, 
     //else it's a file so don't change
@@ -535,7 +573,7 @@ function renderTwig($twig, $outputRoot, $outputDir, $tmplVars){
     file_put_contents($outputPath, $twig->render($tmplVars["template"], $tmplVars));
 }
 
-function processPagination($twig, $outputRoot, $outputDir, $tmplVars, $completeCollection){
+function processPagination($twig, $outputDir, $tmplVars, $completeCollection){
     $data = $tmplVars['pagination']['data'];
     $alias = 'posts';
     /* alias is a left over from eleventy enabling to target this collection of items 
@@ -552,7 +590,7 @@ function processPagination($twig, $outputRoot, $outputDir, $tmplVars, $completeC
     $tmplVars[$alias] = $completeCollection['tags'][$data];
     $tmplVars['pagination']['pages'] = 1;
     $tmplVars['pagination']['current'] = 1;
-    renderTwig($twig, $outputRoot, $outputDir, $tmplVars);
+    renderTwig($twig, $outputDir, $tmplVars);
     
     /* Uncomment this if want proper paging
      * And comment out the above code
@@ -567,7 +605,7 @@ function processPagination($twig, $outputRoot, $outputDir, $tmplVars, $completeC
         $tmplVars['pagination']['pages'] = 1;
         $tmplVars['pagination']['current'] = 1;
 
-        renderTwig($twig, $outputRoot, $outputDir, $tmplVars);
+        renderTwig($twig, $outputDir, $tmplVars);
     }
     else {
         // paging - need to slice up data into chunks and loop through it.
@@ -584,7 +622,7 @@ function processPagination($twig, $outputRoot, $outputDir, $tmplVars, $completeC
             $tmplVars["permalink"] = $tmplVars["permalink"] . $page . "/";
             $tmplVars['pagination']['current'] = $page;
 
-            renderTwig($twig, $outputRoot, $outputDir, $tmplVars);
+            renderTwig($twig, $outputDir, $tmplVars);
 
             //reset permalink back to original, so don't get chaining of page numbers: /archive/1/2/3/
             $tmplVars["permalink"] = $realPermalink;
@@ -594,10 +632,10 @@ function processPagination($twig, $outputRoot, $outputDir, $tmplVars, $completeC
     */
 }
 
-function processMarkdown($outputRoot, $outputDir, $converter, $twig, $metadata, $menus, $completeCollection) {
+function processMarkdown($outputDir, $converter, $twig, $metadata, $menus, $completeCollection) {
+    echo "\n\nProcessing Markdown files to output dir: " . $outputDir;
     //sort tags array by key
     ksort($completeCollection['tags'],SORT_NATURAL | SORT_FLAG_CASE);
-    
     foreach($completeCollection as $srcKey => $src) {
         foreach($src as $key => $item) {
 
@@ -624,15 +662,15 @@ function processMarkdown($outputRoot, $outputDir, $converter, $twig, $metadata, 
                             $tmplVars['alias'] = $key;
                             $tmplVars['permalink'] = '/tagging/' . $slug . '/';
                             $tmplVars['content'] = "Posts for tag: " . $key;
-                            processPagination($twig, $outputRoot, $outputDir, $tmplVars, $completeCollection);
+                            processPagination($twig, $outputDir, $tmplVars, $completeCollection);
                         }
                     }
                     else {
-                        processPagination($twig, $outputRoot, $outputDir, $tmplVars, $completeCollection);
+                        processPagination($twig, $outputDir, $tmplVars, $completeCollection);
                     }
                 }
                 else {
-                    renderTwig($twig, $outputRoot, $outputDir, $tmplVars);
+                    renderTwig($twig, $outputDir, $tmplVars);
                 }
             }
         }

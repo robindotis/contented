@@ -1,0 +1,29 @@
+    <footer>
+        <div class="footer-area">
+            <div class="rss">
+                <p>
+                {% if menus.footer is defined %}
+                    {% for item in menus.footer %}
+                        <a href="{{ item.link }}" class="{% if permalink starts with item.link %}current{% endif %} {% if item.class %} {{ item.class }} {% endif %}">{{ item.title }}</a> 
+                    {% endfor %}
+                {% endif %}
+                </p>
+            </div>
+            <div>
+                <p>
+                {{ metadata.urlShort }} is a <em><strong>contented</strong></em> blog. 
+                {% if metadata.gitHubRepo %}<span class="emojis"><a href="{{ metadata.gitHubRepo}}blob/master/{{ inputPath }}" title="Edit on GitHub"><img id="gh-icon" src="/assets/images/github-mark-small.png" alt="Edit on GitHub"/></a></span>{% endif %}
+                </p>
+            </div>
+            <div class="lastrun">
+                <p>
+                Last updated on {{ "now" | date("d/m/Y") }} at {{ "now" | date("H:m:s") }}.
+                </p>
+            </div>
+            <div class="copyright">
+                <p>
+                &copy; {{ metadata.startYear }} - {{ "now" | date("Y") }} {{ metadata.author.name }}
+                </p>
+            </div>
+        </div>
+    </footer>
