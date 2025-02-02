@@ -4,13 +4,13 @@
         <meta charset="UTF-8">
     <!-- See: https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett">    <title>Contented 🕸 Documentation</title>
+    <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett">    <title>Contented 🕸 Getting Started</title>
 
     <meta name="description" content="A Do It Yourself Blog">
     
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 
-    <link rel="canonical" href="https://robindotis.github.io//docs//">
+    <link rel="canonical" href="https://robindotis.github.io//docs/install/">
     <link rel="me" href="https://github.com/robindotis/">
     <link rel="alternate" type="application/rss+xml" title="Contented 🕸 RSS" href="/feed/">
     <link rel="alternate" href="/feed/index.xml" type="application/atom+xml" title="Contented 🕸">
@@ -62,61 +62,35 @@
         <div class="main-content">
           <article class="custom-" id="skip-content-target">
     <header>
-      <h1>Documentation</h1> 
+      <h1>Getting Started</h1> 
     </header>
-    <h2>About Contented🕸</h2>
-<p><em><strong>Contented</strong></em> 🕸 is not a service. It is a straightforward tool for creating a website.</p>
-<p>Content is created in text files and saved to your website. That's it.</p>
-<p>A new website can be online within a couple of minutes. No coding knowledge is required to put content online using <em><strong>Contented</strong></em>🕸.</p>
-<p>If you are not familiar with working in text files and using sites such as GitHub, you need to be willing to learn just a little in order to have your own independent part of the web. In the spirit of the <a href="https://indieweb.org/">IndieWeb</a>.</p>
-<p>It helps if you are willing to play around a bit and explore the tool. If this is you, <a href="#table-of-contents">keep reading</a>, if not, these alternative independent online blogging services are highly recommended:</p>
-<ul>
-<li><a href="https://bearblog.dev/">Bear Blog</a></li>
-<li><a href="https://pika.page/">PIKA</a></li>
-<li><a href="https://micro.blog/">micro.blog</a></li>
-</ul>
-<h2>Table of Contents</h2>
+    <p>To get started with <em><strong>Contented</strong></em> 🕸, a <a href="https://github.com/">GitHub</a> account is needed.</p>
+<p>Everything is done in GitHub: writing content, generating the site and publishing the pages. No other tool is needed other than your browser.</p>
+<h2>GitHub account</h2>
+<p>If you don't already have one, you can sign up for a <a href="https://github.com/signup">GitHub account here</a>.</p>
+<p>When picking your username, be aware that unless you have your own domain name, your website will use the domain name: YOURUSERNAME.github.io.</p>
+<h2>Copying the code</h2>
+<p>Once your account is setup and you are logged in, you need to copy the code for script to your account. This is called forking a repository on GitHub.</p>
 <ol>
-<li><a href="/docs/install/">Installation Gude</a>
-<ol>
-<li><a href="#getting-started">Getting started</a></li>
+<li>Visit this page: <a href="https://github.com/robindotis/robindotis.github.io">https://github.com/robindotis/robindotis.github.io</a></li>
+<li>Click on the &quot;Fork&quot; button to the top right of the page. <img src="/assets/images/docs/fork.png" alt="" /></li>
+<li>Name the repository &quot;YOURUSERNAME.github.io&quot; and untick &quot;Copy the main branch only&quot;. <img src="/assets/images/docs/fork-create.png" alt="" /></li>
+<li>Click on &quot;Create Fork&quot;.</li>
 </ol>
-</li>
-<li><a href="#user-guide">User Guide</a>
+<h2>Building your site</h2>
+<p>Next you have to create the site.</p>
 <ol>
-<li><a href="#site-tructure">Site structure</a>
+<li>Click on &quot;Actions&quot; and accept the warning about workflows. <img src="/assets/images/docs/actions-accept.png" alt="" /></li>
+<li>Click on &quot;Build site&quot;. <img src="/assets/images/docs/actions-build-site.png" alt="" /></li>
+<li>Then click on the &quot;Run workflow&quot; dropdown, followed by the &quot;Run workflow&quot; button. <img src="/assets/images/docs/actions-run-workflow.png" alt="" /></li>
+<li>After a about a minute you should see a successful build. <img src="/assets/images/docs/actions-build-success.png" alt="" /></li>
+</ol>
+<h2>GitHub Pages</h2>
+<p>Finally turn on GitHub Pages</p>
 <ol>
-<li><a href="#folders">Folders</a></li>
-<li><a href="#files">Files</a></li>
-</ol>
-</li>
-<li><a href="#file-processing">File processing</a></li>
-<li><a href="#file-structure">File structure</a>
-<ol>
-<li><a href="#front-matter">Front Matter</a></li>
-<li><a href="#content">Content</a></li>
-</ol>
-</li>
-<li><a href="#themes">Theming</a></li>
-<li><a href="#menus">Menus</a></li>
-<li><a href="#metadata">Metadata</a></li>
-<li><a href="#settings">Settings</a></li>
-</ol>
-</li>
-<li><a href="#faq">FAQ</a></li>
-<li><a href="#references">References</a></li>
-</ol>
-<h2>Installation Guide</h2>
-<h3>Getting started</h3>
-<p>To use <em><strong>Contented</strong></em> a <a href="https://github.com/">GitHub</a> account is needed. Everything is done in GitHub: writing content, generating the site and publishing the pages. No other tool is needed other than a browser.</p>
-<ol>
-<li>First of all sign up for a <a href="https://github.com/signup">GitHub account</a> and then login to GitHub.</li>
-<li>Next make a fork of <em><strong>Contented</strong></em> 🕸 by forking the <em><strong>Contented</strong></em>🕸 repository. Name the fork username.github.io</li>
-<li>Allow the actions to run.</li>
-<li>Run the &quot;Build site&quot; action.</li>
 <li>Settings -&gt; Pages -&gt; Deploy from Branch -&gt; gh-pages -&gt; Save</li>
 <li>Wait one minute, reload the page, follow the link</li>
-<li>Blog is live.</li>
+<li>Your site is live on YOURUSERNAME.github.io.</li>
 </ol>
 <p>(see contentedweb as an example)</p>
 <p>Notes:</p>
@@ -229,7 +203,7 @@
 <p>Which would be accessible using this URL:</p>
 <pre><code>/
 </code></pre>
-<p>TO DO: explain slug &quot;permalink&quot;: &quot;/docs/&quot; as in pages.json.</p>
+<p>TO DO: explain slug &quot;permalink&quot;: &quot;/install/&quot; as in pages.json.</p>
 <h3>File structure</h3>
 <p>All Markdown files, whether posts or pages have two main parts.</p>
 <p>Firstly, a Front Matter part, which contains the configuration details for the file and is always at the beginning of the file.</p>
@@ -472,7 +446,7 @@ For those wanting to be independent of GitHub, nothing prevents this if you are 
             <div>
                 <p>
                 robindotis.github.io is a <em><strong>contented</strong></em> 🕸 blog. 
-                <span class="emojis"><a href="https://github.com/robindotis/robin.is/blob/master/docs/docs.md" title="Edit on GitHub"><img id="gh-icon" src="/assets/images/github-mark-small.png" alt="Edit on GitHub"/></a></span>                </p>
+                <span class="emojis"><a href="https://github.com/robindotis/robin.is/blob/master/docs/install.md" title="Edit on GitHub"><img id="gh-icon" src="/assets/images/github-mark-small.png" alt="Edit on GitHub"/></a></span>                </p>
             </div>
             <div class="lastrun">
                 <p>
@@ -486,6 +460,6 @@ For those wanting to be independent of GitHub, nothing prevents this if you are 
             </div>
         </div>
     </footer>
-    <!-- Current page: /docs// -->
+    <!-- Current page: /docs/install/ -->
   </body>
 </html>
