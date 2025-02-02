@@ -13,7 +13,7 @@ If you don't already have one, you can sign up for a [GitHub account here](https
 
 When picking your username, be aware that unless you have your own domain name, your website will use the domain name: YOURUSERNAME.github.io.
 
-## Copying the script
+## Copy the script
 
 Once your account is setup and you are logged in, you need to copy the script to your GitHub account. This is called forking a repository on GitHub. The steps below will create a repository with the script installed in it.
 
@@ -22,7 +22,7 @@ Once your account is setup and you are logged in, you need to copy the script to
 3. Name the repository "YOURUSERNAME.github.io" and untick "Copy the main branch only".
 4. Click on "Create Fork". 
 
-## Building the site
+## Build the site
 
 Now that the repository is setup with the script, you need to build the site. This is doen with [GitHub Actions](https://github.com/features/actions).
 
