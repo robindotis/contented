@@ -4,13 +4,13 @@
         <meta charset="UTF-8">
     <!-- See: https://www.w3schools.com/css/css_rwd_viewport.asp-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett">    <title>Contented 🕸 Documentation</title>
+    <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett">    <title>Contented 🕸 Adding Content</title>
 
     <meta name="description" content="A Do It Yourself Blog">
     
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 
-    <link rel="canonical" href="https://robindotis.github.io//docs//">
+    <link rel="canonical" href="https://robindotis.github.io//docs/adding-content/">
     <link rel="me" href="https://github.com/robindotis/">
     <link rel="alternate" type="application/rss+xml" title="Contented 🕸 RSS" href="/feed/">
     <link rel="alternate" href="/feed/index.xml" type="application/atom+xml" title="Contented 🕸">
@@ -62,69 +62,12 @@
         <div class="main-content">
           <article class="custom-" id="skip-content-target">
     <header>
-      <h1>Documentation</h1> 
+      <h1>Adding Content</h1> 
     </header>
-    <h2>About Contented🕸</h2>
-<p><em><strong>Contented</strong></em> 🕸 is not a service. It is a straightforward tool for creating a website.</p>
-<p>Content is created in text files and saved to your website. That's it.</p>
-<p>A new website can be online within a couple of minutes. No coding knowledge is required to put content online using <em><strong>Contented</strong></em>🕸.</p>
-<p>If you are not familiar with working in text files and using sites such as GitHub, you need to be willing to learn just a little in order to have your own independent part of the web. In the spirit of the <a href="https://indieweb.org/">IndieWeb</a>.</p>
-<p>It helps if you are willing to play around a bit and explore the tool. If this is you, <a href="#table-of-contents">keep reading</a>, if not, these alternative independent online blogging services are highly recommended:</p>
-<ul>
-<li><a href="https://bearblog.dev/">Bear Blog</a></li>
-<li><a href="https://pika.page/">PIKA</a></li>
-<li><a href="https://micro.blog/">micro.blog</a></li>
-</ul>
-<h2>Table of Contents</h2>
-<ol>
-<li><a href="/docs/getting-started/">Getting started</a></li>
-<li><a href="/docs/adding-content/">Adding content</a></li>
-<li><a href="#user-guide">User Guide</a>
-<ol>
-<li><a href="#site-tructure">Site structure</a>
-<ol>
-<li><a href="#folders">Folders</a></li>
-<li><a href="#files">Files</a></li>
-</ol>
-</li>
-<li><a href="#file-processing">File processing</a></li>
-<li><a href="#file-structure">File structure</a>
-<ol>
-<li><a href="#front-matter">Front Matter</a></li>
-<li><a href="#content">Content</a></li>
-</ol>
-</li>
-<li><a href="#themes">Theming</a></li>
-<li><a href="#menus">Menus</a></li>
-<li><a href="#metadata">Metadata</a></li>
-<li><a href="#settings">Settings</a></li>
-</ol>
-</li>
-<li><a href="#faq">FAQ</a></li>
-<li><a href="#references">References</a></li>
-</ol>
-<h2>Installation Guide</h2>
-<h3>Getting started</h3>
-<p>To use <em><strong>Contented</strong></em> a <a href="https://github.com/">GitHub</a> account is needed. Everything is done in GitHub: writing content, generating the site and publishing the pages. No other tool is needed other than a browser.</p>
-<ol>
-<li>First of all sign up for a <a href="https://github.com/signup">GitHub account</a> and then login to GitHub.</li>
-<li>Next make a fork of <em><strong>Contented</strong></em> 🕸 by forking the <em><strong>Contented</strong></em>🕸 repository. Name the fork username.github.io</li>
-<li>Allow the actions to run.</li>
-<li>Run the &quot;Build site&quot; action.</li>
-<li>Settings -&gt; Pages -&gt; Deploy from Branch -&gt; gh-pages -&gt; Save</li>
-<li>Wait one minute, reload the page, follow the link</li>
-<li>Blog is live.</li>
-</ol>
-<p>(see contentedweb as an example)</p>
-<p>Notes:</p>
-<ul>
-<li>Start with simple setup of public rep names username.github.io and using branches for the deployment.</li>
-<li>have advanced instructions on how to setup to run with private repos and external hosting.</li>
-</ul>
-<p>Now explore GitHub a little. The <a href="https://docs.github.com/en/get-started">GitHub docs</a> are very comprehensive. Being comfortable writing content and editing configuration files will be helpful, but this can also be learned. The <a href="https://docs.github.com/en/get-started/writing-on-github">GitHub Writing guide</a> is maybe a good place to start for those new to GitHub.</p>
-<h3>GitHub Pages</h3>
-<p>Pay attention to remove CNAME if the site is not loading properly. It should be removed if running under username.github.io. It should only be add if running under a custom domain name.</p>
-<h2>User Guide</h2>
+    <p>You add content by editing files using the Markdown language. Markdown is a very simple markup language for creating HTML content.</p>
+<h2>Files on GitHub</h2>
+<h2>Editing files</h2>
+<h2>Adding a file</h2>
 <h3>Site tructure</h3>
 <h4>Folders</h4>
 <table>
@@ -226,7 +169,7 @@
 <p>Which would be accessible using this URL:</p>
 <pre><code>/
 </code></pre>
-<p>TO DO: explain slug &quot;permalink&quot;: &quot;/docs/&quot; as in pages.json.</p>
+<p>TO DO: explain slug &quot;permalink&quot;: &quot;/adding-content/&quot; as in pages.json.</p>
 <h3>File structure</h3>
 <p>All Markdown files, whether posts or pages have two main parts.</p>
 <p>Firstly, a Front Matter part, which contains the configuration details for the file and is always at the beginning of the file.</p>
@@ -432,6 +375,8 @@ themeExtends: default
 <h2>FAQ</h2>
 <p>How is being tied to GitHub in the spirit of the IndieWeb?
 For those wanting to be independent of GitHub, nothing prevents this if you are happy to have a slightly more manual workflow. Or to Although.It is possible to run the script</p>
+<p>GitHub Pages not working
+Pay attention to remove CNAME if the site is not loading properly. It should be removed if running under username.github.io. It should only be add if running under a custom domain name.</p>
 <h2>References</h2>
 <p>Below are some excellent links to further technical information and documentation on the technologies used for this site generator.</p>
 <ul>
@@ -447,9 +392,9 @@ For those wanting to be independent of GitHub, nothing prevents this if you are 
 </ul>
 
     <footer>
-            Created on:           <time datetime="January 25, 2025 12:00" class="dt-published">
-            <span class="date-day">25</span> 
-            <span class="date-month">January</span>, 
+            Created on:           <time datetime="February 2, 2025 12:00" class="dt-published">
+            <span class="date-day">02</span> 
+            <span class="date-month">February</span>, 
             <span class="date-year">2025</span>
           </time>
  
@@ -469,7 +414,7 @@ For those wanting to be independent of GitHub, nothing prevents this if you are 
             <div>
                 <p>
                 robindotis.github.io is a <em><strong>contented</strong></em> 🕸 blog. 
-                <span class="emojis"><a href="https://github.com/robindotis/robin.is/blob/master/docs/docs.md" title="Edit on GitHub"><img id="gh-icon" src="/assets/images/github-mark-small.png" alt="Edit on GitHub"/></a></span>                </p>
+                <span class="emojis"><a href="https://github.com/robindotis/robin.is/blob/master/docs/adding-content.md" title="Edit on GitHub"><img id="gh-icon" src="/assets/images/github-mark-small.png" alt="Edit on GitHub"/></a></span>                </p>
             </div>
             <div class="lastrun">
                 <p>
@@ -483,6 +428,6 @@ For those wanting to be independent of GitHub, nothing prevents this if you are 
             </div>
         </div>
     </footer>
-    <!-- Current page: /docs// -->
+    <!-- Current page: /docs/adding-content/ -->
   </body>
 </html>

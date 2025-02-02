@@ -10,7 +10,7 @@
     
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 
-    <link rel="canonical" href="https://robindotis.github.io//docs/install/">
+    <link rel="canonical" href="https://robindotis.github.io//docs/getting-started/">
     <link rel="me" href="https://github.com/robindotis/">
     <link rel="alternate" type="application/rss+xml" title="Contented 🕸 RSS" href="/feed/">
     <link rel="alternate" href="/feed/index.xml" type="application/atom+xml" title="Contented 🕸">
@@ -69,31 +69,37 @@
 <h2>GitHub account</h2>
 <p>If you don't already have one, you can sign up for a <a href="https://github.com/signup">GitHub account here</a>.</p>
 <p>When picking your username, be aware that unless you have your own domain name, your website will use the domain name: YOURUSERNAME.github.io.</p>
-<h2>Copying the code</h2>
-<p>Once your account is setup and you are logged in, you need to copy the code for script to your account. This is called forking a repository on GitHub.</p>
+<h2>Copy the script</h2>
+<p>Once your account is setup and you are logged in, you need to copy the script to your GitHub account. This is called forking a repository on GitHub. The steps below will create a repository with the script installed in it.</p>
 <ol>
 <li>Visit this page: <a href="https://github.com/robindotis/robindotis.github.io">https://github.com/robindotis/robindotis.github.io</a></li>
-<li>Click on the &quot;Fork&quot; button to the top right of the page. <img src="/assets/images/docs/fork.png" alt="" /></li>
-<li>Name the repository &quot;YOURUSERNAME.github.io&quot; and untick &quot;Copy the main branch only&quot;. <img src="/assets/images/docs/fork-create.png" alt="" /></li>
+<li>Click on the &quot;Fork&quot; button to the top right of the page.</li>
+<li>Name the repository &quot;YOURUSERNAME.github.io&quot; and untick &quot;Copy the main branch only&quot;.</li>
 <li>Click on &quot;Create Fork&quot;.</li>
 </ol>
-<h2>Building your site</h2>
-<p>Next you have to create the site.</p>
+<h2>Build the site</h2>
+<p>Now that the repository is setup with the script, you need to build the site. This is doen with <a href="https://github.com/features/actions">GitHub Actions</a>.</p>
 <ol>
-<li>Click on &quot;Actions&quot; and accept the warning about workflows. <img src="/assets/images/docs/actions-accept.png" alt="" /></li>
-<li>Click on &quot;Build site&quot;. <img src="/assets/images/docs/actions-build-site.png" alt="" /></li>
-<li>Then click on the &quot;Run workflow&quot; dropdown, followed by the &quot;Run workflow&quot; button. <img src="/assets/images/docs/actions-run-workflow.png" alt="" /></li>
-<li>After a about a minute you should see a successful build. <img src="/assets/images/docs/actions-build-success.png" alt="" /></li>
+<li>Click on &quot;Actions&quot; in the horizontal menu.</li>
+<li>Accept the warning about workflows, by clicking on the green button.</li>
+<li>Click on &quot;Build site&quot; in the left hand menu.</li>
+<li>On the right hand side, click on the &quot;Run workflow&quot; dropdown, followed by the green &quot;Run workflow&quot; button.</li>
+<li>After a about a minute you should see a successful build, with a green tick next to the build name.</li>
 </ol>
-<h2>Publish your site</h2>
-<p>Finally turn on GitHub Pages.</p>
+<h2>Publish the site</h2>
+<p>Finally it's time to publish the site. For this we need to configuire <a href="https://pages.github.com/">GitHub Pages</a>.</p>
 <ol>
-<li>Go to the GitHub Pages settings by clicking on &quot;Settings&quot;, then &quot;Pages&quot;. <img src="/assets/images/docs/pages-settings.png" alt="" /></li>
-<li>Click on the &quot;None&quot; dropdown and choose &quot;gh-pages&quot;. <img src="/assets/images/docs/pages-branch.png" alt="" /></li>
-<li>Finally click on the &quot;Save&quot;. <img src="/assets/images/docs/pages-save.png" alt="" /></li>
-<li>Wait one minute, reload the page, follow the link. <img src="/assets/images/docs/pages-link.png" alt="" /></li>
+<li>Go to the GitHub Pages settings by clicking on &quot;Settings&quot; in the horizontal menu</li>
+<li>Then click on &quot;Pages&quot; in the left hand menu.</li>
+<li>Click on the &quot;None&quot; dropdown and choose &quot;gh-pages&quot;.</li>
+<li>Click on the &quot;Save&quot; button to the right &quot;None&quot; dropdown.</li>
+<li>Wait one minute, reload the page and follow the link towards the top of the page.</li>
 <li>Your site is live on YOURUSERNAME.github.io.</li>
 </ol>
+<h2>Start Writing</h2>
+<p>Now explore GitHub a little. The <a href="https://docs.github.com/en/get-started">GitHub docs</a> are very comprehensive. Being comfortable writing content and editing configuration files will be helpful, but this can also be learned. The <a href="https://docs.github.com/en/get-started/writing-on-github">GitHub Writing guide</a> is maybe a good place to start for those new to GitHub.</p>
+<p>Next: <a href="/docs/adding-content/">Adding content</a></p>
+<p>Return to <a href="/docs/">Table of Contents</a></p>
 <p>(see contentedweb as an example)</p>
 <p>Notes:</p>
 <ul>
@@ -101,8 +107,6 @@
 <li>have advanced instructions on how to setup to run with private repos and external hosting.</li>
 </ul>
 <p>Now explore GitHub a little. The <a href="https://docs.github.com/en/get-started">GitHub docs</a> are very comprehensive. Being comfortable writing content and editing configuration files will be helpful, but this can also be learned. The <a href="https://docs.github.com/en/get-started/writing-on-github">GitHub Writing guide</a> is maybe a good place to start for those new to GitHub.</p>
-<h3>GitHub Pages</h3>
-<p>Pay attention to remove CNAME if the site is not loading properly. It should be removed if running under username.github.io. It should only be add if running under a custom domain name.</p>
 <h2>User Guide</h2>
 <h3>Site tructure</h3>
 <h4>Folders</h4>
@@ -205,7 +209,7 @@
 <p>Which would be accessible using this URL:</p>
 <pre><code>/
 </code></pre>
-<p>TO DO: explain slug &quot;permalink&quot;: &quot;/install/&quot; as in pages.json.</p>
+<p>TO DO: explain slug &quot;permalink&quot;: &quot;/getting-started/&quot; as in pages.json.</p>
 <h3>File structure</h3>
 <p>All Markdown files, whether posts or pages have two main parts.</p>
 <p>Firstly, a Front Matter part, which contains the configuration details for the file and is always at the beginning of the file.</p>
@@ -411,6 +415,8 @@ themeExtends: default
 <h2>FAQ</h2>
 <p>How is being tied to GitHub in the spirit of the IndieWeb?
 For those wanting to be independent of GitHub, nothing prevents this if you are happy to have a slightly more manual workflow. Or to Although.It is possible to run the script</p>
+<p>GitHub Pages not working
+Pay attention to remove CNAME if the site is not loading properly. It should be removed if running under username.github.io. It should only be add if running under a custom domain name.</p>
 <h2>References</h2>
 <p>Below are some excellent links to further technical information and documentation on the technologies used for this site generator.</p>
 <ul>
@@ -448,11 +454,11 @@ For those wanting to be independent of GitHub, nothing prevents this if you are 
             <div>
                 <p>
                 robindotis.github.io is a <em><strong>contented</strong></em> 🕸 blog. 
-                <span class="emojis"><a href="https://github.com/robindotis/robin.is/blob/master/docs/install.md" title="Edit on GitHub"><img id="gh-icon" src="/assets/images/github-mark-small.png" alt="Edit on GitHub"/></a></span>                </p>
+                <span class="emojis"><a href="https://github.com/robindotis/robin.is/blob/master/docs/getting-started.md" title="Edit on GitHub"><img id="gh-icon" src="/assets/images/github-mark-small.png" alt="Edit on GitHub"/></a></span>                </p>
             </div>
             <div class="lastrun">
                 <p>
-                Last updated on 02/02/2025 at 08:02:58.
+                Last updated on 02/02/2025 at 21:02:40.
                 </p>
             </div>
             <div class="copyright">
@@ -462,6 +468,6 @@ For those wanting to be independent of GitHub, nothing prevents this if you are 
             </div>
         </div>
     </footer>
-    <!-- Current page: /docs/install/ -->
+    <!-- Current page: /docs/getting-started/ -->
   </body>
 </html>
