@@ -31,7 +31,7 @@ Next you have to create the site.
 3. Then click on the "Run workflow" dropdown, followed by the "Run workflow" button. ![](/assets/images/docs/actions-run-workflow.png) 
 4. After a about a minute you should see a successful build. ![](/assets/images/docs/actions-build-success.png) 
 
-## GitHub Pages
+## Publish your site
 
 Finally turn on GitHub Pages.
 
