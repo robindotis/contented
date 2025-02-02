@@ -1,5 +1,5 @@
 ---
-title: Accessibility Statement
+title: Accessibility
 date: 2025-01-31 12:00:00
 ---
 

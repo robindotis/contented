@@ -1,6 +1,5 @@
 ---
 title: News
-permalink: news
 template: archive
 pagination:
   data: post

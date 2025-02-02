@@ -1,4 +1,4 @@
 staticDirs: [assets]
 staticFiles: [robots.txt,feed/pretty-feed-v3.xsl]
-sourceDirs: [posts, pages, feed]
+sourceDirs: [posts, pages, docs, feed]
 outputDir: /_site/

@@ -3,17 +3,15 @@ title: Documentation
 date: 2025-01-25 12:00:00
 ---
 
-## Why Contented🕸?
+## About Contented🕸
 
-> Let a hundred blogging tools bloom; let a hundred schools of thought blog.
->
-> -- With apologies to <cite>[Mao Zedong](https://en.wikipedia.org/wiki/Hundred_Flowers_Campaign)</cite>
+***Contented*** 🕸 is not a service. It is a straightforward tool for creating a website. 
 
-The idea behind ***Contented*** 🕸 is to encourage building, hosting and managing independent blogs over the use one of the common blogging services. In the spirit of the [IndieWeb](https://indieweb.org/).
+Content is created in text files and saved to your website. That's it. 
 
-Why yet another blogging tool? The more independent tools there are, the more means of expression we have and the more ways of thinking are encouraged. 
+A new website can be online within a couple of minutes. No coding knowledge is required to put content online using ***Contented***🕸. 
 
-***Contented*** 🕸 is not a service. It is a straightforward tool for creating a website. It is not a one click install tool, yet no coding knowledge is needed to put content online using ***Contented***🕸. The instructions make heavy use of GitHub, in order to get started. They are aimed at those with no prior experience of creating websites or using GitHub. A new website can be online within a couple of minutes by following the instructions. 
+If you are not familiar with working in text files and using sites such as GitHub, you need to be willing to learn just a little in order to have your own independent part of the web. In the spirit of the [IndieWeb](https://indieweb.org/). 
 
 It helps if you are willing to play around a bit and explore the tool. If this is you, [keep reading](#table-of-contents), if not, these alternative independent online blogging services are highly recommended:
 
@@ -23,7 +21,7 @@ It helps if you are willing to play around a bit and explore the tool. If this i
 
 ## Table of Contents
 
-1. [Installation Guide](#installation-guide)
+1. [Installation Gude](/docs/install/)
     1. [Getting started](#getting-started)
 1. [User Guide](#user-guide)
     1. [Site structure](#site-tructure)
