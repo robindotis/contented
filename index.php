@@ -119,7 +119,7 @@ echo "\nSetup ready in " . (microtime(true) - $start) . " seconds\n";
 //STATIC content - copy
 foreach($staticDirs as $dir) {
     $src = SOURCE_ROOT . '/' . $dir . '/';
-    $dest = __DIR__ . $outputDir . $dir . '/';
+    $dest = $outputDir . $dir . '/';
     if(DIRECTORY_SEPARATOR == "/") {
         //Linux
         //$dest = $outputRoot . '/' . $outputDir . '/' . $dir . '/';
