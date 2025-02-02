@@ -33,11 +33,13 @@ Next you have to create the site.
 
 ## GitHub Pages
 
-Finally turn on GitHub Pages
+Finally turn on GitHub Pages.
 
-1. Settings -> Pages -> Deploy from Branch -> gh-pages -> Save
-2. Wait one minute, reload the page, follow the link
-3. Your site is live on YOURUSERNAME.github.io.
+1. Go to the GitHub Pages settings by clicking on "Settings", then "Pages". ![](/assets/images/docs/pages-settings.png)
+2. Click on the "None" dropdown and choose "gh-pages". ![](/assets/images/docs/pages-branch.png)
+3. Finally click on the "Save". ![](/assets/images/docs/pages-save.png)
+4. Wait one minute, reload the page, follow the link. ![](/assets/images/docs/pages-link.png)
+5. Your site is live on YOURUSERNAME.github.io.
 
 (see contentedweb as an example)
 
