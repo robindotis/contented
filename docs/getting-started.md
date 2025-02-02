@@ -13,33 +13,35 @@ If you don't already have one, you can sign up for a [GitHub account here](https
 
 When picking your username, be aware that unless you have your own domain name, your website will use the domain name: YOURUSERNAME.github.io.
 
-## Copying the code
+## Copying the script
 
-Once your account is setup and you are logged in, you need to copy the code for script to your account. This is called forking a repository on GitHub.
+Once your account is setup and you are logged in, you need to copy the script to your GitHub account. This is called forking a repository on GitHub. The steps below will create a repository with the script installed in it.
 
 1. Visit this page: https://github.com/robindotis/robindotis.github.io
-2. Click on the "Fork" button to the top right of the page. ![](/assets/images/docs/fork.png)
-3. Name the repository "YOURUSERNAME.github.io" and untick "Copy the main branch only". ![](/assets/images/docs/fork-create.png)
+2. Click on the "Fork" button to the top right of the page.
+3. Name the repository "YOURUSERNAME.github.io" and untick "Copy the main branch only".
 4. Click on "Create Fork". 
 
-## Building your site
+## Building the site
 
-Next you have to create the site.
+Now that the repository is setup with the script, you need to build the site. This is doen with [GitHub Actions](https://github.com/features/actions).
 
-1. Click on "Actions" and accept the warning about workflows. ![](/assets/images/docs/actions-accept.png)
-2. Click on "Build site". ![](/assets/images/docs/actions-build-site.png)
-3. Then click on the "Run workflow" dropdown, followed by the "Run workflow" button. ![](/assets/images/docs/actions-run-workflow.png) 
-4. After a about a minute you should see a successful build. ![](/assets/images/docs/actions-build-success.png) 
+1. Click on "Actions" in the horizontal menu.
+2. Accept the warning about workflows, by clicking on the green button.
+3. Click on "Build site" in the left hand menu.
+4. On the right hand side, click on the "Run workflow" dropdown, followed by the green "Run workflow" button. 
+5. After a about a minute you should see a successful build, with a green tick next to the build name. 
 
-## Publish your site
+## Publish the site
 
-Finally turn on GitHub Pages.
+Finally it's time to publish the site. For this we need to configuire [GitHub Pages](https://pages.github.com/).
 
-1. Go to the GitHub Pages settings by clicking on "Settings", then "Pages". ![](/assets/images/docs/pages-settings.png)
-2. Click on the "None" dropdown and choose "gh-pages". ![](/assets/images/docs/pages-branch.png)
-3. Finally click on the "Save". ![](/assets/images/docs/pages-save.png)
-4. Wait one minute, reload the page, follow the link. ![](/assets/images/docs/pages-link.png)
-5. Your site is live on YOURUSERNAME.github.io.
+1. Go to the GitHub Pages settings by clicking on "Settings" in the horizontal menu
+2. Then click on "Pages" in the left hand menu.
+3. Click on the "None" dropdown and choose "gh-pages".
+4. Click on the "Save" button to the right "None" dropdown.
+5. Wait one minute, reload the page and follow the link towards the top of the page.
+6. Your site is live on YOURUSERNAME.github.io.
 
 (see contentedweb as an example)
 
