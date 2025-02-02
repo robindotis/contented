@@ -43,6 +43,14 @@ Finally it's time to publish the site. For this we need to configuire [GitHub Pa
 5. Wait one minute, reload the page and follow the link towards the top of the page.
 6. Your site is live on YOURUSERNAME.github.io.
 
+## Start Writing
+
+Now explore GitHub a little. The [GitHub docs](https://docs.github.com/en/get-started) are very comprehensive. Being comfortable writing content and editing configuration files will be helpful, but this can also be learned. The [GitHub Writing guide](https://docs.github.com/en/get-started/writing-on-github) is maybe a good place to start for those new to GitHub.
+
+Next: [Adding content](/docs/adding-content/)
+
+Return to [Table of Contents](/docs/)
+
 (see contentedweb as an example)
 
 
@@ -53,9 +61,8 @@ Notes:
 
 Now explore GitHub a little. The [GitHub docs](https://docs.github.com/en/get-started) are very comprehensive. Being comfortable writing content and editing configuration files will be helpful, but this can also be learned. The [GitHub Writing guide](https://docs.github.com/en/get-started/writing-on-github) is maybe a good place to start for those new to GitHub.
 
-### GitHub Pages
 
-Pay attention to remove CNAME if the site is not loading properly. It should be removed if running under username.github.io. It should only be add if running under a custom domain name.
+
 
 ## User Guide
 
@@ -336,6 +343,9 @@ themeExtends: default
 
 How is being tied to GitHub in the spirit of the IndieWeb?
 For those wanting to be independent of GitHub, nothing prevents this if you are happy to have a slightly more manual workflow. Or to Although.It is possible to run the script
+
+GitHub Pages not working
+Pay attention to remove CNAME if the site is not loading properly. It should be removed if running under username.github.io. It should only be add if running under a custom domain name.
 
 
 
