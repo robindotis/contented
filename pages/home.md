@@ -1,6 +1,6 @@
 ---
 title: Home
-template: home
+template: page
 permalink: /
 ---
 
