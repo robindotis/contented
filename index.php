@@ -18,8 +18,7 @@ use Twig\Extra\String\StringExtension;
 
 $start = microtime(true);
 $startMem = round(memory_get_usage()/1048576,2); 
-echo "\n Memory Consumption is   ";
-echo $startMem .''.' MB';
+echo "\nMemory Consumption is $startMem MB\n";
 
 
 // Default Settings - overriden by settings.yaml if it exists
@@ -84,11 +83,11 @@ if (substr($outputDir, -1) != '/') {
 }
 $outputDir = '.' . $outputDir;
 
-echo "\n outputdir: " . $outputDir;
+//echo "\n outputdir: " . $outputDir;
 
 //create temporary folder __TEMP
-echo "\nExtends: " . $templatesExtendsDir;
-echo "\nTemplates: " . $templatesDir;
+//echo "\nExtends: " . $templatesExtendsDir;
+//echo "\nTemplates: " . $templatesDir;
 $fs = new Filesystem();
 $fs->mkdir(TEMP_FOLDER);
 //copy recursively all files from theme folder to TEMP folder
@@ -115,7 +114,7 @@ $twig = new TwigEnv($loader);
 $twig->addExtension(new StringExtension());
 $twig->addExtension(new \Twig\Extension\DebugExtension());
 
-echo "\n\nSetup ready in " . (microtime(true) - $start) . " seconds";
+echo "\nSetup ready in " . (microtime(true) - $start) . " seconds\n";
 
 //STATIC content - copy
 foreach($staticDirs as $dir) {
@@ -141,7 +140,7 @@ foreach($staticFiles as $file) {
     }
     copy($srcFile, $destFile);
 }
-echo "\n\nStatic copied in " . (microtime(true) - $start) . " seconds";
+echo "\nStatic copied in " . (microtime(true) - $start) . " seconds\n";
 
 
 $pageMenus = []; //for menu items in front matter
@@ -152,7 +151,7 @@ foreach($sourceDirs as $src) {
     $collections[$src] = [];
     readMarkdownFiles(SOURCE_ROOT, $src, $outputDir, $converter, $mergedJsonStrings, $collections, $pageMenus);
 }
-echo "\n\nMarkdown files read in " . (microtime(true) - $start) . " seconds";
+echo "\nMarkdown files read in " . (microtime(true) - $start) . " seconds\n";
 
 //Add position element to each menu item $menus based on key, if it doesn't exist
 foreach($yamlMenus as $key1 => $menu) {
@@ -241,40 +240,39 @@ foreach($collections as $key => $collection) {
         $collections[$key] = $collection;
     }
 }
-echo "\n\nArrays reordered in " . (microtime(true) - $start) . " seconds";
+echo "\nArrays reordered in " . (microtime(true) - $start) . " seconds\n";
 
 processMarkdown($outputDir, $converter, $twig, $metadata, $mergedMenus, $collections);
 
 //Output collections array to file on site for easier debuggin
-echo "\n\nCollection outputted to: " . $outputDir . "/collections.txt";
-file_put_contents($outputDir . '/collections.txt', print_r($collections, true));
-file_put_contents($outputDir . '/collections.txt', print_r("\n=============================================================\n", true),FILE_APPEND);
-file_put_contents($outputDir . '/collections.txt', print_r("METADATA=====================================================\n", true),FILE_APPEND);
-file_put_contents($outputDir . '/collections.txt', print_r("=============================================================\n", true),FILE_APPEND);
-file_put_contents($outputDir . '/collections.txt', print_r($metadata, true),FILE_APPEND);
-file_put_contents($outputDir . '/collections.txt', print_r("\n=============================================================\n", true),FILE_APPEND);
-file_put_contents($outputDir . '/collections.txt', print_r("YAML MENUS===================================================\n", true),FILE_APPEND);
-file_put_contents($outputDir . '/collections.txt', print_r("=============================================================\n", true),FILE_APPEND);
-file_put_contents($outputDir . '/collections.txt', print_r($yamlMenus, true),FILE_APPEND);
-file_put_contents($outputDir . '/collections.txt', print_r("\n=============================================================\n", true),FILE_APPEND);
-file_put_contents($outputDir . '/collections.txt', print_r("PAGE MENUS===================================================\n", true),FILE_APPEND);
-file_put_contents($outputDir . '/collections.txt', print_r("=============================================================\n", true),FILE_APPEND);
-file_put_contents($outputDir . '/collections.txt', print_r($pageMenus, true),FILE_APPEND);
-file_put_contents($outputDir . '/collections.txt', print_r("\n=============================================================\n", true),FILE_APPEND);
-file_put_contents($outputDir . '/collections.txt', print_r("MERGED MENUS=================================================\n", true),FILE_APPEND);
-file_put_contents($outputDir . '/collections.txt', print_r("=============================================================\n", true),FILE_APPEND);
-file_put_contents($outputDir . '/collections.txt', print_r($mergedMenus, true),FILE_APPEND);
+echo "\nCollection outputted to: " . $outputDir . "collections.txt\n";
+file_put_contents($outputDir . 'collections.txt', print_r($collections, true));
+file_put_contents($outputDir . 'collections.txt', print_r("\n=============================================================\n", true),FILE_APPEND);
+file_put_contents($outputDir . 'collections.txt', print_r("METADATA=====================================================\n", true),FILE_APPEND);
+file_put_contents($outputDir . 'collections.txt', print_r("=============================================================\n", true),FILE_APPEND);
+file_put_contents($outputDir . 'collections.txt', print_r($metadata, true),FILE_APPEND);
+file_put_contents($outputDir . 'collections.txt', print_r("\n=============================================================\n", true),FILE_APPEND);
+file_put_contents($outputDir . 'collections.txt', print_r("YAML MENUS===================================================\n", true),FILE_APPEND);
+file_put_contents($outputDir . 'collections.txt', print_r("=============================================================\n", true),FILE_APPEND);
+file_put_contents($outputDir . 'collections.txt', print_r($yamlMenus, true),FILE_APPEND);
+file_put_contents($outputDir . 'collections.txt', print_r("\n=============================================================\n", true),FILE_APPEND);
+file_put_contents($outputDir . 'collections.txt', print_r("PAGE MENUS===================================================\n", true),FILE_APPEND);
+file_put_contents($outputDir . 'collections.txt', print_r("=============================================================\n", true),FILE_APPEND);
+file_put_contents($outputDir . 'collections.txt', print_r($pageMenus, true),FILE_APPEND);
+file_put_contents($outputDir . 'collections.txt', print_r("\n=============================================================\n", true),FILE_APPEND);
+file_put_contents($outputDir . 'collections.txt', print_r("MERGED MENUS=================================================\n", true),FILE_APPEND);
+file_put_contents($outputDir . 'collections.txt', print_r("=============================================================\n", true),FILE_APPEND);
+file_put_contents($outputDir . 'collections.txt', print_r($mergedMenus, true),FILE_APPEND);
 
 //remove temporary folder once finished processing
 $tempFileSystem = new Symfony\Component\Filesystem\Filesystem();
 $tempFileSystem->remove(TEMP_FOLDER);
 
-echo "\n\nConversion completed in " . (microtime(true) - $start) . " seconds";
+echo "\nConversion completed in " . (microtime(true) - $start) . " seconds\n";
 
 $endMem = round(memory_get_usage()/1048576,2); 
-echo "\nMemory Consumption is   ";
-echo $endMem .''.' MB';
-echo "\nDifference: " . ($endMem - $startMem);
+echo "\nMemory Consumption is $endMem MB\n";
+echo "\nDifference: " . ($endMem - $startMem) . "\n";
 
 // https://stackoverflow.com/questions/251277/sorting-php-iterators
 // get (recursively) files matching a pattern, each file as SplFileInfo object
@@ -637,7 +635,7 @@ function processPagination($twig, $outputDir, $tmplVars, $completeCollection){
 }
 
 function processMarkdown($outputDir, $converter, $twig, $metadata, $menus, $completeCollection) {
-    echo "\n\nProcessing Markdown files to output dir: " . $outputDir;
+    echo "\nProcessing Markdown files to output dir: " . $outputDir . "\n";
     //sort tags array by key
     ksort($completeCollection['tags'],SORT_NATURAL | SORT_FLAG_CASE);
     foreach($completeCollection as $srcKey => $src) {
