@@ -813,7 +813,7 @@ For those wanting to be independent of GitHub, nothing prevents this if you are 
 <li>Then click on the &quot;Run workflow&quot; dropdown, followed by the &quot;Run workflow&quot; button. <img src="/assets/images/docs/actions-run-workflow.png" alt="" /></li>
 <li>After a about a minute you should see a successful build. <img src="/assets/images/docs/actions-build-success.png" alt="" /></li>
 </ol>
-<h2>GitHub Pages</h2>
+<h2>Publish your site</h2>
 <p>Finally turn on GitHub Pages.</p>
 <ol>
 <li>Go to the GitHub Pages settings by clicking on &quot;Settings&quot;, then &quot;Pages&quot;. <img src="/assets/images/docs/pages-settings.png" alt="" /></li>
