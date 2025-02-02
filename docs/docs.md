@@ -21,9 +21,9 @@ It helps if you are willing to play around a bit and explore the tool. If this i
 
 ## Table of Contents
 
-1. [Installation Gude](/docs/install/)
-    1. [Getting started](#getting-started)
-1. [User Guide](#user-guide)
+1. [Getting started](/docs/getting-started/)
+1. [Adding content](/docs/adding-content/)
+2. [User Guide](#user-guide)
     1. [Site structure](#site-tructure)
         1. [Folders](#folders)
         1. [Files](#files)
