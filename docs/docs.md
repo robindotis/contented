@@ -13,12 +13,6 @@ A new website can be online within a couple of minutes. No coding knowledge is r
 
 If you are not familiar with working in text files and using sites such as GitHub, you need to be willing to learn just a little in order to have your own independent part of the web. In the spirit of the [IndieWeb](https://indieweb.org/). 
 
-It helps if you are willing to play around a bit and explore the tool. If this is you, [keep reading](#table-of-contents), if not, these alternative independent online blogging services are highly recommended:
-
-* [Bear Blog](https://bearblog.dev/)
-* [PIKA](https://pika.page/)
-* [micro.blog](https://micro.blog/)
-
 ## Table of Contents
 
 1. [Getting started](/docs/getting-started/)
