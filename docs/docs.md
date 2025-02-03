@@ -5,13 +5,13 @@ date: 2025-01-25 12:00:00
 
 ## About Contented🕸
 
-***Contented*** 🕸 is not a service. It is a straightforward tool for creating a website. 
+***Contented*** 🕸 is a simple script creating a static website. 
 
-Content is created in text files and saved to your website. That's it. 
+Content is created in text files, processed by the script and published on the web. That's it. 
 
-A new website can be online within a couple of minutes. No coding knowledge is required to put content online using ***Contented***🕸. 
+A new website can be online within a couple of minutes. No coding knowledge required. 
 
-If you are not familiar with working in text files and using sites such as GitHub, you need to be willing to learn just a little in order to have your own independent part of the web. In the spirit of the [IndieWeb](https://indieweb.org/). 
+If this sounds interesting to you and you would like your own independent part of the web, keep reading. All in the spirit of the [IndieWeb](https://indieweb.org/). 
 
 ## Table of Contents
 
