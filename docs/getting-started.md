@@ -3,7 +3,7 @@ title: Getting Started
 date: 2025-01-25 12:00:00
 ---
 
-To get started with ***Contented*** 🕸, a [GitHub](https://github.com/) account is needed. 
+To get started with ***Contented*** 🕸, using these instructions, a [GitHub](https://github.com/) account is needed. 
 
 Everything is done in GitHub: writing content, generating the site and publishing the pages. No other tool is needed other than your browser.
 
@@ -47,9 +47,17 @@ Finally it's time to publish the site. For this we need to configuire [GitHub Pa
 
 Now explore GitHub a little. The [GitHub docs](https://docs.github.com/en/get-started) are very comprehensive. Being comfortable writing content and editing configuration files will be helpful, but this can also be learned. The [GitHub Writing guide](https://docs.github.com/en/get-started/writing-on-github) is maybe a good place to start for those new to GitHub.
 
-Next: [Adding content](/docs/adding-content/)
+Next: [Adding content](/docs/adding-content/) or return to [Table of Contents](/docs/)
 
-Return to [Table of Contents](/docs/)
+## Final note
+
+To use this script to generate your site, it helps if you are willing to play around a bit and explore these tool. If this is you, [keep going](/docs/adding-content/), if not, these alternative independent online blogging services are highly recommended:
+
+
+* [Bear Blog](https://bearblog.dev/)
+* [PIKA](https://pika.page/)
+* [micro.blog](https://micro.blog/)
+
 
 (see contentedweb as an example)
 
