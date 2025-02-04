@@ -90,7 +90,77 @@ To use this script to generate your site, it helps if you are willing to play ar
 
 ## Adding content
 
-You add content by editing files using the Markdown language. Markdown is a very simple markup language for creating HTML content.
+Files on GitHub can be browsed just like on your desktop. Click on "Code" in top right and you will see a list of all the files.
+
+Generally content is added into Markdown files, with the extension ".md". Markdown is very simply language for writing content that will be converted to HTML when the page is published. For more details on Markdown, please see [GitHub's Markdown guide](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+
+Markdown can also contain HTMNL, so you can markup your content in plain HTML if you prefer. Mozilla provide a [very good HTML reference](https://developer.mozilla.org/en-US/docs/Web/HTML), if you are new to HTML.
+
+#### Front Matter
+
+Each Markdown file can also contain settings specific to that page. This is called Front Matter and is always placed at the start of the file.
+
+The Front Matter section of the file has a specific structure which **must** be followed.
+
+Firstly it always starts and ends with the line: `---`. 
+
+Secondly it contains attribute / value pairs, one per line, eg: `title: Welcome to my blog`. The order of the attributes within the Front Matter is not important.
+
+Front Matter is written in YAML, which is also used for the site configuration (see later). Here is a good [guide to YAML](https://www.yaml.info/learn/index.html), although it might be a little technical for some.
+
+If the attribute contains a list of values, it would be spread over multiple lines, eg:
+
+```
+tags:
+- post
+- travel
+- photo 
+```
+
+The Front Matter of a typical post might therefore look something like this:
+
+```
+---
+title: Happy New Year
+date: 2025-01-01 08:00:00
+tags:
+- celebration
+- new year
+- photo
+---
+```
+
+***Contented*** 🕸 understands the following Front Matter attributes. Any other attributes will be ignored.
+
+| Attribute | Value |
+| --- | --- |
+| title | Free text |
+| date | ISO format YYYY-MM-DD hh:mm:ss eg "2025-01-01 08:00:00" |
+| permalink | Any valid URL path, eg "/about/" |
+| tags | Free text list of tags, one per line |
+| prefix | Free text to add before the page name in the title bar |
+| navigation | For defining in which menu this page should appear |
+| - menu | Which menu the page appears in. Default templates support "header" and "footer" |
+| - title | The text for the menu item |
+| - position | The position of the menu item within the menu. Should be a number |
+| - pre | Text to add before the link for the menu item |
+| - post | Text to add after the link for the menu item |
+| - class | CSS class to add to the menu item, for custom styling |
+
+Note: you do not need to enclose the value in quotes in the Front Matter section.
+
+A page to be placed in a menu would look like this:
+
+```
+---
+title: About
+date: 2025-02-01 08:00:00
+navigation:
+- menu: header
+- title: About me
+- position: 3
+---
+```
 
 ## Files on GitHub
 
@@ -187,49 +257,6 @@ All Markdown files, whether posts or pages have two main parts.
 Firstly, a Front Matter part, which contains the configuration details for the file and is always at the beginning of the file. 
 
 Secondly, the rest of the file which contains the content. 
-
-#### Front Matter
-
-The Front Matter section of the file has a specific structure which **must** be followed.
-
-Firstly it always starts and ends with the line: `---`. 
-
-Secondly it contains attribute / value pairs, one per line, eg: `title: Welcome to my blog`. The order of the attributes within the Front Matter is not important.
-
-If the attribute contains a list of values, it would be spread over multiple lines, eg:
-
-```
-tags:
-- post
-- travel
-- photo 
-```
-
-The Front Matter of a typical post might therefore look something like this:
-
-```
----
-title: Happy New Year
-date: 2025-01-01 08:00:00
-tags:
-- celebration
-- new year
-- photo
----
-```
-
-***Contented*** understands the following Front Matter attributes. Any other attributes will be ignored.
-
-| Attribute | Value |
-| --- | --- |
-| title | Free text |
-| date | ISO format YYYY-MM-DD hh:mm:ss eg "2025-01-01 08:00:00" |
-| permalink | Any valid URL path, eg "/about/" |
-| tags | Free text list of tags, one per line |
-| prefix | Free text to add before the page name in the title bar |
-| others? | TBD |
-
-Note: you do not need to enclose the value in quotes in the Front Matter section.
 
 ### Content
 
