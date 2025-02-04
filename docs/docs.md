@@ -16,21 +16,14 @@ If this sounds interesting to you and you would like your own independent part o
 ## Table of Contents
 
 1. [Getting started](#getting-started)
-1. [Adding content](#adding-content)
-2. [User Guide](#user-guide)
-    1. [Site structure](#site-tructure)
-        1. [Folders](#folders)
-        1. [Files](#files)
-    1. [File processing](#file-processing)
-    1. [File structure](#file-structure)
-        1. [Front Matter](#front-matter)
-        1. [Content](#content)
-    1. [Theming](#themes)
-    1. [Menus](#menus)
-    1. [Metadata](#metadata)
-    1. [Settings](#settings)
-1. [FAQ](#faq)
-1. [References](#references)
+2. [Adding content](#adding-content)
+3. [Folder structure](#folder-structure)
+4. [Menus](#menus)
+5. [Themes](#themes)
+6. [Metadata](#metadata)
+7. [Settings](#settings)
+8. [FAQ](#faq)
+9. [References](#references)
 
 ## Getting started
 
@@ -92,11 +85,13 @@ To use this script to generate your site, it helps if you are willing to play ar
 
 Files on GitHub can be browsed just like on your desktop. Click on "Code" in top right and you will see a list of all the files.
 
-Generally content is added into Markdown files, with the extension ".md". Markdown is very simply language for writing content that will be converted to HTML when the page is published. For more details on Markdown, please see [GitHub's Markdown guide](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+Content is added into Markdown files, with the extension ".md". Markdown is very simply language for writing content that will be converted to HTML when the page is published. For more details on Markdown, please see [GitHub's Markdown guide](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
 
 Markdown can also contain HTMNL, so you can markup your content in plain HTML if you prefer. Mozilla provide a [very good HTML reference](https://developer.mozilla.org/en-US/docs/Web/HTML), if you are new to HTML.
 
-#### Front Matter
+Only files with the extension .md are processed and converted to HTML files. By default, all other file types are ignored unless they are files in the assets folder, which are then simply copied.
+
+### Front Matter
 
 Each Markdown file can also contain settings specific to that page. This is called Front Matter and is always placed at the start of the file.
 
@@ -134,18 +129,18 @@ tags:
 
 | Attribute | Value |
 | --- | --- |
-| title | Free text |
-| date | ISO format YYYY-MM-DD hh:mm:ss eg "2025-01-01 08:00:00" |
-| permalink | Any valid URL path, eg "/about/" |
-| tags | Free text list of tags, one per line |
-| prefix | Free text to add before the page name in the title bar |
-| navigation | For defining in which menu this page should appear |
-| - menu | Which menu the page appears in. Default templates support "header" and "footer" |
-| - title | The text for the menu item |
-| - position | The position of the menu item within the menu. Should be a number |
-| - pre | Text to add before the link for the menu item |
-| - post | Text to add after the link for the menu item |
-| - class | CSS class to add to the menu item, for custom styling |
+| title | Free text. |
+| date | ISO format YYYY-MM-DD hh:mm:ss eg "2025-01-01 08:00:00". Used for sorting posts. |
+| permalink | Any valid URL path, eg "/about/". If not specified the link for the file will be the title. |
+| tags | Free text list of tags, one per line. |
+| prefix | Free text to add before the page name in the title bar. |
+| navigation | For defining in which menu this page should appear. |
+| - menu | Which menu the page appears in. Default templates support "header" and "footer". |
+| - title | The text for the menu item. |
+| - position | The position of the menu item within the menu. Should be a number. |
+| - pre | Text to add before the link for the menu item. |
+| - post | Text to add after the link for the menu item. |
+| - class | CSS class to add to the menu item, for custom styling. |
 
 Note: you do not need to enclose the value in quotes in the Front Matter section.
 
@@ -162,107 +157,7 @@ navigation:
 ---
 ```
 
-## Files on GitHub
-
-## Editing files
-
-## Adding a file
-
-Now explore GitHub a little. The [GitHub docs](https://docs.github.com/en/get-started) are very comprehensive. Being comfortable writing content and editing configuration files will be helpful, but this can also be learned. The [GitHub Writing guide](https://docs.github.com/en/get-started/writing-on-github) is maybe a good place to start for those new to GitHub.
-
-
-## User Guide
-
-### Site tructure
-
-#### Folders
-
-| Folder | Description |
-| --- | --- |
-| assets | Contains static files, such as images, styling ([CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)) and scripting ([JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)). Folder will be copied as is to your website. |
-| data | Contains configuration files, in [JSON](https://en.wikipedia.org/wiki/JSON) format. |
-| feed | Contains code to generate the [RSS feed](https://en.wikipedia.org/wiki/RSS). |
-| pages | Contains the site pages. These are standalone pages that will not be processed as posts and therefore won't appear in your feed. |
-| posts | Contains the blog posts in [GitHub's Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github) format. Subfolders are allowed to help find the posts (eg by year), but it won't affect how the posts are processed in GitHub's Markdown format. |
-| themes | Contains template for the site design, using the [Twig](https://docs.github.com/en/get-started/writing-on-github) templating system. |
-| uploads | Folder into which to upload images to process them into the [WEBP](https://en.wikipedia.org/wiki/WebP) image format. |
-
-Only touch the **.github** folder if you know what you are doing. This contains the code that generates and publishes the website. 
-
-#### Files
-
-| Page | Description |
-| --- | --- |
-| robots.txt | Defines how search engines index the site. See [Google for further information on robots.txt](https://developers.google.com/search/docs/crawling-indexing/robots/intro). Modify only if needed. |
-| _CNAME | Contains the custom domain if there is one. Rename it to "CNAME" if using a custom domain name with GitHub Pages. Otherwise ignore. |
-| pages/home.md | Content for the homepage. The homepage markdown file should have the permalink front matter attribute defined as: `permalink: /`. One page, and only one page, should have this set otherwise the site will not have a homepage and visiting the base URL will return a page not found. |
-| pages/404.md | Content to display when a page is not found. The page not found markdown file should have the permalink front matter attribute defined as: `permalink: /404.html`.  |
-| feed/index.md |  Generates the RSS feed in Atom format. |
-| pages/sitemap.md |  Generate a [sitemap.xml file](https://www.sitemaps.org/protocol.html) used by [search engines to index the site](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap). Remove if a sitemap is not needed (not recommended). |
-
-Only touch the **index.php** file if you know what you are doing. This contains the code that processes the markdown files to generate the static HTML files.
-
-### File processing
-All content is stored in Markdown file, such as home.md.  Only files with the extension .md are processed onverted to HTML files. All other file types are ignored unless they are files in the assets folder, which are then simply copied.
-
-Each markdown file, those with extension .md, is converted to an index.html file. This file is placed in a folder with the same path and name as the markdown file, unless specified otherwise in the Front Matter configuration for the file using the "permalink" attribute.
-
-For example the file:
-
-```
-/posts/2023/summmer.md
-```
-
-would generated a file:
-
-```
-/posts/2023/summmer/index.html
-```
-
-which would be accessible using the URL:
-
-```
-/posts/2023/summmer/
-```
-
-And a file:
-
-```
-/pages/home.md
-```
-
-With the following front matter attribute:
-
-```
-permalink: /
-```
-
-Would generate file a here:
-
-```
-/index.html
-```
-
-Which would be accessible using this URL:
-
-```
-/
-```
-
-TO DO: explain slug "permalink": "/{{ filename }}/" as in pages.json.
-
-### File structure
-All Markdown files, whether posts or pages have two main parts. 
-
-Firstly, a Front Matter part, which contains the configuration details for the file and is always at the beginning of the file. 
-
-Secondly, the rest of the file which contains the content. 
-
-### Content
-
-In ***Contented***. all content is written using [GitHub's implementation of Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-Note that Markdown can also contain HTML. So any tags for which there is no Markdown equivalent can be written in HTML.  
+### Example markdown file
 
 A typical Markdown content file might therefore look something like this:
 
@@ -284,45 +179,49 @@ This is first blog post, I hope you enjoy this site.
 
 ```
 
-### Archives
+## Folder structure
 
-Archives are lists of all the posts matching a specific tag. 
+### Folders
 
-They use the following Front Matter.
+These are the default folders. They should not be removed or renamed. More folders can be added without affecting the site.
 
-```
----
-title: Coding 
-pagination:
-  data: web
-  alias: posts
+| Folder | Description |
+| --- | --- |
+| assets | Contains static files, such as images, styling ([CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)) and scripting ([JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)). Folder will be copied as is to your website. |
+| data | Contains configuration files, in [YAML](https://en.wikipedia.org/wiki/JSON) format. |
+| feed | Contains code to generate the [RSS feed](https://en.wikipedia.org/wiki/RSS). |
+| pages | Contains the site pages written in Markdown. These are standalone pages that will not be processed as posts and therefore won't appear in your feed. |
+| posts | Contains the blog posts written in Markdown. Subfolders are allowed to help organise the posts (eg by year), but it won't affect how the posts are processed. |
+| themes | Contains template for the site design, using the [Twig](https://docs.github.com/en/get-started/writing-on-github) templating system. |
+| uploads | Folder into which to upload images to process them into the [WEBP](https://en.wikipedia.org/wiki/WebP) image format. |
 
----
-```
+Only touch the **.github** folder if you know what you are doing. This contains the code that generates and publishes the website. 
 
-data is tag name to include in the archive.
+### Files
 
-### Themes
+This is a list of specific files that you should not touch unless you know what you are doing. 
 
-Themes can be set in the settings.yaml file. 
+| Page | Description |
+| --- | --- |
+| robots.txt | Defines how search engines index the site. See [Google for further information on robots.txt](https://developers.google.com/search/docs/crawling-indexing/robots/intro). Modify only if needed. |
+| _CNAME | Contains the custom domain if there is one. Rename it to "CNAME" if using a custom domain name with GitHub Pages. Otherwise ignore. |
+| pages/home.md | Content for the homepage. The homepage markdown file should have the permalink front matter attribute defined as: `permalink: /`. One page, and only one page, should have this set otherwise the site will not have a homepage and visiting the base URL will return a page not found. |
+| pages/404.md | Content to display when a page is not found. The page not found markdown file should have the permalink front matter attribute defined as: `permalink: /404.html`.  |
+| feed/index.md |  Generates the RSS feed in Atom format. |
+| pages/sitemap.md |  Generate a [sitemap.xml file](https://www.sitemaps.org/protocol.html) used by [search engines to index the site](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap). Remove if a sitemap is not needed (not recommended). |
 
-Themes are created in the `/templates/` folder.
+Only touch the **index.php** file if you know what you are doing. This contains the code that processes the markdown files to generate the static HTML files.
 
-If not set it will take the default templates from the folder: `/templates/default/`. If that folder is not exist, the site will cannot be built.
+## Menus
 
-A theme can extend another theme, as defined by the `themeExtends` setting.
-
-### Menus
-
-Menus can be defined for the header and footer. This is done in the file "_data/menus.yaml". The syntax of this file is a little more complicated as it is written in YAML.
+Menus can be defined for the header and footer. This is done in the file "/data/menus.yaml". The syntax of this file is a little more complicated as it is written in YAML.
 
 [Learn more about the YAML syntax here](https://www.yaml.info/learn/index.html).
 
-As an example this file menus.yaml file for a site with two menus. A header and a footer menu:
+As an example this file menus.yaml file for a site with two menus, a header and a footer menu. You can add as many menus as you wish, but the default template only knows the header and footer menus. 
 
 ```
-- name: header
-  items:
+header:
     - title: Home
       link: /home/
     - title: About
@@ -336,8 +235,7 @@ As an example this file menus.yaml file for a site with two menus. A header and 
       link: /tagging/angie/
       pre: 'the '
       post: '. '
-- name: footer
-  items:
+- footer:
     - title: RSS
       link: /feed/
       class: ally-statement
@@ -347,11 +245,21 @@ As an example this file menus.yaml file for a site with two menus. A header and 
       link: /my-site/
 ```
 
-### Metadata
+## Themes
+
+Themes can be set in the settings.yaml file. 
+
+Themes are created in the `/templates/` folder. They are build using the [Twig template language](https://twig.symfony.com/).
+
+If not set it will take the default templates from the folder: `/templates/default/`. If that folder is not exist, the site will cannot be built.
+
+A theme can extend another theme, as defined by the `themeExtends` setting.
+
+## Metadata
 
 **Consider renaming this to "configuration", config.yaml**
 
-Metadata for the site can be defined and is stored in the file "_data/metadata.yaml". 
+Metadata is information about the site. It is stored in YAML format in the file "data/metadata.yaml". 
 
 This is an example the metadata.yaml file for a basic site:
 
@@ -377,9 +285,9 @@ author:
   webmention: https://github.com/robindotis/
 ```
 
-### Settings
+## Settings
 
-Settings are set in the file: `/data/setting.yaml`.
+Settings are set in the file: `/data/setting.yaml`. These settings define how the content should be processed. Do not touch unless you are sure you know what you are doing.
 
 Allowed settings are:
 
@@ -392,6 +300,8 @@ Allowed settings are:
 | theme | matrix | The name of the folder containing the templates for the site. |
 | themeExtends | default | The name of the folder containing the theme that `theme` builds up on, if any. |
 
+All settings are optional. If they are not provided, defaults will be used.
+
 The default settings.yaml file looks like this:
 
 ```
@@ -399,11 +309,9 @@ staticDirs: [assets]
 staticFiles: [robots.txt,feed/pretty-feed-v3.xsl]
 sourceDirs: [posts, pages, feed]
 outputDir: /_site/
-theme: matrix
-themeExtends: default
 ```
 
-## FAQ
+## FAQ and To Do
 
 How is being tied to GitHub in the spirit of the IndieWeb?
 For those wanting to be independent of GitHub, nothing prevents this if you are happy to have a slightly more manual workflow. Or to Although.It is possible to run the script
@@ -411,7 +319,20 @@ For those wanting to be independent of GitHub, nothing prevents this if you are 
 GitHub Pages
 Pay attention to remove CNAME if the site is not loading properly. It should be removed if running under username.github.io. It should only be add if running under a custom domain name.
 
+TO DO: explain slug "permalink": "/{{ filename }}/" as in pages.json.
 
+explain pagination front matter:
+
+```
+---
+pagination:
+  data: web
+  alias: posts
+
+---
+```
+
+data is tag name to include in the archive.
 
 ## References
 
