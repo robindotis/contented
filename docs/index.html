@@ -65,68 +65,183 @@
       <h1>Documentation</h1> 
     </header>
     <h2>About Contented🕸</h2>
-<p><em><strong>Contented</strong></em> 🕸 is not a service. It is a straightforward tool for creating a website.</p>
-<p>Content is created in text files and saved to your website. That's it.</p>
-<p>A new website can be online within a couple of minutes. No coding knowledge is required to put content online using <em><strong>Contented</strong></em>🕸.</p>
-<p>If you are not familiar with working in text files and using sites such as GitHub, you need to be willing to learn just a little in order to have your own independent part of the web. In the spirit of the <a href="https://indieweb.org/">IndieWeb</a>.</p>
-<p>It helps if you are willing to play around a bit and explore the tool. If this is you, <a href="#table-of-contents">keep reading</a>, if not, these alternative independent online blogging services are highly recommended:</p>
+<p><em><strong>Contented</strong></em> 🕸 is a simple script creating a static website.</p>
+<p>Content is created in text files, processed by the script and published on the web. That's it.</p>
+<p>A new website can be online within a couple of minutes. No coding knowledge required.</p>
+<p>If this sounds interesting to you and you would like your own independent part of the web, keep reading. All in the spirit of the <a href="https://indieweb.org/">IndieWeb</a>.</p>
+<h2>Table of Contents</h2>
+<ol>
+<li><a href="#getting-started">Getting started</a></li>
+<li><a href="#adding-content">Adding content</a></li>
+<li><a href="#folder-structure">Folder structure</a></li>
+<li><a href="#menus">Menus</a></li>
+<li><a href="#themes">Themes</a></li>
+<li><a href="#metadata">Metadata</a></li>
+<li><a href="#settings">Settings</a></li>
+<li><a href="#faq">FAQ</a></li>
+<li><a href="#references">References</a></li>
+</ol>
+<h2>Getting started</h2>
+<p>To get started with <em><strong>Contented</strong></em> 🕸, using these instructions, a <a href="https://github.com/">GitHub</a> account is needed.</p>
+<p>Everything is done in GitHub: writing content, generating the site and publishing the pages. No other tool is needed other than your browser.</p>
+<h3>GitHub account</h3>
+<p>If you don't already have one, you can sign up for a <a href="https://github.com/signup">GitHub account here</a>.</p>
+<p>When picking your username, be aware that unless you have your own domain name, your website will use the domain name: YOURUSERNAME.github.io.</p>
+<h3>Copy the script</h3>
+<p>Once your account is setup and you are logged in, you need to copy the script to your GitHub account. This is called forking a repository on GitHub. The steps below will create a repository with the script installed in it.</p>
+<ol>
+<li>Visit this page: <a href="https://github.com/robindotis/robindotis.github.io">https://github.com/robindotis/robindotis.github.io</a></li>
+<li>Click on the &quot;Fork&quot; button to the top right of the page.</li>
+<li>Name the repository &quot;YOURUSERNAME.github.io&quot; and untick &quot;Copy the main branch only&quot;.</li>
+<li>Click on &quot;Create Fork&quot;.</li>
+</ol>
+<h3>Build the site</h3>
+<p>Now that the repository is setup with the script, you need to build the site. This is doen with <a href="https://github.com/features/actions">GitHub Actions</a>.</p>
+<ol>
+<li>Click on &quot;Actions&quot; in the horizontal menu.</li>
+<li>Accept the warning about workflows, by clicking on the green button.</li>
+<li>Click on &quot;Build site&quot; in the left hand menu.</li>
+<li>On the right hand side, click on the &quot;Run workflow&quot; dropdown, followed by the green &quot;Run workflow&quot; button.</li>
+<li>After a about a minute you should see a successful build, with a green tick next to the build name.</li>
+</ol>
+<h3>Publish the site</h3>
+<p>Finally it's time to publish the site. For this we need to configuire <a href="https://pages.github.com/">GitHub Pages</a>.</p>
+<ol>
+<li>Go to the GitHub Pages settings by clicking on &quot;Settings&quot; in the horizontal menu</li>
+<li>Then click on &quot;Pages&quot; in the left hand menu.</li>
+<li>Click on the &quot;None&quot; dropdown and choose &quot;gh-pages&quot;.</li>
+<li>Click on the &quot;Save&quot; button to the right &quot;None&quot; dropdown.</li>
+<li>Wait one minute, reload the page and follow the link towards the top of the page.</li>
+<li>Your site is live on YOURUSERNAME.github.io.</li>
+</ol>
+<h3>Start Writing</h3>
+<p>Now explore GitHub a little. The <a href="https://docs.github.com/en/get-started">GitHub docs</a> are very comprehensive. Being comfortable writing content and editing configuration files will be helpful, but this can also be learned. The <a href="https://docs.github.com/en/get-started/writing-on-github">GitHub Writing guide</a> is maybe a good place to start for those new to GitHub.</p>
+<p><a href="#table-of-contents">Table of Contents</a></p>
+<h3>Final note</h3>
+<p>To use this script to generate your site, it helps if you are willing to play around a bit and explore these tool. If this is you, <a href="/docs/adding-content/">keep going</a>, if not, these alternative independent online blogging services are highly recommended:</p>
 <ul>
 <li><a href="https://bearblog.dev/">Bear Blog</a></li>
 <li><a href="https://pika.page/">PIKA</a></li>
 <li><a href="https://micro.blog/">micro.blog</a></li>
 </ul>
-<h2>Table of Contents</h2>
-<ol>
-<li><a href="/docs/getting-started/">Getting started</a></li>
-<li><a href="/docs/adding-content/">Adding content</a></li>
-<li><a href="#user-guide">User Guide</a>
-<ol>
-<li><a href="#site-tructure">Site structure</a>
-<ol>
-<li><a href="#folders">Folders</a></li>
-<li><a href="#files">Files</a></li>
-</ol>
-</li>
-<li><a href="#file-processing">File processing</a></li>
-<li><a href="#file-structure">File structure</a>
-<ol>
-<li><a href="#front-matter">Front Matter</a></li>
-<li><a href="#content">Content</a></li>
-</ol>
-</li>
-<li><a href="#themes">Theming</a></li>
-<li><a href="#menus">Menus</a></li>
-<li><a href="#metadata">Metadata</a></li>
-<li><a href="#settings">Settings</a></li>
-</ol>
-</li>
-<li><a href="#faq">FAQ</a></li>
-<li><a href="#references">References</a></li>
-</ol>
-<h2>Installation Guide</h2>
-<h3>Getting started</h3>
-<p>To use <em><strong>Contented</strong></em> a <a href="https://github.com/">GitHub</a> account is needed. Everything is done in GitHub: writing content, generating the site and publishing the pages. No other tool is needed other than a browser.</p>
-<ol>
-<li>First of all sign up for a <a href="https://github.com/signup">GitHub account</a> and then login to GitHub.</li>
-<li>Next make a fork of <em><strong>Contented</strong></em> 🕸 by forking the <em><strong>Contented</strong></em>🕸 repository. Name the fork username.github.io</li>
-<li>Allow the actions to run.</li>
-<li>Run the &quot;Build site&quot; action.</li>
-<li>Settings -&gt; Pages -&gt; Deploy from Branch -&gt; gh-pages -&gt; Save</li>
-<li>Wait one minute, reload the page, follow the link</li>
-<li>Blog is live.</li>
-</ol>
-<p>(see contentedweb as an example)</p>
-<p>Notes:</p>
-<ul>
-<li>Start with simple setup of public rep names username.github.io and using branches for the deployment.</li>
-<li>have advanced instructions on how to setup to run with private repos and external hosting.</li>
-</ul>
-<p>Now explore GitHub a little. The <a href="https://docs.github.com/en/get-started">GitHub docs</a> are very comprehensive. Being comfortable writing content and editing configuration files will be helpful, but this can also be learned. The <a href="https://docs.github.com/en/get-started/writing-on-github">GitHub Writing guide</a> is maybe a good place to start for those new to GitHub.</p>
-<h3>GitHub Pages</h3>
-<p>Pay attention to remove CNAME if the site is not loading properly. It should be removed if running under username.github.io. It should only be add if running under a custom domain name.</p>
-<h2>User Guide</h2>
-<h3>Site tructure</h3>
-<h4>Folders</h4>
+<h2>Adding content</h2>
+<p>Files on GitHub can be browsed just like on your desktop. Click on &quot;Code&quot; in top right and you will see a list of all the files.</p>
+<p>Content is added into Markdown files, with the extension &quot;.md&quot;. Markdown is very simply language for writing content that will be converted to HTML when the page is published. For more details on Markdown, please see <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax">GitHub's Markdown guide</a>.</p>
+<p>Markdown can also contain HTMNL, so you can markup your content in plain HTML if you prefer. Mozilla provide a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">very good HTML reference</a>, if you are new to HTML.</p>
+<p>Only files with the extension .md are processed and converted to HTML files. By default, all other file types are ignored unless they are files in the assets folder, which are then simply copied.</p>
+<h3>Front Matter</h3>
+<p>Each Markdown file can also contain settings specific to that page. This is called Front Matter and is always placed at the start of the file.</p>
+<p>The Front Matter section of the file has a specific structure which <strong>must</strong> be followed.</p>
+<p>Firstly it always starts and ends with the line: <code>---</code>.</p>
+<p>Secondly it contains attribute / value pairs, one per line, eg: <code>title: Welcome to my blog</code>. The order of the attributes within the Front Matter is not important.</p>
+<p>Front Matter is written in YAML, which is also used for the site configuration (see later). Here is a good <a href="https://www.yaml.info/learn/index.html">guide to YAML</a>, although it might be a little technical for some.</p>
+<p>If the attribute contains a list of values, it would be spread over multiple lines, eg:</p>
+<pre><code>tags:
+- post
+- travel
+- photo 
+</code></pre>
+<p>The Front Matter of a typical post might therefore look something like this:</p>
+<pre><code>---
+title: Happy New Year
+date: 2025-01-01 08:00:00
+tags:
+- celebration
+- new year
+- photo
+---
+</code></pre>
+<p><em><strong>Contented</strong></em> 🕸 understands the following Front Matter attributes. Any other attributes will be ignored.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>Free text.</td>
+</tr>
+<tr>
+<td>date</td>
+<td>ISO format YYYY-MM-DD hh:mm:ss eg &quot;2025-01-01 08:00:00&quot;. Used for sorting posts.</td>
+</tr>
+<tr>
+<td>permalink</td>
+<td>Any valid URL path, eg &quot;/about/&quot;. If not specified the link for the file will be the title.</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>Free text list of tags, one per line.</td>
+</tr>
+<tr>
+<td>prefix</td>
+<td>Free text to add before the page name in the title bar.</td>
+</tr>
+<tr>
+<td>navigation</td>
+<td>For defining in which menu this page should appear.</td>
+</tr>
+<tr>
+<td>- menu</td>
+<td>Which menu the page appears in. Default templates support &quot;header&quot; and &quot;footer&quot;.</td>
+</tr>
+<tr>
+<td>- title</td>
+<td>The text for the menu item.</td>
+</tr>
+<tr>
+<td>- position</td>
+<td>The position of the menu item within the menu. Should be a number.</td>
+</tr>
+<tr>
+<td>- pre</td>
+<td>Text to add before the link for the menu item.</td>
+</tr>
+<tr>
+<td>- post</td>
+<td>Text to add after the link for the menu item.</td>
+</tr>
+<tr>
+<td>- class</td>
+<td>CSS class to add to the menu item, for custom styling.</td>
+</tr>
+</tbody>
+</table>
+<p>Note: you do not need to enclose the value in quotes in the Front Matter section.</p>
+<p>A page to be placed in a menu would look like this:</p>
+<pre><code>---
+title: About
+date: 2025-02-01 08:00:00
+navigation:
+- menu: header
+- title: About me
+- position: 3
+---
+</code></pre>
+<h3>Example markdown file</h3>
+<p>A typical Markdown content file might therefore look something like this:</p>
+<pre><code>---
+title: Happy New Year
+date: 2025-01-01 08:00:00
+tags:
+- celebration
+- new year
+- photo
+---
+
+## Welcome
+
+This is first blog post, I hope you enjoy this site.
+
+&lt;blockquote&gt;Doing It Yourself Rocks!&lt;/blockquote&gt;
+
+</code></pre>
+<h2>Folder structure</h2>
+<h3>Folders</h3>
+<p>These are the default folders. They should not be removed or renamed. More folders can be added without affecting the site.</p>
 <table>
 <thead>
 <tr>
@@ -141,7 +256,7 @@
 </tr>
 <tr>
 <td>data</td>
-<td>Contains configuration files, in <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> format.</td>
+<td>Contains configuration files, in <a href="https://en.wikipedia.org/wiki/JSON">YAML</a> format.</td>
 </tr>
 <tr>
 <td>feed</td>
@@ -149,11 +264,11 @@
 </tr>
 <tr>
 <td>pages</td>
-<td>Contains the site pages. These are standalone pages that will not be processed as posts and therefore won't appear in your feed.</td>
+<td>Contains the site pages written in Markdown. These are standalone pages that will not be processed as posts and therefore won't appear in your feed.</td>
 </tr>
 <tr>
 <td>posts</td>
-<td>Contains the blog posts in <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github">GitHub's Markdown</a> format. Subfolders are allowed to help find the posts (eg by year), but it won't affect how the posts are processed in GitHub's Markdown format.</td>
+<td>Contains the blog posts written in Markdown. Subfolders are allowed to help organise the posts (eg by year), but it won't affect how the posts are processed.</td>
 </tr>
 <tr>
 <td>themes</td>
@@ -166,7 +281,8 @@
 </tbody>
 </table>
 <p>Only touch the <strong>.github</strong> folder if you know what you are doing. This contains the code that generates and publishes the website.</p>
-<h4>Files</h4>
+<h3>Files</h3>
+<p>This is a list of specific files that you should not touch unless you know what you are doing.</p>
 <table>
 <thead>
 <tr>
@@ -202,134 +318,11 @@
 </tbody>
 </table>
 <p>Only touch the <strong>index.php</strong> file if you know what you are doing. This contains the code that processes the markdown files to generate the static HTML files.</p>
-<h3>File processing</h3>
-<p>All content is stored in Markdown file, such as home.md.  Only files with the extension .md are processed onverted to HTML files. All other file types are ignored unless they are files in the assets folder, which are then simply copied.</p>
-<p>Each markdown file, those with extension .md, is converted to an index.html file. This file is placed in a folder with the same path and name as the markdown file, unless specified otherwise in the Front Matter configuration for the file using the &quot;permalink&quot; attribute.</p>
-<p>For example the file:</p>
-<pre><code>/posts/2023/summmer.md
-</code></pre>
-<p>would generated a file:</p>
-<pre><code>/posts/2023/summmer/index.html
-</code></pre>
-<p>which would be accessible using the URL:</p>
-<pre><code>/posts/2023/summmer/
-</code></pre>
-<p>And a file:</p>
-<pre><code>/pages/home.md
-</code></pre>
-<p>With the following front matter attribute:</p>
-<pre><code>permalink: /
-</code></pre>
-<p>Would generate file a here:</p>
-<pre><code>/index.html
-</code></pre>
-<p>Which would be accessible using this URL:</p>
-<pre><code>/
-</code></pre>
-<p>TO DO: explain slug &quot;permalink&quot;: &quot;/docs/&quot; as in pages.json.</p>
-<h3>File structure</h3>
-<p>All Markdown files, whether posts or pages have two main parts.</p>
-<p>Firstly, a Front Matter part, which contains the configuration details for the file and is always at the beginning of the file.</p>
-<p>Secondly, the rest of the file which contains the content.</p>
-<h4>Front Matter</h4>
-<p>The Front Matter section of the file has a specific structure which <strong>must</strong> be followed.</p>
-<p>Firstly it always starts and ends with the line: <code>---</code>.</p>
-<p>Secondly it contains attribute / value pairs, one per line, eg: <code>title: Welcome to my blog</code>. The order of the attributes within the Front Matter is not important.</p>
-<p>If the attribute contains a list of values, it would be spread over multiple lines, eg:</p>
-<pre><code>tags:
-- post
-- travel
-- photo 
-</code></pre>
-<p>The Front Matter of a typical post might therefore look something like this:</p>
-<pre><code>---
-title: Happy New Year
-date: 2025-01-01 08:00:00
-tags:
-- celebration
-- new year
-- photo
----
-</code></pre>
-<p><em><strong>Contented</strong></em> understands the following Front Matter attributes. Any other attributes will be ignored.</p>
-<table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>title</td>
-<td>Free text</td>
-</tr>
-<tr>
-<td>date</td>
-<td>ISO format YYYY-MM-DD hh:mm:ss eg &quot;2025-01-01 08:00:00&quot;</td>
-</tr>
-<tr>
-<td>permalink</td>
-<td>Any valid URL path, eg &quot;/about/&quot;</td>
-</tr>
-<tr>
-<td>tags</td>
-<td>Free text list of tags, one per line</td>
-</tr>
-<tr>
-<td>prefix</td>
-<td>Free text to add before the page name in the title bar</td>
-</tr>
-<tr>
-<td>others?</td>
-<td>TBD</td>
-</tr>
-</tbody>
-</table>
-<p>Note: you do not need to enclose the value in quotes in the Front Matter section.</p>
-<h3>Content</h3>
-<p>In <em><strong>Contented</strong></em>. all content is written using <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax">GitHub's implementation of Markdown</a>.</p>
-<p>Note that Markdown can also contain HTML. So any tags for which there is no Markdown equivalent can be written in HTML.</p>
-<p>A typical Markdown content file might therefore look something like this:</p>
-<pre><code>---
-title: Happy New Year
-date: 2025-01-01 08:00:00
-tags:
-- celebration
-- new year
-- photo
----
-
-## Welcome
-
-This is first blog post, I hope you enjoy this site.
-
-&lt;blockquote&gt;Doing It Yourself Rocks!&lt;/blockquote&gt;
-
-</code></pre>
-<h3>Archives</h3>
-<p>Archives are lists of all the posts matching a specific tag.</p>
-<p>They use the following Front Matter.</p>
-<pre><code>---
-title: Coding 
-pagination:
-  data: web
-  alias: posts
-
----
-</code></pre>
-<p>data is tag name to include in the archive.</p>
-<h3>Themes</h3>
-<p>Themes can be set in the settings.yaml file.</p>
-<p>Themes are created in the <code>/templates/</code> folder.</p>
-<p>If not set it will take the default templates from the folder: <code>/templates/default/</code>. If that folder is not exist, the site will cannot be built.</p>
-<p>A theme can extend another theme, as defined by the <code>themeExtends</code> setting.</p>
-<h3>Menus</h3>
-<p>Menus can be defined for the header and footer. This is done in the file &quot;_data/menus.yaml&quot;. The syntax of this file is a little more complicated as it is written in YAML.</p>
+<h2>Menus</h2>
+<p>Menus can be defined for the header and footer. This is done in the file &quot;/data/menus.yaml&quot;. The syntax of this file is a little more complicated as it is written in YAML.</p>
 <p><a href="https://www.yaml.info/learn/index.html">Learn more about the YAML syntax here</a>.</p>
-<p>As an example this file menus.yaml file for a site with two menus. A header and a footer menu:</p>
-<pre><code>- name: header
-  items:
+<p>As an example this file menus.yaml file for a site with two menus, a header and a footer menu. You can add as many menus as you wish, but the default template only knows the header and footer menus.</p>
+<pre><code>header:
     - title: Home
       link: /home/
     - title: About
@@ -343,8 +336,7 @@ pagination:
       link: /tagging/angie/
       pre: 'the '
       post: '. '
-- name: footer
-  items:
+- footer:
     - title: RSS
       link: /feed/
       class: ally-statement
@@ -353,9 +345,14 @@ pagination:
     - title: Site info
       link: /my-site/
 </code></pre>
-<h3>Metadata</h3>
+<h2>Themes</h2>
+<p>Themes can be set in the settings.yaml file.</p>
+<p>Themes are created in the <code>/templates/</code> folder. They are build using the <a href="https://twig.symfony.com/">Twig template language</a>.</p>
+<p>If not set it will take the default templates from the folder: <code>/templates/default/</code>. If that folder is not exist, the site will cannot be built.</p>
+<p>A theme can extend another theme, as defined by the <code>themeExtends</code> setting.</p>
+<h2>Metadata</h2>
 <p><strong>Consider renaming this to &quot;configuration&quot;, config.yaml</strong></p>
-<p>Metadata for the site can be defined and is stored in the file &quot;_data/metadata.yaml&quot;.</p>
+<p>Metadata is information about the site. It is stored in YAML format in the file &quot;data/metadata.yaml&quot;.</p>
 <p>This is an example the metadata.yaml file for a basic site:</p>
 <pre><code>title: Robin's
 url: https://www.robin.is/
@@ -377,8 +374,8 @@ author:
   url: https://www.robin.is/about/
   webmention: https://github.com/robindotis/
 </code></pre>
-<h3>Settings</h3>
-<p>Settings are set in the file: <code>/data/setting.yaml</code>.</p>
+<h2>Settings</h2>
+<p>Settings are set in the file: <code>/data/setting.yaml</code>. These settings define how the content should be processed. Do not touch unless you are sure you know what you are doing.</p>
 <p>Allowed settings are:</p>
 <table>
 <thead>
@@ -421,17 +418,28 @@ author:
 </tr>
 </tbody>
 </table>
+<p>All settings are optional. If they are not provided, defaults will be used.</p>
 <p>The default settings.yaml file looks like this:</p>
 <pre><code>staticDirs: [assets]
 staticFiles: [robots.txt,feed/pretty-feed-v3.xsl]
 sourceDirs: [posts, pages, feed]
 outputDir: /_site/
-theme: matrix
-themeExtends: default
 </code></pre>
-<h2>FAQ</h2>
+<h2>FAQ and To Do</h2>
 <p>How is being tied to GitHub in the spirit of the IndieWeb?
 For those wanting to be independent of GitHub, nothing prevents this if you are happy to have a slightly more manual workflow. Or to Although.It is possible to run the script</p>
+<p>GitHub Pages
+Pay attention to remove CNAME if the site is not loading properly. It should be removed if running under username.github.io. It should only be add if running under a custom domain name.</p>
+<p>TO DO: explain slug &quot;permalink&quot;: &quot;/docs/&quot; as in pages.json.</p>
+<p>explain pagination front matter:</p>
+<pre><code>---
+pagination:
+  data: web
+  alias: posts
+
+---
+</code></pre>
+<p>data is tag name to include in the archive.</p>
 <h2>References</h2>
 <p>Below are some excellent links to further technical information and documentation on the technologies used for this site generator.</p>
 <ul>
@@ -473,7 +481,7 @@ For those wanting to be independent of GitHub, nothing prevents this if you are 
             </div>
             <div class="lastrun">
                 <p>
-                Last updated on 02/02/2025 at 21:02:40.
+                Last updated on 04/02/2025 at 06:02:57.
                 </p>
             </div>
             <div class="copyright">
