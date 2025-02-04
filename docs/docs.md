@@ -15,8 +15,8 @@ If this sounds interesting to you and you would like your own independent part o
 
 ## Table of Contents
 
-1. [Getting started](/docs/getting-started/)
-1. [Adding content](/docs/adding-content/)
+1. [Getting started](#getting-started)
+1. [Adding content](#adding-content)
 2. [User Guide](#user-guide)
     1. [Site structure](#site-tructure)
         1. [Folders](#folders)
@@ -32,33 +32,74 @@ If this sounds interesting to you and you would like your own independent part o
 1. [FAQ](#faq)
 1. [References](#references)
 
-## Installation Guide
+## Getting started
 
-### Getting started
+To get started with ***Contented*** 🕸, using these instructions, a [GitHub](https://github.com/) account is needed. 
 
-To use ***Contented*** a [GitHub](https://github.com/) account is needed. Everything is done in GitHub: writing content, generating the site and publishing the pages. No other tool is needed other than a browser.
+Everything is done in GitHub: writing content, generating the site and publishing the pages. No other tool is needed other than your browser.
 
-1. First of all sign up for a [GitHub account](https://github.com/signup) and then login to GitHub.
-2. Next make a fork of ***Contented*** 🕸 by forking the ***Contented***🕸 repository. Name the fork username.github.io
-3. Allow the actions to run.
-4. Run the "Build site" action.
-5. Settings -> Pages -> Deploy from Branch -> gh-pages -> Save
-6. Wait one minute, reload the page, follow the link
-7. Blog is live.
+### GitHub account
 
-(see contentedweb as an example)
+If you don't already have one, you can sign up for a [GitHub account here](https://github.com/signup).
 
+When picking your username, be aware that unless you have your own domain name, your website will use the domain name: YOURUSERNAME.github.io.
 
-Notes:
-* Start with simple setup of public rep names username.github.io and using branches for the deployment.
-* have advanced instructions on how to setup to run with private repos and external hosting. 
+### Copy the script
 
+Once your account is setup and you are logged in, you need to copy the script to your GitHub account. This is called forking a repository on GitHub. The steps below will create a repository with the script installed in it.
+
+1. Visit this page: https://github.com/robindotis/robindotis.github.io
+2. Click on the "Fork" button to the top right of the page.
+3. Name the repository "YOURUSERNAME.github.io" and untick "Copy the main branch only".
+4. Click on "Create Fork". 
+
+### Build the site
+
+Now that the repository is setup with the script, you need to build the site. This is doen with [GitHub Actions](https://github.com/features/actions).
+
+1. Click on "Actions" in the horizontal menu.
+2. Accept the warning about workflows, by clicking on the green button.
+3. Click on "Build site" in the left hand menu.
+4. On the right hand side, click on the "Run workflow" dropdown, followed by the green "Run workflow" button. 
+5. After a about a minute you should see a successful build, with a green tick next to the build name. 
+
+### Publish the site
+
+Finally it's time to publish the site. For this we need to configuire [GitHub Pages](https://pages.github.com/).
+
+1. Go to the GitHub Pages settings by clicking on "Settings" in the horizontal menu
+2. Then click on "Pages" in the left hand menu.
+3. Click on the "None" dropdown and choose "gh-pages".
+4. Click on the "Save" button to the right "None" dropdown.
+5. Wait one minute, reload the page and follow the link towards the top of the page.
+6. Your site is live on YOURUSERNAME.github.io.
+
+### Start Writing
 
 Now explore GitHub a little. The [GitHub docs](https://docs.github.com/en/get-started) are very comprehensive. Being comfortable writing content and editing configuration files will be helpful, but this can also be learned. The [GitHub Writing guide](https://docs.github.com/en/get-started/writing-on-github) is maybe a good place to start for those new to GitHub.
 
-### GitHub Pages
+[Table of Contents](#table-of-contents)
 
-Pay attention to remove CNAME if the site is not loading properly. It should be removed if running under username.github.io. It should only be add if running under a custom domain name.
+### Final note
+
+To use this script to generate your site, it helps if you are willing to play around a bit and explore these tool. If this is you, [keep going](/docs/adding-content/), if not, these alternative independent online blogging services are highly recommended:
+
+* [Bear Blog](https://bearblog.dev/)
+* [PIKA](https://pika.page/)
+* [micro.blog](https://micro.blog/)
+
+## Adding content
+
+You add content by editing files using the Markdown language. Markdown is a very simple markup language for creating HTML content.
+
+## Files on GitHub
+
+## Editing files
+
+## Adding a file
+
+Now explore GitHub a little. The [GitHub docs](https://docs.github.com/en/get-started) are very comprehensive. Being comfortable writing content and editing configuration files will be helpful, but this can also be learned. The [GitHub Writing guide](https://docs.github.com/en/get-started/writing-on-github) is maybe a good place to start for those new to GitHub.
+
 
 ## User Guide
 
@@ -340,6 +381,8 @@ themeExtends: default
 How is being tied to GitHub in the spirit of the IndieWeb?
 For those wanting to be independent of GitHub, nothing prevents this if you are happy to have a slightly more manual workflow. Or to Although.It is possible to run the script
 
+GitHub Pages
+Pay attention to remove CNAME if the site is not loading properly. It should be removed if running under username.github.io. It should only be add if running under a custom domain name.
 
 
 
