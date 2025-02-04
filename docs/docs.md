@@ -75,8 +75,6 @@ This is a one off step. Once GitHub Pages is configured changes to the site will
 
 Now explore GitHub a little. The [GitHub docs](https://docs.github.com/en/get-started) are very comprehensive. Being comfortable writing content and editing configuration files will be helpful, but this can also be learned. The [GitHub Writing guide](https://docs.github.com/en/get-started/writing-on-github) is maybe a good place to start for those new to GitHub.
 
-[Table of Contents](#table-of-contents)
-
 ### Final note
 
 To use this script to generate your site, it helps if you are willing to play around a bit and explore these tool. If this is you, [keep going](/docs/adding-content/), if not, these alternative independent online blogging services are highly recommended:
@@ -89,11 +87,11 @@ To use this script to generate your site, it helps if you are willing to play ar
 
 Files on GitHub can be browsed just like on your desktop. Click on "Code" in top right and you will see a list of all the files.
 
-Content is added into Markdown files, with the extension ".md". Markdown is very simply language for writing content that will be converted to HTML when the page is published. For more details on Markdown, please see [GitHub's Markdown guide](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+Content is added into Markdown files, with the extension ".md". Markdown is a very simple language for writing content that will be converted to HTML when the page is published. For more details on Markdown, please see [GitHub's Markdown guide](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
 
-Markdown can also contain HTMNL, so you can markup your content in plain HTML if you prefer. Mozilla provide a [very good HTML reference](https://developer.mozilla.org/en-US/docs/Web/HTML), if you are new to HTML.
+Markdown can also contain HTML, so you can markup your content in plain HTML if you prefer. Mozilla provide a [very good HTML reference](https://developer.mozilla.org/en-US/docs/Web/HTML), if you are new to HTML.
 
-Only files with the extension .md are processed and converted to HTML files. By default, all other file types are ignored unless they are files in the assets folder, which are then simply copied.
+Only files with the extension .md are processed and converted to HTML files. By default, all other file types are ignored unless they are files in the assets folder, which are simply copied to the live site.
 
 ### Front Matter
 
@@ -148,7 +146,7 @@ tags:
 
 Note: you do not need to enclose the value in quotes in the Front Matter section.
 
-A page to be placed in a menu would look like this:
+A page to be placed in the header menu would look like this:
 
 ```
 ---
@@ -163,7 +161,7 @@ navigation:
 
 ### Example markdown file
 
-A typical Markdown content file might therefore look something like this:
+A typical complete Markdown file might therefore look something like this:
 
 ```
 ---
@@ -203,7 +201,7 @@ Only touch the **.github** folder if you know what you are doing. This contains 
 
 ### Files
 
-This is a list of specific files that you should not touch unless you know what you are doing. 
+This is a list of specific files. You can edit them, but be sure you understand what you are doing. 
 
 | Page | Description |
 | --- | --- |
@@ -236,7 +234,7 @@ header:
       link: /walking/
       pre: 'and '
     - title: dog 🐕‍🦺
-      link: /tagging/angie/
+      link: /tagging/dog/
       pre: 'the '
       post: '. '
 - footer:
@@ -249,21 +247,21 @@ header:
       link: /my-site/
 ```
 
+If menu items are defined in the menus.yaml file as well as in the Front Matter of specific pages, they are merged based on the position of the items. It is better to not define menu items in both the menus.yaml file and the page Front Matter as the results can be unexpected.
+
 ## Themes
 
 Themes can be set in the settings.yaml file. 
 
 Themes are created in the `/templates/` folder. They are build using the [Twig template language](https://twig.symfony.com/).
 
-If not set it will take the default templates from the folder: `/templates/default/`. If that folder is not exist, the site will cannot be built.
+If not set it will take the default templates from the folder: `/templates/default/`. If that folder does not exist, the site cannot be built.
 
 A theme can extend another theme, as defined by the `themeExtends` setting.
 
 ## Metadata
 
-**Consider renaming this to "configuration", config.yaml**
-
-Metadata is information about the site. It is stored in YAML format in the file "data/metadata.yaml". 
+Metadata is information about the site. It is stored in YAML format in the file `/data/metadata.yaml`. This metadata can be accessed from the site's template, for example to display the title of the site.
 
 This is an example the metadata.yaml file for a basic site:
 
@@ -315,29 +313,6 @@ sourceDirs: [posts, pages, feed]
 outputDir: /_site/
 ```
 
-## FAQ and To Do
-
-How is being tied to GitHub in the spirit of the IndieWeb?
-For those wanting to be independent of GitHub, nothing prevents this if you are happy to have a slightly more manual workflow. Or to Although.It is possible to run the script
-
-GitHub Pages
-Pay attention to remove CNAME if the site is not loading properly. It should be removed if running under username.github.io. It should only be add if running under a custom domain name.
-
-TO DO: explain slug "permalink": "/{{ filename }}/" as in pages.json.
-
-explain pagination front matter:
-
-```
----
-pagination:
-  data: web
-  alias: posts
-
----
-```
-
-data is tag name to include in the archive.
-
 ## References
 
 Below are some excellent links to further technical information and documentation on the technologies used for this site generator.
@@ -347,8 +322,9 @@ Below are some excellent links to further technical information and documentatio
 * Scripting functionality with ([JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)). 
 * Modifying the sites structure using the [Twig template language](https://twig.symfony.com/).
 * For the really adventurous: adapting the site generation engine using [PHP](https://www.w3schools.com/php/).
-* Webhooks eg for EU hosting
-* GitHub Pages
-* RSS, sitemap, SEO etc
-* https://stefanbohacek.com/blog/resources-for-keeping-the-web-free-open-and-poetic/ 
+* [GitHub Actions](https://docs.github.com/en/actions)
+* [GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages)
+* [Webhooks](https://docs.github.com/en/webhooks)
+* [RSS](https://www.rssboard.org/rss-specification) and [Atom](https://en.wikipedia.org/wiki/Atom_(web_standard))
+* [Sitemap.xml](https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview)
 
