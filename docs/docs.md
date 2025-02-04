@@ -48,13 +48,15 @@ Once your account is setup and you are logged in, you need to copy the script to
 
 ### Build the site
 
-Now that the repository is setup with the script, you need to build the site. This is doen with [GitHub Actions](https://github.com/features/actions).
+Now that the repository is setup with the script, you need to build the site. This is done with [GitHub Actions](https://github.com/features/actions).
 
 1. Click on "Actions" in the horizontal menu.
 2. Accept the warning about workflows, by clicking on the green button.
 3. Click on "Build site" in the left hand menu.
 4. On the right hand side, click on the "Run workflow" dropdown, followed by the green "Run workflow" button. 
 5. After a about a minute you should see a successful build, with a green tick next to the build name. 
+
+Each time you make a change to your site you need to follow the above steps to rebuild the site. 
 
 ### Publish the site
 
@@ -66,6 +68,8 @@ Finally it's time to publish the site. For this we need to configuire [GitHub Pa
 4. Click on the "Save" button to the right "None" dropdown.
 5. Wait one minute, reload the page and follow the link towards the top of the page.
 6. Your site is live on YOURUSERNAME.github.io.
+
+This is a one off step. Once GitHub Pages is configured changes to the site will be automatically published once they are built.
 
 ### Start Writing
 
