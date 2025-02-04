@@ -96,7 +96,7 @@
 <li>Click on &quot;Create Fork&quot;.</li>
 </ol>
 <h3>Build the site</h3>
-<p>Now that the repository is setup with the script, you need to build the site. This is doen with <a href="https://github.com/features/actions">GitHub Actions</a>.</p>
+<p>Now that the repository is setup with the script, you need to build the site. This is done with <a href="https://github.com/features/actions">GitHub Actions</a>.</p>
 <ol>
 <li>Click on &quot;Actions&quot; in the horizontal menu.</li>
 <li>Accept the warning about workflows, by clicking on the green button.</li>
@@ -104,6 +104,7 @@
 <li>On the right hand side, click on the &quot;Run workflow&quot; dropdown, followed by the green &quot;Run workflow&quot; button.</li>
 <li>After a about a minute you should see a successful build, with a green tick next to the build name.</li>
 </ol>
+<p>Each time you make a change to your site you need to follow the above steps to rebuild the site.</p>
 <h3>Publish the site</h3>
 <p>Finally it's time to publish the site. For this we need to configuire <a href="https://pages.github.com/">GitHub Pages</a>.</p>
 <ol>
@@ -114,9 +115,9 @@
 <li>Wait one minute, reload the page and follow the link towards the top of the page.</li>
 <li>Your site is live on YOURUSERNAME.github.io.</li>
 </ol>
+<p>This is a one off step. Once GitHub Pages is configured changes to the site will be automatically published once they are built.</p>
 <h3>Start Writing</h3>
 <p>Now explore GitHub a little. The <a href="https://docs.github.com/en/get-started">GitHub docs</a> are very comprehensive. Being comfortable writing content and editing configuration files will be helpful, but this can also be learned. The <a href="https://docs.github.com/en/get-started/writing-on-github">GitHub Writing guide</a> is maybe a good place to start for those new to GitHub.</p>
-<p><a href="#table-of-contents">Table of Contents</a></p>
 <h3>Final note</h3>
 <p>To use this script to generate your site, it helps if you are willing to play around a bit and explore these tool. If this is you, <a href="/docs/adding-content/">keep going</a>, if not, these alternative independent online blogging services are highly recommended:</p>
 <ul>
@@ -126,9 +127,9 @@
 </ul>
 <h2>Adding content</h2>
 <p>Files on GitHub can be browsed just like on your desktop. Click on &quot;Code&quot; in top right and you will see a list of all the files.</p>
-<p>Content is added into Markdown files, with the extension &quot;.md&quot;. Markdown is very simply language for writing content that will be converted to HTML when the page is published. For more details on Markdown, please see <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax">GitHub's Markdown guide</a>.</p>
-<p>Markdown can also contain HTMNL, so you can markup your content in plain HTML if you prefer. Mozilla provide a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">very good HTML reference</a>, if you are new to HTML.</p>
-<p>Only files with the extension .md are processed and converted to HTML files. By default, all other file types are ignored unless they are files in the assets folder, which are then simply copied.</p>
+<p>Content is added into Markdown files, with the extension &quot;.md&quot;. Markdown is a very simple language for writing content that will be converted to HTML when the page is published. For more details on Markdown, please see <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax">GitHub's Markdown guide</a>.</p>
+<p>Markdown can also contain HTML, so you can markup your content in plain HTML if you prefer. Mozilla provide a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">very good HTML reference</a>, if you are new to HTML.</p>
+<p>Only files with the extension .md are processed and converted to HTML files. By default, all other file types are ignored unless they are files in the assets folder, which are simply copied to the live site.</p>
 <h3>Front Matter</h3>
 <p>Each Markdown file can also contain settings specific to that page. This is called Front Matter and is always placed at the start of the file.</p>
 <p>The Front Matter section of the file has a specific structure which <strong>must</strong> be followed.</p>
@@ -211,7 +212,7 @@ tags:
 </tbody>
 </table>
 <p>Note: you do not need to enclose the value in quotes in the Front Matter section.</p>
-<p>A page to be placed in a menu would look like this:</p>
+<p>A page to be placed in the header menu would look like this:</p>
 <pre><code>---
 title: About
 date: 2025-02-01 08:00:00
@@ -222,7 +223,7 @@ navigation:
 ---
 </code></pre>
 <h3>Example markdown file</h3>
-<p>A typical Markdown content file might therefore look something like this:</p>
+<p>A typical complete Markdown file might therefore look something like this:</p>
 <pre><code>---
 title: Happy New Year
 date: 2025-01-01 08:00:00
@@ -282,7 +283,7 @@ This is first blog post, I hope you enjoy this site.
 </table>
 <p>Only touch the <strong>.github</strong> folder if you know what you are doing. This contains the code that generates and publishes the website.</p>
 <h3>Files</h3>
-<p>This is a list of specific files that you should not touch unless you know what you are doing.</p>
+<p>This is a list of specific files. You can edit them, but be sure you understand what you are doing.</p>
 <table>
 <thead>
 <tr>
@@ -333,7 +334,7 @@ This is first blog post, I hope you enjoy this site.
       link: /walking/
       pre: 'and '
     - title: dog 🐕‍🦺
-      link: /tagging/angie/
+      link: /tagging/dog/
       pre: 'the '
       post: '. '
 - footer:
@@ -345,14 +346,14 @@ This is first blog post, I hope you enjoy this site.
     - title: Site info
       link: /my-site/
 </code></pre>
+<p>If menu items are defined in the menus.yaml file as well as in the Front Matter of specific pages, they are merged based on the position of the items. It is better to not define menu items in both the menus.yaml file and the page Front Matter as the results can be unexpected.</p>
 <h2>Themes</h2>
 <p>Themes can be set in the settings.yaml file.</p>
 <p>Themes are created in the <code>/templates/</code> folder. They are build using the <a href="https://twig.symfony.com/">Twig template language</a>.</p>
-<p>If not set it will take the default templates from the folder: <code>/templates/default/</code>. If that folder is not exist, the site will cannot be built.</p>
+<p>If not set it will take the default templates from the folder: <code>/templates/default/</code>. If that folder does not exist, the site cannot be built.</p>
 <p>A theme can extend another theme, as defined by the <code>themeExtends</code> setting.</p>
 <h2>Metadata</h2>
-<p><strong>Consider renaming this to &quot;configuration&quot;, config.yaml</strong></p>
-<p>Metadata is information about the site. It is stored in YAML format in the file &quot;data/metadata.yaml&quot;.</p>
+<p>Metadata is information about the site. It is stored in YAML format in the file <code>/data/metadata.yaml</code>. This metadata can be accessed from the site's template, for example to display the title of the site.</p>
 <p>This is an example the metadata.yaml file for a basic site:</p>
 <pre><code>title: Robin's
 url: https://www.robin.is/
@@ -425,21 +426,6 @@ staticFiles: [robots.txt,feed/pretty-feed-v3.xsl]
 sourceDirs: [posts, pages, feed]
 outputDir: /_site/
 </code></pre>
-<h2>FAQ and To Do</h2>
-<p>How is being tied to GitHub in the spirit of the IndieWeb?
-For those wanting to be independent of GitHub, nothing prevents this if you are happy to have a slightly more manual workflow. Or to Although.It is possible to run the script</p>
-<p>GitHub Pages
-Pay attention to remove CNAME if the site is not loading properly. It should be removed if running under username.github.io. It should only be add if running under a custom domain name.</p>
-<p>TO DO: explain slug &quot;permalink&quot;: &quot;/docs/&quot; as in pages.json.</p>
-<p>explain pagination front matter:</p>
-<pre><code>---
-pagination:
-  data: web
-  alias: posts
-
----
-</code></pre>
-<p>data is tag name to include in the archive.</p>
 <h2>References</h2>
 <p>Below are some excellent links to further technical information and documentation on the technologies used for this site generator.</p>
 <ul>
@@ -448,10 +434,11 @@ pagination:
 <li>Scripting functionality with (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a>).</li>
 <li>Modifying the sites structure using the <a href="https://twig.symfony.com/">Twig template language</a>.</li>
 <li>For the really adventurous: adapting the site generation engine using <a href="https://www.w3schools.com/php/">PHP</a>.</li>
-<li>Webhooks eg for EU hosting</li>
-<li>GitHub Pages</li>
-<li>RSS, sitemap, SEO etc</li>
-<li><a href="https://stefanbohacek.com/blog/resources-for-keeping-the-web-free-open-and-poetic/">https://stefanbohacek.com/blog/resources-for-keeping-the-web-free-open-and-poetic/</a></li>
+<li><a href="https://docs.github.com/en/actions">GitHub Actions</a></li>
+<li><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages">GitHub Pages</a></li>
+<li><a href="https://docs.github.com/en/webhooks">Webhooks</a></li>
+<li><a href="https://www.rssboard.org/rss-specification">RSS</a> and <a href="https://en.wikipedia.org/wiki/Atom_(web_standard)">Atom</a></li>
+<li><a href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview">Sitemap.xml</a></li>
 </ul>
 
     <footer>
@@ -481,7 +468,7 @@ pagination:
             </div>
             <div class="lastrun">
                 <p>
-                Last updated on 04/02/2025 at 06:02:57.
+                Last updated on 04/02/2025 at 07:02:00.
                 </p>
             </div>
             <div class="copyright">
