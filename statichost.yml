@@ -1,0 +1,10 @@
+# Docker image to use for building
+# image: php:8.4-cli
+# image: composer:latest
+# Build command
+# command: composer install && php index.php
+# Public directory
+public: . 
+domains:
+  # Primary domain
+  - docs.robin.is
