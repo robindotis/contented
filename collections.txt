@@ -1274,13 +1274,6 @@ Array
                     [position] => 2
                 )
 
-            [2] => Array
-                (
-                    [title] => News
-                    [link] => /news/
-                    [position] => 3
-                )
-
         )
 
     [footer] => Array
@@ -1330,13 +1323,6 @@ Array
                     [title] => Docs
                     [link] => /docs/
                     [position] => 2
-                )
-
-            [2] => Array
-                (
-                    [title] => News
-                    [link] => /news/
-                    [position] => 3
                 )
 
         )
