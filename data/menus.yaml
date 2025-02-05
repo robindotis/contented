@@ -3,8 +3,6 @@ header:
     link: /
   - title: Docs
     link: /docs/
-  - title: News
-    link: /news/
 footer:
   - title: RSS
     link: /feed/
