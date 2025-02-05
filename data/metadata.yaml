@@ -1,11 +1,11 @@
-title: Contented 🕸 
-url: https://robindotis.github.io/
-urlShort: robindotis.github.io
+title: Docs for robin.is
+url: https://docs.robin.is/
+urlShort: docs.robin.is
 language: en
-description: A Do It Yourself Blog
+description: Documentation for robin.is
 startYear: 1998
 relMe: https://github.com/robindotis/
-gitHubRepo: https://github.com/robindotis/robin.is/
+gitHubRepo: https://github.com/robindotis/docs.robin.is.live/
 theme: sky
 clacksOverhead: GNU Terry Pratchett
 feed:
