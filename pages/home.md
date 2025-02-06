@@ -10,9 +10,9 @@ permalink: /
 >
 > -- With apologies to <cite>[Mao Zedong](https://en.wikipedia.org/wiki/Hundred_Flowers_Campaign)</cite>
 
-I've documented this script to encourage building, hosting and managing independent blogs over the use of common blogging services. 
+I've documented my home brew php site generation script to encourage building, hosting and managing independent blogs over the use of common blogging services. 
 
-Why yet another blogging tool? The more independent tools there are, the more means of expression we have and the more ways of thinking are encouraged. 
+Why yet another script? The more independent tools there are for creating websites, the more means of expression we have and the more ways of thinking are encouraged. 
 
 [Get started here](/docs/).
 
