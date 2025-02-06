@@ -5,7 +5,7 @@ language: en
 description: Documentation for robin.is
 startYear: 1998
 relMe: https://github.com/robindotis/
-gitHubRepo: https://github.com/robindotis/docs.robin.is.live/
+gitHubRepo: https://github.com/robindotis/docs.robin.is/
 theme: sky
 clacksOverhead: GNU Terry Pratchett
 feed:
