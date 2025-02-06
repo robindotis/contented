@@ -1,4 +1,4 @@
-title: Docs for robin.is
+title: Documentation
 url: https://docs.robin.is/
 urlShort: docs.robin.is
 language: en
@@ -9,7 +9,7 @@ gitHubRepo: https://github.com/robindotis/docs.robin.is.live/
 theme: sky
 clacksOverhead: GNU Terry Pratchett
 feed:
-  subtitle: Contented 🕸
+  subtitle: Documentation news
   filename: index.xml
   path: /feed/index.xml
   id: https://robindotis.github.io/

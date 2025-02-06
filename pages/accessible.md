@@ -1,6 +1,7 @@
 ---
 title: Accessibility
 date: 2025-01-31 12:00:00
+permalink: accessibility
 ---
 
 This is an example accessibility statement. DIY Blog is designed to be accessible.

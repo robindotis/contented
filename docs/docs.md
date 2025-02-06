@@ -1,11 +1,9 @@
 ---
-title: Documentation
-date: 2025-01-25 12:00:00
+title: About the script
+date: 2025-02-06 12:00:00
 ---
 
-## About Contented🕸
-
-***Contented*** 🕸 is a simple script creating a static website. 
+This is a simple script for creating a static website. 
 
 Content is created in text files, processed by the script and published on the web. That's it. 
 
@@ -27,7 +25,7 @@ If this sounds interesting to you and you would like your own independent part o
 
 ## Getting started
 
-To get started with ***Contented*** 🕸, using these instructions, a [GitHub](https://github.com/) account is needed. 
+To get started with these instructions, a [GitHub](https://github.com/) account is needed. 
 
 Everything is done in GitHub: writing content, generating the site and publishing the pages. No other tool is needed other than your browser.
 
@@ -127,7 +125,7 @@ tags:
 ---
 ```
 
-***Contented*** 🕸 understands the following Front Matter attributes. Any other attributes will be ignored.
+The following Front Matter attributes are accepted. Any other attributes will be ignored.
 
 | Attribute | Value |
 | --- | --- |

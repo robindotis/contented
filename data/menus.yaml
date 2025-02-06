@@ -4,8 +4,5 @@ header:
   - title: Docs
     link: /docs/
 footer:
-  - title: RSS
-    link: /feed/
-    class: ally-statement
   - title: Accessibility
-    link: /accessible/
+    link: /accessibility/
