@@ -20,8 +20,7 @@ If this sounds interesting to you and you would like your own independent part o
 5. [Themes](#themes)
 6. [Metadata](#metadata)
 7. [Settings](#settings)
-8. [FAQ](#faq)
-9. [References](#references)
+8. [References](#references)
 
 ## Getting started
 

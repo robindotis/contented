@@ -10,6 +10,8 @@ use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\Extension\FrontMatter\FrontMatterExtension;
 use League\CommonMark\Extension\GithubFlavoredMarkdownExtension;
 use League\CommonMark\Extension\FrontMatter\Output\RenderedContentWithFrontMatter;
+use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;
+use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkRenderer;
 use League\CommonMark\MarkdownConverter;
 use Twig\Environment as TwigEnv;
 use Twig\Loader\ArrayLoader;
@@ -102,10 +104,28 @@ $fs->mirror($templatesDir, TEMP_FOLDER);
 // Configure the Environment with all the CommonMark parsers/renderers
 // Add the extensions
 //$config = [];
-$environment = new CmEnv(); //$config);
+
+// Heading Permalink Extension configuration
+$config = [
+    'heading_permalink' => [
+        'html_class' => 'heading-permalink',
+        'id_prefix' => '',
+        'apply_id_to_heading' => true,
+        'heading_class' => '',
+        'fragment_prefix' => '',
+        'insert' => 'none',
+        'min_heading_level' => 1,
+        'max_heading_level' => 6,
+        'title' => 'Permalink',
+        'symbol' => HeadingPermalinkRenderer::DEFAULT_SYMBOL,
+        'aria_hidden' => true,
+    ],
+];
+$environment = new CmEnv($config);
 $environment->addExtension(new CommonMarkCoreExtension());
 $environment->addExtension(new GithubFlavoredMarkdownExtension());
 $environment->addExtension(new FrontMatterExtension());
+$environment->addExtension(new HeadingPermalinkExtension());
 $converter = new MarkdownConverter($environment);
 
 // SETTING UP Twig for file loading
