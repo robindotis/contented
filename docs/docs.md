@@ -259,7 +259,7 @@ A theme can extend another theme, as defined by the `themeExtends` setting.
 
 ## Shortcodes
 
-Markdown files are sent through thr Twig processor before they themselves rendered to HTML. Any Twig statements in the Markdown file will therefore be processed, including any such statements in the Front Matter.
+Markdown files are sent through the Twig processor before they are themselves rendered to HTML. Any Twig statements in the Markdown file will therefore be processed, including any such statements in the Front Matter.
 
 ### Examples
 
