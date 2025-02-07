@@ -285,8 +285,10 @@ The best approach is to use single quotes: ' . eg:
 If this is not possible then the statement needs to be inside an HTML comment:
 
 ```
-<!--{{ include("./templates/default/includes/postslist-fixed.html.twig") }}-->
+<!--{{ include(''./templates/default/includes/postslist-fixed.html.twig'') }}-->
 ```
+
+(Note that for the example above, two single quotes are used, otherwise the script breaks due to Markdown escaping text inside the code block.
 
 The Markdown converter will not convert the content of the HTML commment. Later on the script changes &lt;!--{{ }}--&gt; back to {{ }}. Note there is no space between the -- and {{.
 
