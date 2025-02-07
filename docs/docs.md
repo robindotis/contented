@@ -18,9 +18,10 @@ If this sounds interesting to you and you would like your own independent part o
 3. [Folder structure](#folder-structure)
 4. [Menus](#menus)
 5. [Themes](#themes)
-6. [Metadata](#metadata)
-7. [Settings](#settings)
-8. [References](#references)
+6. [Shortcodes](#shortcodes)
+7. [Metadata](#metadata)
+8. [Settings](#settings)
+9. [References](#references)
 
 ## Getting started
 
@@ -255,6 +256,33 @@ Themes are created in the `/templates/` folder. They are build using the [Twig t
 If not set it will take the default templates from the folder: `/templates/default/`. If that folder does not exist, the site cannot be built.
 
 A theme can extend another theme, as defined by the `themeExtends` setting.
+
+## Shortcodes
+
+Markdown files are sent through thr Twig processor before they themselves rendered to HTML. Any Twig statements in the Markown file will therefore be processed, including any such statements in the Front Matter.
+
+### Examples
+
+The `pages.json` file looks like this:
+
+```
+{
+  "template": "page",
+  "permalink": "/{{ filename }}/"
+}
+```
+
+`{{ filename }}` will be processed by Twig and replaced with the value of "filename" before the page is handled during the site generation.
+
+Note: currently can't include templates as " are converted to &amp;quot;. eg:
+
+```
+include("./templates/default/includes/postslist-fixed.html.twig") 
+
+include(&quot;./templates/default/includes/postslist-fixed.html.twig&quot;) 
+```
+
+Which generates an error with the & in Twig rendering using the array loader.
 
 ## Metadata
 
