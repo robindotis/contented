@@ -268,11 +268,11 @@ The `pages.json` file looks like this:
 ```
 {
   "template": "page",
-  "permalink": "/{{ filename }}/"
+  "permalink": "/{ { filename }}/"
 }
 ```
 
-`{{ filename }}` will be processed by Twig and replaced with the value of "filename" before the page is handled during the site generation.
+`{ { filename }}` will be processed by Twig and replaced with the value of "filename" before the page is handled during the site generation.
 
 If the Twig statement includes a double quote: " then it needs to be hidden from the Markdown converter, else it will be converted to an HTML entity: &amp;quot;.
 
