@@ -290,7 +290,7 @@ If this is not possible then the statement needs to be inside an HTML comment:
 
 (Note that for the example above, two single quotes are used, otherwise the script breaks due to Markdown escaping text inside the code block.
 
-The Markdown converter will not convert the content of the HTML commment. Later on the script changes &lt;!--{{ }}--&gt; back to {{ }}. Note there is no space between the -- and {{.
+The Markdown converter will not convert the content of the HTML commment. Later on the script changes &lt;!--{ { } }--&gt; back to { { } }. Note there is no space between the -- and { {, or between the curly brackets.
 
 Likewise if there are any other characters in the Twig statement that Markdown will  convert, the statement needs to be wrapped in HTML comments. Some example characters include &lt;, &gt; and &amp;.
 
