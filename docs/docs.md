@@ -285,12 +285,12 @@ The best approach is to use single quotes: ' . eg:
 If this is not possible then the statement needs to be inside an HTML comment:
 
 ```
-<!--{ { include(''./templates/default/includes/postslist-fixed.html.twig'') } }-->
+<!--{ { include("./templates/default/includes/postslist-fixed.html.twig") }}-->
 ```
 
-(Note that for the example above, two single quotes are used, otherwise the script breaks due to Markdown escaping text inside the code block.
+(Note that for the examples above a space has been added between the opening curly brackets).
 
-The Markdown converter will not convert the content of the HTML commment. Later on the script changes &lt;!--{ { } }--&gt; back to { { } }. Note there is no space between the -- and { {, or between the curly brackets.
+The Markdown converter will not convert the content of the HTML commment. Later on the script changes &lt;!--{ { }}--&gt; back to { { }}.
 
 Likewise if there are any other characters in the Twig statement that Markdown will  convert, the statement needs to be wrapped in HTML comments. Some example characters include &lt;, &gt; and &amp;.
 
