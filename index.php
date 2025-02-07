@@ -385,7 +385,21 @@ function readMarkdownFiles($sourceRoot, $sourceDir, $outputDir, $converter, $mer
                 $frontMatter = $result->getFrontMatter();
             }
             
-            $htmlContent = $result->getContent();
+            $htmlContent = $result->getContent();            
+
+            // this gets around markdown converting " to &quot; in html 
+            // which then causes problems with the rendering due to & in the {{ }} statements
+            // It means need to wrap twig statements in HTML comments if they include quotes
+            // Now: need to include templates in arrayloader rendering in renderTwigArray further down
+            // replace <!--{{ with "{{" and }}--> with "}}"
+            $withComments = array("<!--{{", "}}-->", "<!--{%", "%}-->");
+            $withoutComments = array("{{", "}}", "{%", "%}");
+            $htmlContent = str_replace($withComments,$withoutComments,$htmlContent);
+
+            if($path == "docs/docs.md") {
+            echo "\n" . $htmlContent . "\n";
+            }
+            
             $permalink = "";
             $template = 'base.html.twig';
 
@@ -564,10 +578,17 @@ function renderTwigArray($arrayToChange,$values){
     foreach ($arrayToChange as $key => $value) 
     {
         if (is_string($value)) {
+            //'index' is the name of the template to use and it is set equal to  the content of $value
+            //ie the template is the content of the $value string, which could be a markdown file for example
             $arrayLoader = new \Twig\Loader\ArrayLoader([
                 'index' => $value,
             ]);
-            $arrayTwig = new \Twig\Environment($arrayLoader);
+
+            $fsLoader = new FilesystemLoader(TEMP_FOLDER);
+
+            $chainLoader = new \Twig\Loader\ChainLoader([$arrayLoader, $fsLoader]);
+            
+            $arrayTwig = new \Twig\Environment($chainLoader);
             $arrayTwig->addExtension(new StringExtension());
             $arrayTwig->addExtension(new \Twig\Extension\DebugExtension());
             $arrayToChange[$key] = $arrayTwig->render('index', $values);
