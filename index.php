@@ -391,9 +391,9 @@ function readMarkdownFiles($sourceRoot, $sourceDir, $outputDir, $converter, $mer
             
             $htmlContent = $result->getContent();            
 
-            //if($path == "docs/docs.md") {
-            //echo "\n" . $htmlContent . "\n";
-            //}
+            if($path == "docs/docs.md") {
+            echo "\n" . $htmlContent . "\n";
+            }
 
             // this gets around markdown converting " to &quot; in html 
             // which then causes problems with the rendering due to & in the {{ }} statements
