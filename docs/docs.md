@@ -279,13 +279,13 @@ If the Twig statement includes a double quote: " then it needs to be hidden from
 The best approach is to use single quotes: ' . eg:
 
 ```
-{{ include('./templates/default/includes/postslist-fixed.html.twig') }}
+{ { include('./templates/default/includes/postslist-fixed.html.twig') } }
 ```
 
 If this is not possible then the statement needs to be inside an HTML comment:
 
 ```
-<!--{{ include(''./templates/default/includes/postslist-fixed.html.twig'') }}-->
+<!--{ { include(''./templates/default/includes/postslist-fixed.html.twig'') } }-->
 ```
 
 (Note that for the example above, two single quotes are used, otherwise the script breaks due to Markdown escaping text inside the code block.
