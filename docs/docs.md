@@ -259,7 +259,7 @@ A theme can extend another theme, as defined by the `themeExtends` setting.
 
 ## Shortcodes
 
-Markdown files are sent through thr Twig processor before they themselves rendered to HTML. Any Twig statements in the Markown file will therefore be processed, including any such statements in the Front Matter.
+Markdown files are sent through thr Twig processor before they themselves rendered to HTML. Any Twig statements in the Markdown file will therefore be processed, including any such statements in the Front Matter.
 
 ### Examples
 
@@ -274,15 +274,23 @@ The `pages.json` file looks like this:
 
 `{{ filename }}` will be processed by Twig and replaced with the value of "filename" before the page is handled during the site generation.
 
-Note: currently can't include templates as " are converted to &amp;quot;. eg:
+If the Twig statement includes a double quote: " then it needs to be hidden from the Markdown converter, else it will be converted to an HTML entity: &amp;quot;.
+
+The best approach is to use single quotes: ' . eg:
 
 ```
-include("./templates/default/includes/postslist-fixed.html.twig") 
-
-include(&quot;./templates/default/includes/postslist-fixed.html.twig&quot;) 
+{{ include('./templates/default/includes/postslist-fixed.html.twig') }}
 ```
 
-Which generates an error with the & in Twig rendering using the array loader.
+If this is not possible then the statement needs to be inside an HTML comment:
+
+```
+<!--{{ include("./templates/default/includes/postslist-fixed.html.twig") }}-->
+```
+
+The Markdown converter will not convert the content of the HTML commment. Later on the script changes &lt;!--{{ }}--&gt; back to {{ }}. Note there is no space between the -- and {{.
+
+Likewise if there are any other characters in the Twig statement that Markdown will  convert, the statement needs to be wrapped in HTML comments. Some example characters include &lt;, &gt; and &amp;.
 
 ## Metadata
 
