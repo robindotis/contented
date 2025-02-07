@@ -391,15 +391,16 @@ function readMarkdownFiles($sourceRoot, $sourceDir, $outputDir, $converter, $mer
             
             $htmlContent = $result->getContent();            
 
-            if($path == "docs/docs.md") {
-            echo "\n" . $htmlContent . "\n";
-            }
+            //if($path == "docs/docs.md") {
+            //echo "\n" . $htmlContent . "\n";
+            //}
 
             // this gets around markdown converting " to &quot; in html 
             // which then causes problems with the rendering due to & in the {{ }} statements
             // It means need to wrap twig statements in HTML comments if they include quotes
             // Now: need to include templates in arrayloader rendering in renderTwigArray further down
             // replace <!--{{ with "{{" and }}--> with "}}"
+            // also need to account for escaped comments (eg within code section)
             $withComments = array("<!--{{", "}}-->", "<!--{%", "%}-->");
             $withoutComments = array("{{", "}}", "{%", "%}");
             $htmlContent = str_replace($withComments,$withoutComments,$htmlContent);
