@@ -378,6 +378,10 @@ function readMarkdownFiles($sourceRoot, $sourceDir, $outputDir, $converter, $mer
 
             $markdownContent = file_get_contents(str_replace($sourceDir . '/', '', $sourceFullPath) . $path);
             
+            if($path == "docs/docs.md") {
+            echo "\n" . $markdownContent . "\n";
+            }
+            
             $result = $converter->convert($markdownContent);
 
             $frontMatter = [];
@@ -396,9 +400,9 @@ function readMarkdownFiles($sourceRoot, $sourceDir, $outputDir, $converter, $mer
             $withoutComments = array("{{", "}}", "{%", "%}");
             $htmlContent = str_replace($withComments,$withoutComments,$htmlContent);
 
-            if($path == "docs/docs.md") {
-            echo "\n" . $htmlContent . "\n";
-            }
+            //if($path == "docs/docs.md") {
+            //echo "\n" . $htmlContent . "\n";
+            //}
             
             $permalink = "";
             $template = 'base.html.twig';
