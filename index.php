@@ -18,7 +18,9 @@ use Twig\Loader\ArrayLoader;
 use Twig\Loader\FilesystemLoader;
 use Twig\Extra\String\StringExtension;
 
-$start = microtime(true);
+error_reporting(E_ALL ^ E_WARNING);
+
+$startTime = microtime(true);
 $startMem = round(memory_get_usage()/1048576,2); 
 echo "\nMemory Consumption is $startMem MB\n";
 
@@ -39,7 +41,7 @@ $theme = "default";
 $themeExtends = "";
 $templatesDir ="";
 $templatesExtendsDir = "";
-
+$showSpeed = false;
 
 //YAML content - read
 $settings = [];  
@@ -73,6 +75,9 @@ if(array_key_exists('theme',$settings)) {
 if(array_key_exists('themeExtends',$settings)) {
     $themeExtends = $settings['themeExtends'];
     $templatesExtendsDir = TEMPLATES . $themeExtends . '/';
+}
+if(array_key_exists('showSpeed',$settings)) {
+    $showSpeed = $settings['showSpeed'];
 }
 $templatesDir = TEMPLATES . $theme . '/';
 
@@ -134,7 +139,7 @@ $twig = new TwigEnv($loader);
 $twig->addExtension(new StringExtension());
 $twig->addExtension(new \Twig\Extension\DebugExtension());
 
-echo "\nSetup ready in " . (microtime(true) - $start) . " seconds\n";
+echo "\n" . round((microtime(true) - $startTime),2) . "s. Setup ready.";
 
 //STATIC content - copy
 foreach($staticDirs as $dir) {
@@ -160,7 +165,7 @@ foreach($staticFiles as $file) {
     }
     copy($srcFile, $destFile);
 }
-echo "\nStatic copied in " . (microtime(true) - $start) . " seconds\n";
+echo "\n" . round((microtime(true) - $startTime),2) . "s. Static copied.";
 
 
 $pageMenus = []; //for menu items in front matter
@@ -171,7 +176,7 @@ foreach($sourceDirs as $src) {
     $collections[$src] = [];
     readMarkdownFiles(SOURCE_ROOT, $src, $outputDir, $converter, $mergedJsonStrings, $collections, $pageMenus);
 }
-echo "\nMarkdown files read in " . (microtime(true) - $start) . " seconds\n";
+echo "\n" . round((microtime(true) - $startTime),2) . "s. Markdown files read.";
 
 //Add position element to each menu item $menus based on key, if it doesn't exist
 foreach($yamlMenus as $key1 => $menu) {
@@ -260,12 +265,11 @@ foreach($collections as $key => $collection) {
         $collections[$key] = $collection;
     }
 }
-echo "\nArrays reordered in " . (microtime(true) - $start) . " seconds\n";
+echo "\n" . round((microtime(true) - $startTime),2) . "s. Arrays reordered.";
 
 processMarkdown($outputDir, $converter, $twig, $metadata, $mergedMenus, $collections);
 
 //Output collections array to file on site for easier debuggin
-echo "\nCollection outputted to: " . $outputDir . "collections.txt\n";
 file_put_contents($outputDir . 'collections.txt', print_r($collections, true));
 file_put_contents($outputDir . 'collections.txt', print_r("\n=============================================================\n", true),FILE_APPEND);
 file_put_contents($outputDir . 'collections.txt', print_r("METADATA=====================================================\n", true),FILE_APPEND);
@@ -288,11 +292,31 @@ file_put_contents($outputDir . 'collections.txt', print_r($mergedMenus, true),FI
 $tempFileSystem = new Symfony\Component\Filesystem\Filesystem();
 $tempFileSystem->remove(TEMP_FOLDER);
 
-echo "\nConversion completed in " . (microtime(true) - $start) . " seconds\n";
+echo "\n" . round((microtime(true) - $startTime),2) . "s. Conversion completed";
+
+if($showSpeed) {
+    // Define the file path
+    $file_path = $outputDir . 'index.html';
+    // Read the file content into a string
+    $file_content = file_get_contents($file_path);
+    //get string before CW_SPEED
+    $startFile = strstr($file_content, 'CW_SPEED', true);
+    //remove last occurence of <!-- from $start
+    $startFile = str_replaceEnd('<!--', '', $startFile);
+    //get string after CW_SPEED, including CW_SPEED
+    $endFile = strstr($file_content, 'CW_SPEED');
+    //replace CW_SPEED with the time taken    
+    $endFile = str_replace('CW_SPEED', round((microtime(true) - $startTime),2), $endFile);
+    //remove first occurence of --> from $end
+    $endFile = str_replaceStart('-->', '', $endFile);
+    $result = file_put_contents($file_path, $startFile . $endFile);
+}
+
 
 $endMem = round(memory_get_usage()/1048576,2); 
-echo "\nMemory Consumption is $endMem MB\n";
-echo "\nDifference: " . ($endMem - $startMem) . "\n";
+echo "\n\n$endMem MB. Memory Consumption";
+echo "\n" . ($endMem - $startMem) . " MB. Difference";
+echo "\n\nCollection outputted to: " . $outputDir . "collections.txt\n\n";
 
 // https://stackoverflow.com/questions/251277/sorting-php-iterators
 // get (recursively) files matching a pattern, each file as SplFileInfo object
@@ -300,6 +324,23 @@ function arrayFilterByExtension($a, $ext){
     return array_filter($a, function($obj) use ($ext) {
         return str_ends_with($obj->getFilename(),$ext);
     });
+}
+
+//Replaces the last occurrence of $search in $subject with $replace 
+function str_replaceEnd($search, $replace, $subject)
+{
+    $pos = strrpos($subject, $search);
+    if($pos !== false) {
+        $subject = substr_replace($subject, $replace, $pos, strlen($search));
+    }
+    return $subject;
+}
+
+function str_replaceStart($search, $replace, $subject){
+    $pos = strpos($subject, $search);
+    if ($pos !== false) {
+        $newstring = substr_replace($subject, $replace, $pos, strlen($search));
+    }
 }
 
 function sortByFolderDepth($a, $b) {
@@ -378,10 +419,6 @@ function readMarkdownFiles($sourceRoot, $sourceDir, $outputDir, $converter, $mer
 
             $markdownContent = file_get_contents(str_replace($sourceDir . '/', '', $sourceFullPath) . $path);
             
-            //if($path == "docs/docs.md") {
-            //echo "\n" . $markdownContent . "\n";
-            //}
-            
             $result = $converter->convert($markdownContent);
 
             $frontMatter = [];
@@ -391,24 +428,15 @@ function readMarkdownFiles($sourceRoot, $sourceDir, $outputDir, $converter, $mer
             
             $htmlContent = $result->getContent();            
 
-            if($path == "docs/docs.md") {
-            echo "\n" . $htmlContent . "\n";
-            }
-
             // this gets around markdown converting " to &quot; in html 
             // which then causes problems with the rendering due to & in the {{ }} statements
             // It means need to wrap twig statements in HTML comments if they include quotes
             // Now: need to include templates in arrayloader rendering in renderTwigArray further down
             // replace <!--{{ with "{{" and }}--> with "}}"
-            // also need to account for escaped comments (eg within code section)
             $withComments = array("<!--{{", "}}-->", "<!--{%", "%}-->");
             $withoutComments = array("{{", "}}", "{%", "%}");
             $htmlContent = str_replace($withComments,$withoutComments,$htmlContent);
 
-            //if($path == "docs/docs.md") {
-            //echo "\n" . $htmlContent . "\n";
-            //}
-            
             $permalink = "";
             $template = 'base.html.twig';
 
@@ -622,6 +650,7 @@ function renderTwig($twig, $outputDir, $tmplVars){
     if (!is_dir(dirname($outputPath))) {
         mkdir(dirname($outputPath), 0777, true);
     }
+
     file_put_contents($outputPath, $twig->render($tmplVars["template"], $tmplVars));
 }
 
@@ -685,7 +714,7 @@ function processPagination($twig, $outputDir, $tmplVars, $completeCollection){
 }
 
 function processMarkdown($outputDir, $converter, $twig, $metadata, $menus, $completeCollection) {
-    echo "\nProcessing Markdown files to output dir: " . $outputDir . "\n";
+    //echo "\nProcessing Markdown files to output dir: " . $outputDir . "\n";
     //sort tags array by key
     ksort($completeCollection['tags'],SORT_NATURAL | SORT_FLAG_CASE);
     foreach($completeCollection as $srcKey => $src) {
