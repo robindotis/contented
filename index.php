@@ -339,8 +339,9 @@ function str_replaceEnd($search, $replace, $subject)
 function str_replaceStart($search, $replace, $subject){
     $pos = strpos($subject, $search);
     if ($pos !== false) {
-        $newstring = substr_replace($subject, $replace, $pos, strlen($search));
+        $subject = substr_replace($subject, $replace, $pos, strlen($search));
     }
+    return $subject;
 }
 
 function sortByFolderDepth($a, $b) {
