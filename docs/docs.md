@@ -334,6 +334,7 @@ Allowed settings are:
 | staticFiles | [robots.txt,feed/pretty-feed-v3.xsl] | List of static files to be copied as is to the output directory. |
 | sourceDirs | [posts, pages, feed] | List of folders to be processed. Only Markdown files will be processed. |
 | outputDir | /_site/ | The folder in to which the files for the static site will be placed. |
+| showSpeed | false | A gimmick to output the site generation speed to the home page (the root index.html file). Will replace the token CW_SPEED with the time in seconds and remove any HTML comments surrounding it. HTML comments can therefore be used to hide the token from other pages |
 | theme | matrix | The name of the folder containing the templates for the site. |
 | themeExtends | default | The name of the folder containing the theme that `theme` builds up on, if any. |
 
