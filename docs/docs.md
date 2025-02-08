@@ -3,7 +3,7 @@ title: About the script
 date: 2025-02-06 12:00:00
 ---
 
-This is a simple script for creating a static website. 
+This is a simple script for creating a static website. Currently less than 500 lines of code.
 
 Content is created in text files, processed by the script and published on the web. That's it. 
 
