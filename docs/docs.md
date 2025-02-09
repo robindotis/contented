@@ -143,7 +143,8 @@ The following Front Matter attributes are accepted. Any other attributes will be
 | - post | Text to add after the link for the menu item. |
 | - class | CSS class to add to the menu item, for custom styling. |
 | pagination | For defining how lists of posts are created and paged. Is all on one page, no paging |
-| - data | Defines tags of the posts to include in this list. Posts must be tagged with this tag to be in this list | 
+| - data | Defines tags of the posts to include in this list. Posts must be tagged with this tag to be in this list |
+| - size | The size of the pages. If not set, it will show all posts lin one list. |
 
 Note: you do not need to enclose the value in quotes in the Front Matter section.
 
