@@ -18,10 +18,11 @@ If this sounds interesting to you and you would like your own independent part o
 3. [Folder structure](#folder-structure)
 4. [Menus](#menus)
 5. [Themes](#themes)
-6. [Shortcodes](#shortcodes)
-7. [Metadata](#metadata)
-8. [Settings](#settings)
-9. [References](#references)
+6. [Paging](#paging)
+7. [Shortcodes](#shortcodes)
+8. [Metadata](#metadata)
+9. [Settings](#settings)
+10. [References](#references)
 
 ## Getting started
 
@@ -141,6 +142,8 @@ The following Front Matter attributes are accepted. Any other attributes will be
 | - pre | Text to add before the link for the menu item. |
 | - post | Text to add after the link for the menu item. |
 | - class | CSS class to add to the menu item, for custom styling. |
+| pagination | For defining how lists of posts are created and paged. Is all on one page, no paging |
+| - data | Defines tags of the posts to include in this list. Posts must be tagged with this tag to be in this list | 
 
 Note: you do not need to enclose the value in quotes in the Front Matter section.
 
@@ -246,6 +249,10 @@ header:
 ```
 
 If menu items are defined in the menus.yaml file as well as in the Front Matter of specific pages, they are merged based on the position of the items. It is better to not define menu items in both the menus.yaml file and the page Front Matter as the results can be unexpected.
+
+## Post Lists
+
+Lists of posts can be defined using the pagination Front Matter attribute. If your page has this attribute set, the page will display a list of relevant posts. Note though that you need to ensure the page uses a template designed to show posts. By default the template "archive.hmtl.twig" can be used.`
 
 ## Themes
 
