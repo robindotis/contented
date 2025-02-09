@@ -667,22 +667,25 @@ function processPagination($twig, $outputDir, $tmplVars, $completeCollection){
         $alias = $tmplVars['pagination']['alias'];
     }
     */
+    /*
     $size = 0; //Fix to all on one page
     $tmplVars['pagination']['total'] = count($completeCollection['tags'][$data]);
     $tmplVars[$alias] = $completeCollection['tags'][$data];
     $tmplVars['pagination']['pages'] = 1;
     $tmplVars['pagination']['current'] = 1;
     renderTwig($twig, $outputDir, $tmplVars);
+    */
     
-    /* Uncomment this if want proper paging
-     * And comment out the above code
+    /*Uncomment this if want proper paging
+     * And comment out the above code */
     if(array_key_exists('size',$tmplVars['pagination']) && $tmplVars['pagination']['size'] && strlen($tmplVars['pagination']['size']) > 0){
         $size = $tmplVars['pagination']['size'];
     }
-
+    //echo "\nSize: " . $size . "\n";
     if($size == 0 || $size > count($completeCollection['tags'][$data])){
         //echo $tmplVars['title'] . " - processPagination - no paging \n";
         //no pages
+        $tmplVars['pagination']['total'] = count($completeCollection['tags'][$data]);
         $tmplVars[$alias] = $completeCollection['tags'][$data];
         $tmplVars['pagination']['pages'] = 1;
         $tmplVars['pagination']['current'] = 1;
@@ -693,16 +696,36 @@ function processPagination($twig, $outputDir, $tmplVars, $completeCollection){
         // paging - need to slice up data into chunks and loop through it.
         // set $tmplVars[$alias] to the correct slice
         // set URL to include page number
-        $chunks = array_chunk($completeCollection[$data], $size);
+        echo "\nData: $data \n";
+        $chunks = array_chunk($completeCollection['tags'][$data], $size);
         $page = 1;
         $tmplVars['pagination']['pages'] = count($chunks);
 
         foreach($chunks as $chunk){
-            //echo $tmplVars['title'] . " - processPagination - chunk - $page \n";
+            echo $tmplVars['title'] . " - processPagination - chunk - $page \n";
             $tmplVars[$alias] = $chunk;
             $realPermalink = $tmplVars["permalink"];  
-            $tmplVars["permalink"] = $tmplVars["permalink"] . $page . "/";
+            $tmplVars["realPermalink"] = $realPermalink;
+            if($page > 1){
+                $tmplVars["permalink"] = $tmplVars["permalink"] . $page . "/";
+            }
             $tmplVars['pagination']['current'] = $page;
+            $nextPage = $page + 1;
+            echo "Next Page: $nextPage Chunks: " . count($chunks) . "\n";
+            if($nextPage <= count($chunks)){
+                $tmplVars['pagination']['next'] = $nextPage;
+                echo $tmplVars['pagination']['next'] . "\n";
+            }
+            else {
+                $tmplVars['pagination']['next'] = "";
+            }
+            $prevPage = $page - 1;
+            if($prevPage > 0){
+                $tmplVars['pagination']['prev'] = $prevPage;
+            }
+            else {
+                $tmplVars['pagination']['prev'] = "";
+            }
 
             renderTwig($twig, $outputDir, $tmplVars);
 
@@ -711,7 +734,7 @@ function processPagination($twig, $outputDir, $tmplVars, $completeCollection){
             $page++;
         }
     }
-    */
+    /**/
 }
 
 function processMarkdown($outputDir, $converter, $twig, $metadata, $menus, $completeCollection) {
