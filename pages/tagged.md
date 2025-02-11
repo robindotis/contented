@@ -1,6 +1,6 @@
 ---
-permalink: /tagging/{{ tag | slug }}/
-title: Posts tagged “{{ tag }}”
+permalink: /tagging/{{ alias | slug }}/
+title: Posts tagged “{{ alias }}”
 pagination:
   data: tag
   size: 1
@@ -13,4 +13,4 @@ pagination:
   addAllPagesToCollections: true
 ---
 
-Posts for tag...
+Posts for tag: {{ alias }}
