@@ -3,7 +3,7 @@ permalink: /tagging/{{ alias | slug }}/
 title: Posts tagged “{{ alias }}”
 pagination:
   data: tag
-  size: 1
+  size: 0
   filter:
   - all
   - nav
