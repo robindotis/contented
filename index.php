@@ -616,6 +616,7 @@ function renderTwigArray($arrayToChange,$values){
     foreach ($arrayToChange as $key => $value) 
     {
         if (is_string($value)) {
+            //echo "\nKey: " . $key . " Value: " . $value . "\n";
             //'index' is the name of the template to use and it is set equal to  the content of $value
             //ie the template is the content of the $value string, which could be a markdown file for example
             $arrayLoader = new \Twig\Loader\ArrayLoader([
@@ -661,7 +662,7 @@ function processPagination($twig, $outputDir, $tmplVars, $completeCollection){
     /* alias is a left over from eleventy enabling to target this collection of items 
              using a specific name for each collection in the templates
              You could then treat each collection differently in the templates
-             It is not used in this engine.*/
+             It is not used in this engine, except for tags*/
     /*
     if($tmplVars['pagination']['alias'] && strlen($tmplVars['pagination']['alias']) > 0){
         $alias = $tmplVars['pagination']['alias'];
@@ -696,13 +697,13 @@ function processPagination($twig, $outputDir, $tmplVars, $completeCollection){
         // paging - need to slice up data into chunks and loop through it.
         // set $tmplVars[$alias] to the correct slice
         // set URL to include page number
-        echo "\nData: $data \n";
+        //echo "\nData: $data \n";
         $chunks = array_chunk($completeCollection['tags'][$data], $size);
         $page = 1;
         $tmplVars['pagination']['pages'] = count($chunks);
 
         foreach($chunks as $chunk){
-            echo $tmplVars['title'] . " - processPagination - chunk - $page \n";
+            //echo $tmplVars['title'] . " - processPagination - chunk - $page \n";
             $tmplVars[$alias] = $chunk;
             $realPermalink = $tmplVars["permalink"];  
             $tmplVars["realPermalink"] = $realPermalink;
@@ -711,10 +712,10 @@ function processPagination($twig, $outputDir, $tmplVars, $completeCollection){
             }
             $tmplVars['pagination']['current'] = $page;
             $nextPage = $page + 1;
-            echo "Next Page: $nextPage Chunks: " . count($chunks) . "\n";
+            //echo "Next Page: $nextPage Chunks: " . count($chunks) . "\n";
             if($nextPage <= count($chunks)){
                 $tmplVars['pagination']['next'] = $nextPage;
-                echo $tmplVars['pagination']['next'] . "\n";
+                //echo $tmplVars['pagination']['next'] . "\n";
             }
             else {
                 $tmplVars['pagination']['next'] = "";
@@ -757,16 +758,9 @@ function processMarkdown($outputDir, $converter, $twig, $metadata, $menus, $comp
                     $data = $tmplVars['pagination']['data'];
                     if($data == "tag") {
                         foreach($tmplVars['collections']['tags'] as $key => $collection) {
-                            // Setting up Slugger
-                            $slugger = new AsciiSlugger(); // you can type-hint SluggerInterface to get slugger as a service
-                            $slug = $slugger->slug($key)->lower();                        
-
-                            $tmplVars['template'] = 'tagged.html.twig';
                             $tmplVars['pagination']['data'] = $key;
-                            $tmplVars['pagination']['size'] = 0;
+                            $tmplVars['pagination']['size'] = 0; //hardcode size to 0 for tags as paging does not work properly for tags yet
                             $tmplVars['alias'] = $key;
-                            $tmplVars['permalink'] = '/tagging/' . $slug . '/';
-                            $tmplVars['content'] = "Posts for tag: " . $key;
                             processPagination($twig, $outputDir, $tmplVars, $completeCollection);
                         }
                     }
