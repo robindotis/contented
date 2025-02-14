@@ -134,7 +134,7 @@ The following Front Matter attributes are accepted. Any other attributes will be
 | date | ISO format YYYY-MM-DD hh:mm:ss eg "2025-01-01 08:00:00". Used for sorting posts. |
 | permalink | Any valid URL path, eg "/about/". If not specified the link for the file will be the title. |
 | tags | Free text list of tags, one per line. |
-| prefix | Free text to add before the page name in the title bar. |
+| titleprefix | Free text to add before the page name in the title bar. |
 | navigation | For defining in which menu this page should appear. |
 | - menu | Which menu the page appears in. Default templates support "header" and "footer". |
 | - title | The text for the menu item. |
