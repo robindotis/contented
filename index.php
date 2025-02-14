@@ -31,7 +31,6 @@ const TEMPLATES = __DIR__ . '/templates/';
 const YAML_SETTINGS = SOURCE_ROOT . '/data/settings.yaml';
 const YAML_METADATA = SOURCE_ROOT . '/data/metadata.yaml';
 const YAML_MENUS = SOURCE_ROOT . '/data/menus.yaml';
-const TEMP_FOLDER = __DIR__ . '/.CW_TEMP';
 
 $staticDirs = ['assets'];
 $staticFiles = ['robots.txt','feed/pretty-feed-v3.xsl'];
@@ -89,20 +88,7 @@ if (substr($outputDir, -1) != '/') {
     $outputDir = $outputDir . '/';
 }
 $outputDir = '.' . $outputDir;
-
 //echo "\n outputdir: " . $outputDir;
-
-//create temporary folder __TEMP
-//echo "\nExtends: " . $templatesExtendsDir;
-//echo "\nTemplates: " . $templatesDir;
-$fs = new Filesystem();
-$fs->mkdir(TEMP_FOLDER);
-//copy recursively all files from theme folder to TEMP folder
-if(strlen($templatesExtendsDir) > 0) {
-    $fs->mirror($templatesExtendsDir, TEMP_FOLDER);
-}
-//copy recursively all template extends files to TEMP folder overwriting any that exist
-$fs->mirror($templatesDir, TEMP_FOLDER);
 
 // SETTING UP MarkDown converter
 // Define your configuration, if needed
@@ -133,9 +119,18 @@ $environment->addExtension(new FrontMatterExtension());
 $environment->addExtension(new HeadingPermalinkExtension());
 $converter = new MarkdownConverter($environment);
 
+
 // SETTING UP Twig for file loading
-$loader = new FilesystemLoader(TEMP_FOLDER);
-$twig = new TwigEnv($loader);
+$themeFsLoader = new FilesystemLoader($templatesDir);
+$mainLoader = new \Twig\Loader\ChainLoader([$themeFsLoader]);
+
+//if theme extends another theme, then add that to the loader
+if(strlen($themeExtends) > 0) {
+    $themeExtendsFsLoader = new FilesystemLoader($templatesExtendsDir);
+    $mainLoader = new \Twig\Loader\ChainLoader([$themeFsLoader, $themeExtendsFsLoader]);
+}
+
+$twig = new \Twig\Environment($mainLoader);
 $twig->addExtension(new StringExtension());
 $twig->addExtension(new \Twig\Extension\DebugExtension());
 
@@ -172,9 +167,9 @@ $pageMenus = []; //for menu items in front matter
 $collections = [];
 //MARKDOWN - read files in source directories
 foreach($sourceDirs as $src) {
-    $mergedJsonStrings = mergedJsonStrings($src,SOURCE_ROOT);
+    $mergedYamlStrings = mergedYamlStrings($src,SOURCE_ROOT);
     $collections[$src] = [];
-    readMarkdownFiles(SOURCE_ROOT, $src, $outputDir, $converter, $mergedJsonStrings, $collections, $pageMenus);
+    readMarkdownFiles(SOURCE_ROOT, $src, $outputDir, $converter, $mergedYamlStrings, $collections, $pageMenus);
 }
 echo "\n" . round((microtime(true) - $startTime),2) . "s. Markdown files read.";
 
@@ -288,10 +283,6 @@ file_put_contents($outputDir . 'collections.txt', print_r("MERGED MENUS=========
 file_put_contents($outputDir . 'collections.txt', print_r("=============================================================\n", true),FILE_APPEND);
 file_put_contents($outputDir . 'collections.txt', print_r($mergedMenus, true),FILE_APPEND);
 
-//remove temporary folder once finished processing
-$tempFileSystem = new Symfony\Component\Filesystem\Filesystem();
-$tempFileSystem->remove(TEMP_FOLDER);
-
 echo "\n" . round((microtime(true) - $startTime),2) . "s. Conversion completed";
 
 if($showSpeed) {
@@ -360,50 +351,56 @@ function getFileContentFromIteratorArrayByType($iter, $ext){
     return $result;
 }
 
-function mergeJsonFilesAsStrings($jsonFiles){
+function mergeYamlFilesAsStrings($yamlFiles){
     // loop through files array (SplFileInfo)
-    // create basic JSON string array with path as the key
-    $jsonStrings = [];
-    foreach($jsonFiles as $file){
-        $jsonStrings[str_replace('\\','/',$file->getPath())] = file_get_contents($file->getPathname());
+    // create basic YAML string array with path as the key
+    $yamlStrings = [];
+    foreach($yamlFiles as $file){
+        $yamlStrings[str_replace('\\','/',$file->getPath())] = Yaml::parseFile($file->getPathname());
+        //file_get_contents($file->getPathname())
         //echo $jsonStrings[$file->getPath()] . "\n";
     }
-     
-    //loop through json strings array
+
+
+    //=========
+    // TODO - rework this for parsed YAML files, which are already in an array
+    //=========
+    //loop through yaml array
     //create merged array where merge lower level (closer to the root) json files into higher level (closer to the leaf) 
-    $mergedJsonStrings = [];
-    foreach($jsonStrings as $path => $curJson){
-        $newJson = json_decode($curJson, true);
+    $mergedYamlStrings = [];
+    foreach($yamlStrings as $path => $curYaml){
+        $newYaml = $curYaml;
+        //$newYaml = json_decode($curYaml, true);
         //if there are previous entries in the merged array
-        if($mergedJsonStrings) {
+        if($mergedYamlStrings) {
             //filter all previously processed paths which match the start of the currrent path
-            $result = array_filter($mergedJsonStrings, function($key) use ($path) {
+            $result = array_filter($mergedYamlStrings, function($key) use ($path) {
                 return strpos($path, $key) === 0;
             }, ARRAY_FILTER_USE_KEY);
             //then pop off the last value and convert to json 
-            $prevJson = json_decode(array_pop($result), true);
-            $curJson = json_decode($curJson, true);
+            $prevYaml = array_pop($result);
+            //$curYaml = json_decode($curYaml, true);
             //then replace the current string into previous string
-            $newJson = array_replace_recursive($prevJson, $curJson);
+            $newYaml = array_replace_recursive($prevYaml, $curYaml);
         }
-        $mergedJsonStrings[$path] = json_encode($newJson);
+        $mergedYamlStrings[$path] = $newYaml;
     }
-    return $mergedJsonStrings;
+    return $mergedYamlStrings;
 }
 
-function mergedJsonStrings($sourceDir, $sourceRoot) {
+function mergedYamlStrings($sourceDir, $sourceRoot) {
     $matches = new RegexIterator(
         new RecursiveIteratorIterator(
             new RecursiveDirectoryIterator($sourceRoot . '/' . $sourceDir)
         ),
-        '/(\.json)$/i'
+        '/(\.yaml)$/i'
     );
     $files = iterator_to_array($matches);
-    $jsonFiles = getFileContentFromIteratorArrayByType($files, 'json');
-    return mergeJsonFilesAsStrings($jsonFiles);
+    $yamlFiles = getFileContentFromIteratorArrayByType($files, 'yaml');
+    return mergeYamlFilesAsStrings($yamlFiles);
 }
 
-function readMarkdownFiles($sourceRoot, $sourceDir, $outputDir, $converter, $mergedJsonStrings, &$completeCollection, &$pageMenus) {
+function readMarkdownFiles($sourceRoot, $sourceDir, $outputDir, $converter, $mergedYamlStrings, &$completeCollection, &$pageMenus) {
     $sourceFullPath = $sourceRoot . '/' . $sourceDir . '/';
     $rdi = new RecursiveDirectoryIterator($sourceFullPath, RecursiveDirectoryIterator::SKIP_DOTS);
     $rii = new RecursiveIteratorIterator($rdi, RecursiveIteratorIterator::SELF_FIRST);
@@ -442,26 +439,26 @@ function readMarkdownFiles($sourceRoot, $sourceDir, $outputDir, $converter, $mer
             $template = 'base.html.twig';
 
             //get any json based config, if any
-            if($mergedJsonStrings){
+            if($mergedYamlStrings){
                 //filter processed json strings which match the start of the currrent path
                 $relativePath = $sourceRoot . '/' . $path;
-                $result = array_filter($mergedJsonStrings, function($key) use ($relativePath) {
+                $result = array_filter($mergedYamlStrings, function($key) use ($relativePath) {
                             return strpos($relativePath, $key) === 0;
                 }, ARRAY_FILTER_USE_KEY);
                 //then pop off the last value and convert to object 
-                $json = json_decode(array_pop($result), true);
-                $frontMatter = array_merge($json,$frontMatter);
+                $yaml = array_pop($result);
+                $frontMatter = array_merge($yaml,$frontMatter);
 
-                //merge any tags from json files into frontmatter
-                if(array_key_exists('tags',$json)){
-                    $tags = $json['tags'];
+                //merge any tags from yaml files into frontmatter
+                if(array_key_exists('tags',$yaml)){
+                    $tags = $yaml['tags'];
                     if(!is_array($tags)){
                         $tags = [$tags];
                     }
                     if(!is_array($frontMatter['tags'])){
                         $frontMatter['tags'] = [$frontMatter['tags']];
                     }
-                    //add tags from json files
+                    //add tags from yaml files
                     $frontMatter['tags'] = array_unique(array_merge($frontMatter['tags'], $tags));
                 }
                 
@@ -613,6 +610,8 @@ function readMarkdownFiles($sourceRoot, $sourceDir, $outputDir, $converter, $mer
 }
 
 function renderTwigArray($arrayToChange,$values){
+    global $templatesDir;
+    global $templatesExtendsDir;
     foreach ($arrayToChange as $key => $value) 
     {
         if (is_string($value)) {
@@ -623,9 +622,14 @@ function renderTwigArray($arrayToChange,$values){
                 'index' => $value,
             ]);
 
-            $fsLoader = new FilesystemLoader(TEMP_FOLDER);
-
-            $chainLoader = new \Twig\Loader\ChainLoader([$arrayLoader, $fsLoader]);
+            // SETTING UP Twig for file loading
+            $themeFsLoader = new FilesystemLoader($templatesDir);
+            $chainLoader = new \Twig\Loader\ChainLoader([$arrayLoader, $themeFsLoader]);
+            //if theme extends another theme, then add that to the loader
+            if(strlen($templatesExtendsDir) > 0) {
+                $themeExtendsFsLoader = new FilesystemLoader($templatesExtendsDir);
+                $chainLoader = new \Twig\Loader\ChainLoader([$arrayLoader, $themeFsLoader, $themeExtendsFsLoader]);
+            }
             
             $arrayTwig = new \Twig\Environment($chainLoader);
             $arrayTwig->addExtension(new StringExtension());
